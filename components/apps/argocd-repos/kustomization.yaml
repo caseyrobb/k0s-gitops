@@ -11,4 +11,3 @@ resources:
 - uptime-kuma-repo.yaml
 - prometheus-helm-repo.yaml
 - grafana-helm-repo.yaml
-- photoprism-helm-repo.yaml
