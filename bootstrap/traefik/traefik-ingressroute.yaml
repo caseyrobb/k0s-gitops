@@ -1,0 +1,20 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-dashboard-tls
+  namespace: traefik
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
+    services:
+    - kind: Service
+      name: traefik
+      port: traefik
+  - kind: Rule
+    match: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
+    services:
+    - kind: TraefikService
+      name: api@internal

@@ -1,0 +1,39 @@
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  annotations:
+    eck.k8s.elastic.co/license: basic
+    eck.k8s.elastic.co/orchestration-hints: '{"no_transient_settings":true,"service_accounts":true}'
+  name: elasticsearch
+  namespace: firewall
+spec:
+  auth:
+    roles:
+      - secretName: logstash-roles-secret
+  nodeSets:
+  - config:
+      node.store.allow_mmap: false
+    count: 1
+    name: default
+    podTemplate:
+      spec:
+        containers:
+        - name: elasticsearch
+          resources:
+            limits:
+              cpu: 8
+              memory: 8Gi
+            requests:
+              cpu: 1
+              memory: 4Gi
+    volumeClaimTemplates:
+    - metadata:
+        name: elasticsearch-data
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 20Gi
+        storageClassName: longhorn
+  version: 8.15.2

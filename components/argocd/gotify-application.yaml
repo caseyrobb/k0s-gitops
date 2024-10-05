@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gotify
+  namespace: argocd
+spec:
+  destination:
+    namespace: gotify
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+  - chart: gotify
+    helm:
+      values: |
+        env:
+          TZ: America/Edmonton
+          GOTIFY_REGISTRATION: 'false'
+        service:
+          main:
+            ports:
+              http:
+                port: 8080
+        persistence:
+          data:
+            enabled: true
+            mountPath: /app/data
+            retain: true
+            storageClass: longhorn
+            accessMode: ReadWriteOnce
+            size: 1Gi
+    repoURL: https://charts.gabe565.com
+    targetRevision: 0.3.0
+  - kustomize:
+      namespace: gotify
+    path: components/apps/gotify
+    repoURL: https://github.com/caseyrobb/k0s-gitops
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

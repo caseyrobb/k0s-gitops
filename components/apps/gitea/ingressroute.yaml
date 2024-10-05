@@ -1,0 +1,15 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: gitea
+  namespace: gitea
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`gitea.redcomet.ca`) && PathPrefix(`/`)
+    services:
+    - kind: Service
+      name: gitea-http
+      port: 3000

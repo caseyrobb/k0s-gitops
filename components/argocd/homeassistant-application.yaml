@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: home-assistant
+  namespace: argocd
+spec:
+  destination:
+    namespace: home-assistant
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+  - chart: home-assistant
+    helm:
+      values: |
+        env:
+          TZ: America/Edmonton
+        service:
+          main:
+            ports:
+              http:
+                port: 8123
+        persistence:
+          config:
+            enabled: true
+            retain: true
+            storageClass: longhorn
+            accessMode: ReadWriteOnce
+            size: 1Gi
+          postgresql:
+            enabled: false
+    repoURL: https://charts.gabe565.com
+    targetRevision: 0.17.0
+  - kustomize:
+      namespace: home-assistant
+    path: components/apps/home-assistant
+    repoURL: https://github.com/caseyrobb/k0s-gitops
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

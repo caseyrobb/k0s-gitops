@@ -1,0 +1,140 @@
+apiVersion: k0s.k0sproject.io/v1beta1
+kind: ClusterConfig
+metadata:
+  name: k0s
+spec:
+  api:
+    address: 172.16.0.101
+    k0sApiPort: 9443
+    port: 6443
+    sans:
+    - k0s.redcomet.ca
+    - 172.16.0.101
+  controllerManager: {}
+  extensions:
+    helm:
+      concurrencyLevel: 5
+      repositories:
+      - name: traefik
+        url: https://traefik.github.io/charts
+      - name: metallb
+        url: https://metallb.github.io/metallb
+      - name: longhorn
+        url: https://charts.longhorn.io
+      charts:
+      - name: traefik
+        chartname: traefik/traefik
+        namespace: "traefik"
+        version: "32.0.0"
+        values: |-
+          service:
+            annotations:
+              metallb.universe.tf/loadBalancerIPs: 172.16.0.102
+              metallb.universe.tf/ip-allocated-from-pool: traefik
+          ports:
+            traefik:
+              expose:
+                default: true
+            beats:
+              port: 5044
+              protocol: TCP
+              expose:
+                default: true
+            syslog:
+              port: 5959
+              protocol: TCP
+              expose:
+                default: true
+            dlna:
+              port: 1900
+              protocol: UDP
+              expose:
+                default: true
+            autodiscover:
+              port: 7359
+              protocol: UDP
+              expose:
+                default: true
+          ingressRoute:
+            dashboard:
+              enabled: true
+              matchRule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
+              services:
+                - name: api@internal
+                  kind: TraefikService
+              entryPoints: ["websecure"]
+          kubernetesGateway:
+            enabled: true
+      - name: metallb
+        chartname: metallb/metallb
+        namespace: "metallb-system"
+        version: "0.14.8"
+      - name: longhorn
+        chartname: longhorn/longhorn
+        namespace: longhorn-system
+        version: "1.7.1"
+        values: |-
+          persistence:
+            defaultClass: true
+            defaultClassReplicaCount: 1
+          defaultSettings:
+            defaultDataPath: "/var/lib/longhorn"
+            defaultReplicaCount: 1
+          csi:
+            attacherReplicaCount: 1
+            provisionerReplicaCount: 1
+            resizerReplicaCount: 1
+            snapshotterReplicaCount: 1
+    storage:
+      create_default_storage_class: false
+      type: external_storage
+  installConfig:
+    users:
+      etcdUser: etcd
+      kineUser: kube-apiserver
+      konnectivityUser: konnectivity-server
+      kubeAPIserverUser: kube-apiserver
+      kubeSchedulerUser: kube-scheduler
+  konnectivity:
+    adminPort: 8133
+    agentPort: 8132
+  network:
+    calico: null
+    clusterDomain: cluster.local
+    dualStack: {}
+    kubeProxy:
+      iptables:
+        minSyncPeriod: 0s
+        syncPeriod: 0s
+      ipvs:
+        minSyncPeriod: 0s
+        syncPeriod: 0s
+        tcpFinTimeout: 0s
+        tcpTimeout: 0s
+        udpTimeout: 0s
+      metricsBindAddress: 0.0.0.0:10249
+      mode: iptables
+    kuberouter:
+      autoMTU: true
+      hairpin: Enabled
+      ipMasq: false
+      metricsPort: 8080
+      mtu: 0
+      peerRouterASNs: ""
+      peerRouterIPs: ""
+    nodeLocalLoadBalancing:
+      envoyProxy:
+        apiServerBindPort: 7443
+        konnectivityServerBindPort: 7132
+      type: EnvoyProxy
+    podCIDR: 10.244.0.0/16
+    provider: kuberouter
+    serviceCIDR: 10.96.0.0/12
+  scheduler: {}
+  storage:
+    etcd:
+      externalCluster: null
+      peerAddress: 172.16.0.101
+    type: etcd
+  telemetry:
+    enabled: true

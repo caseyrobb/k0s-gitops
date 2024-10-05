@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: it-tools
+  name: it-tools
+  namespace: it-tools
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: it-tools
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: it-tools
+    spec:
+      containers:
+      - image: docker.io/corentinth/it-tools
+        name: it-tools
+        ports:
+        - containerPort: 80
+      serviceAccount: it-tools
+      serviceAccountName: it-tools

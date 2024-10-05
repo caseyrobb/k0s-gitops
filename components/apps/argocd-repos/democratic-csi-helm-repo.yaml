@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  annotations:
+    managed-by: argocd.argoproj.io
+  labels:
+    argocd.argoproj.io/secret-type: repository
+  name: repo-democratic-csi-helm
+  namespace: argocd
+stringData:
+  name: democratic-csi
+  project: default
+  type: helm
+  url: https://democratic-csi.github.io/charts/

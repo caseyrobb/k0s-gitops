@@ -1,0 +1,15 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: bookstack
+  namespace: bookstack
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`bookstack.redcomet.ca`) && PathPrefix(`/`)
+    services:
+    - kind: Service
+      name: bookstack
+      port: 80

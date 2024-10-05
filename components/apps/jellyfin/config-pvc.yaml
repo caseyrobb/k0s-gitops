@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jellyfin-config
+  namespace: jellyfin
+  labels:
+    app: jellyfin
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 4Gi
+  storageClassName: longhorn
+  volumeMode: Filesystem

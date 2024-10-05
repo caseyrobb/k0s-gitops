@@ -1,0 +1,152 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: jellyfin
+  name: jellyfin
+  namespace: jellyfin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jellyfin
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: jellyfin
+    spec:
+      containers:
+      - env:
+        - name: TZ
+          value: America/Edmonton
+        - name: JELLYFIN_PublishedServerUrl
+          value: https://jellyfin.redcomet.ca
+        image: docker.io/jellyfin/jellyfin:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 5
+          httpGet:
+            path: /
+            port: 8096
+            scheme: HTTP
+          initialDelaySeconds: 12
+          periodSeconds: 15
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: jellyfin
+        ports:
+        - containerPort: 7359
+          name: jellyfin-auto
+          protocol: UDP
+        - containerPort: 1900
+          name: jellyfin-dlna
+          protocol: UDP
+        - containerPort: 8096
+          name: main
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 4
+          httpGet:
+            path: /
+            port: 8096
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 12
+          successThreshold: 2
+          timeoutSeconds: 5
+        startupProbe:
+          failureThreshold: 60
+          httpGet:
+            path: /
+            port: 8096
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 3
+        resources:
+          limits:
+            cpu: "4"
+            memory: 12Gi
+          requests:
+            cpu: 200m
+            memory: 128Mi
+        securityContext:
+          runAsGroup: 568
+          runAsUser: 568
+          privileged: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /cache
+          name: cache
+        - mountPath: /config
+          name: config
+        - mountPath: /dev/shm
+          name: devshm
+        - mountPath: /dev/dri/card0
+          name: card0
+        - mountPath: /dev/dri/renderD128
+          name: renderd128
+        - mountPath: /Video
+          name: fenrir-video
+        - mountPath: /shared
+          name: shared
+        - mountPath: /tmp
+          name: tmp
+        - mountPath: /config/transcodes
+          name: transcode
+        - mountPath: /var/logs
+          name: varlogs
+        - mountPath: /var/run
+          name: varrun
+      dnsPolicy: ClusterFirst
+      nodeSelector:
+        kubernetes.io/arch: amd64
+      restartPolicy: Always
+      securityContext:
+        fsGroup: 568
+        fsGroupChangePolicy: OnRootMismatch
+        supplementalGroups:
+        - 568
+      serviceAccount: jellyfin
+      serviceAccountName: jellyfin
+      volumes:
+      - name: renderd128
+        hostPath:
+          path: /dev/dri/renderD128
+      - name: card0
+        hostPath: 
+          path: /dev/dri/card0
+      - emptyDir: {}
+        name: cache
+      - name: config
+        persistentVolumeClaim:
+          claimName: jellyfin-config
+      - emptyDir:
+          medium: Memory
+          sizeLimit: 4Gi
+        name: devshm
+      - name: fenrir-video
+        nfs:
+          path: /mnt/rust/video
+          server: 172.16.0.55
+      - emptyDir: {}
+        name: shared
+      - emptyDir:
+          medium: Memory
+          sizeLimit: 4Gi
+        name: tmp
+      - name: transcode
+        persistentVolumeClaim:
+          claimName: jellyfin-transcode
+      - emptyDir:
+          medium: Memory
+          sizeLimit: 4Gi
+        name: varlogs
+      - emptyDir:
+          medium: Memory
+          sizeLimit: 4Gi
+        name: varrun

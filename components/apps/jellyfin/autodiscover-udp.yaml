@@ -1,0 +1,15 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRouteUDP
+metadata:
+  name: autodiscover
+  namespace: jellyfin
+spec:
+  entryPoints:
+    - autodiscover
+  routes:
+  - services:
+    - name: jellyfin-dlna
+      port: 7359
+      #weight: 10
+      #nativeLB: true
+      #nodePortLB: true

@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mafl
+  name: mafl
+  namespace: mafl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mafl
+  template:
+    metadata:
+      labels:
+        app: mafl
+    spec:
+      containers:
+      - image: docker.io/hywax/mafl:latest
+        name: mafl
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+          - name: config
+            mountPath: /app/data
+      volumes:
+      - name: config
+        configMap:
+          name: mafl-config
+          items:
+            - key: config.yml
+              path: config.yml
+      serviceAccount: mafl
+      serviceAccountName: mafl

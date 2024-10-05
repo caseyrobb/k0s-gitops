@@ -1,0 +1,80 @@
+apiVersion: v1
+data:
+  config.yml: |
+    title: My Home Page
+    theme: system
+    services:
+      Home:
+        - title: Home Assistant
+          description: Home automation system
+          link: '#'
+          icon:
+            name: simple-icons:homeassistant
+            wrap: true
+        - title: Traefik
+          description: Cloud edge router
+          link: 'https://traefik.redcomet.ca/dashboard/#'
+          icon:
+            name: devicon:traefikproxy
+            wrap: true
+        - title: Grafana
+          description: Server monitoring dashboards
+          link: 'https://grafana.redcomet.ca'
+          icon:
+            name: simple-icons:grafana
+            wrap: true
+        - title: GitHub
+          description: Let's build from here
+          link: 'https://github.com/caseyrobb'
+          icon:
+            name: simple-icons:github
+            wrap: true
+
+      Devices:
+        - title: TrueNAS
+          description: Network storage
+          link: 'https://fenrir.redcomet.ca:444'
+          icon:
+            name: simple-icons:truenas
+            wrap: true
+        - title: EWS377AP
+          description: EWS377AP Access Point
+          link: 'https://172.16.0.5/cgi-bin/luci'
+          icon:
+            name: simple-icons:embarcadero
+            wrap: true
+        - title: EWS357AP
+          description: EWS357AP Access Point
+          link: 'https://172.16.0.2/cgi-bin/luci'
+          icon:
+            name: simple-icons:embarcadero
+            wrap: true
+        - title: CRS326-24G-2S+
+          description: Mikrotik 24-port switch
+          link: 'http://10.0.0.2'
+          icon:
+            name: simple-icons:mikrotik
+            wrap: true
+        - title:  CRS112-8P-4S
+          description: Mikrotik 8-port switch
+          link: 'http://10.0.0.3'
+          icon:
+            name: simple-icons:mikrotik
+            wrap: true
+        - title: CSS106-5G-1S
+          description: Mikrotik 5-port switch
+          link: 'http://172.16.0.250'
+          icon:
+            name: simple-icons:mikrotik
+            wrap: true
+        - title: UCK G2
+          description: Unifi Cloud Key G2 Plus
+          link: 'https://172.16.0.7'
+          icon:
+            name: simple-icons:ubiquiti
+            wrap: true
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: mafl-config
+  namespace: mafl

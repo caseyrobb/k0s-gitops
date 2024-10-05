@@ -1,0 +1,26 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: traefik
+  namespace: metallb-system
+spec:
+  addresses:
+  - 172.16.0.102/32
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: k0s-apps
+  namespace: metallb-system
+spec:
+  addresses:
+  - 172.16.0.103-172.16.0.120
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: l2
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+  - traefik

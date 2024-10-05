@@ -1,0 +1,13 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: beats-tcp
+  namespace: firewall
+spec:
+  entryPoints:
+    - beats
+  routes:
+  - match: HostSNI(`*`)
+    services:
+    - name: logstash-ls-beats
+      port: 5044

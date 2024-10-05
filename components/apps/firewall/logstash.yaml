@@ -1,0 +1,148 @@
+apiVersion: logstash.k8s.elastic.co/v1alpha1
+kind: Logstash
+metadata:
+  annotations:
+    eck.k8s.elastic.co/license: basic
+  name: logstash
+  namespace: firewall
+spec:
+  count: 1
+  elasticsearchRefs:
+  - clusterName: eck
+    name: elasticsearch
+  pipelines:
+  - pipeline.id: main
+    config.string: |
+      input {
+          beats {
+              type => beats
+              port => 5044
+          }
+          syslog {
+              type => syslog
+              port => 5959
+              tags => ["unbound"]
+          }
+          http {
+              type => http
+              tags => ["telegraf"]
+              port => 9200
+          }
+      }
+      
+      filter {
+          if ([type] == "beats") {
+              mutate {
+                  add_tag => ["pf"]
+              }
+          } else if ([type] == "syslog") {
+              mutate {
+                  add_tag => ["unbound"]
+              }
+          }
+      
+          if ("pf" in [tags]) {
+              grok {
+                  add_tag => [ "firewall" ]
+                  match => [ "message", "^(?<timestamp>%{MONTH} %{MONTHDAY} %{TIME})\s+rule\s(%{POSINT:ruleno})\/\(match\) (%{WORD:action}) (%{WORD:direction}) on (%{WORD:interface}): (?:%{IPV6:src_ipv6}|%{IPV4:src_ip})\.(%{POSINT:src_port}) > (?:%{IPV6:dest_ipv6}|%{IPV4:dest_ip})\.(%{POSINT:dest_port})%{GREEDYDATA:extra}" ]
+                  match => [ "message", "^(?<timestamp>%{MONTH} %{MONTHDAY} %{TIME})\s+rule\s(%{POSINT:ruleno})\/\(match\) (%{WORD:action}) (%{WORD:direction}) on (%{WORD:interface}): (?:%{IPV6:src_ipv6}|%{IPV4:src_ip}) > (?:%{IPV6:dest_ipv6}|%{IPV4:dest_ip})%{GREEDYDATA:extra}" ]
+              }
+              geoip {
+                source => "src_ip"
+                target => "geoip"
+                add_tag => ["geoip"]
+              }
+      	
+          } else if ("unbound" in [tags]) {
+              grok {
+                  match => { 
+                      "message" => [ "\[%{INT:pid}:%{INT:thread}\] info: %{IPORHOST:clientip} %{USERNAME:ns_record_name} %{WORD:ns_record_type} %{WORD:ns_record_class} %{WORD:ns_rcode} %{SECOND:time_to_resolv} %{INT:from_cache} %{INT:bytes}","%{GREEDYDATA:drop-document}" ]
+                  }
+                  remove_field => ["message"]
+              }
+              mutate {
+                  add_field => [ "received_at", "%{@timestamp}" ]
+              }
+              grok {
+                  match => {  "received_at" => "%{TIMESTAMP_ISO8601:timestampNoZ}Z" }
+              }
+              date {
+                  timezone => "America/Edmonton"
+                  match => ["timestampNoZ", "ISO8601"]
+              }
+              mutate {
+                  remove_field => [ "received_at", "timestampNoZ" ]
+              }
+      
+              mutate { convert => [ "pid", "integer" ] }
+          }
+      }
+      
+      output {
+          if "pf" in [tags] {
+              elasticsearch {
+                  hosts => [ "${ECK_ES_HOSTS}" ]
+                  user => "${ECK_ES_USER}"
+                  password => "${ECK_ES_PASSWORD}"
+                  cacert => "${ECK_ES_SSL_CERTIFICATE_AUTHORITY}"
+                  index => "pf-%{+YYYY.MM.dd}"
+              }
+          } else if "unbound" in [tags] {
+              elasticsearch {
+                  hosts => [ "${ECK_ES_HOSTS}" ]
+                  user => "${ECK_ES_USER}"
+                  password => "${ECK_ES_PASSWORD}"
+                  cacert => "${ECK_ES_SSL_CERTIFICATE_AUTHORITY}"
+                  index => "unbound-%{+YYYY.MM.dd}"
+              }
+          } else if "telegraf" in [tags] {
+              elasticsearch {
+                  hosts => [ "${ECK_ES_HOSTS}" ]
+                  user => "${ECK_ES_USER}"
+                  password => "${ECK_ES_PASSWORD}"
+                  cacert => "${ECK_ES_SSL_CERTIFICATE_AUTHORITY}"
+                  index => "telegraf-%{+YYYY.MM.dd}"
+              }
+          }
+          stdout { codec => rubydebug }
+      }
+  podTemplate:
+    spec:
+      containers:
+      - name: logstash
+        resources:
+          limits:
+            cpu: 2
+            memory: 4Gi
+          requests:
+            cpu: 1
+            memory: 2Gi
+  services:
+  - name: beats
+    service:
+      spec:
+        ports:
+        - name: filebeat
+          port: 5044
+          protocol: TCP
+          targetPort: 5044
+        type: ClusterIP
+  - name: syslog
+    service:
+      spec:
+        ports:
+        - name: syslog
+          port: 5959
+          protocol: TCP
+          targetPort: 5959
+        type: ClusterIP
+  version: 8.15.2
+  volumeClaimTemplates:
+  - metadata:
+      name: logstash-data
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi

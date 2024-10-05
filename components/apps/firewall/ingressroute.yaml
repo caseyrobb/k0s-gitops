@@ -1,0 +1,15 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kibana
+  namespace: firewall
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`kibana.redcomet.ca`) && (PathPrefix(`/`) || PathPrefix(`/login`))
+    services:
+    - kind: Service
+      name: kibana-kb-http
+      port: 5601

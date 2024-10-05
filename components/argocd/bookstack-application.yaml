@@ -1,0 +1,51 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bookstack
+  namespace: argocd
+spec:
+  destination:
+    namespace: bookstack
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+  - chart: bookstack
+    helm:
+      parameters:
+      - name: env.APP_URL
+        value: https://bookstack.redcomet.ca
+      - name: env.APP_TIMEZONE
+        value: America/Edmonton
+      - name: env.DB_HOST
+        value: bookstack-mariadb
+      - name: env.DB_DATABASE
+        value: bookstack
+      - name: env.DB_USERNAME
+        value: bookstack
+      - name: env.DB_PASSWORD
+        value: bookstack
+      - name: mariadb.auth.password
+        value: bookstack
+      - name: mariadb.auth.rootPassword
+        value: root.bookstack
+      - name: mariadb.enabled
+        value: "true"
+      - name: mariadb.primary.persistence.enabled
+        value: "true"
+      - name: persistence.config.enabled
+        value: "true"
+      - name: service.main.ports.http.port
+        value: "80"
+    repoURL: https://charts.gabe565.com
+    targetRevision: 0.17.2
+  - kustomize:
+      namespace: bookstack
+    path: components/apps/bookstack
+    repoURL: https://github.com/caseyrobb/k0s-gitops
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

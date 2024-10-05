@@ -1,0 +1,103 @@
+---
+- name: bootstrap k0s homelab
+  hosts: k0s
+  remote_user: crobb
+  become: yes
+  become_method: sudo
+
+  vars:
+    packages:
+      - lsscsi
+      - iscsi-initiator-utils
+      - sg3_utils
+      - device-mapper-multipath
+      - nfs-utils
+      - nfsv4-client-utils
+
+  tasks:
+    - name: Uninstall k0s
+      block:
+        - name: stop k0s
+          ansible.builtin.shell: /usr/local/bin/k0s stop
+
+        - name: reset k0s
+          ansible.builtin.shell: /usr/local/bin/k0s reset
+
+        - name: Just force systemd to reread configs
+          ansible.builtin.systemd_service:
+            daemon_reload: true
+      tags: ["reset"]
+
+    - name: Install iscsi-initiator-utils
+      ansible.builtin.dnf:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ packages }}"
+      tags: ["pkgs"]
+         
+    - name: Create k0s directory if it does not exist
+      ansible.builtin.file:
+        path: /etc/k0s
+        state: directory
+        mode: '0755'
+
+    - name: Create kube directory if it does not exist
+      ansible.builtin.file:
+        path: /home/crobb/.kube
+        state: directory
+        mode: '0755'
+        owner: crobb
+        group: crobb
+
+    - name: Copy k0s.yaml config
+      ansible.builtin.copy:
+        src: files/k0s.yaml
+        dest: /etc/k0s/k0s.yaml
+        owner: root
+        group: root
+        mode: '0600'
+
+    - name: Install k0s binary
+      ansible.builtin.get_url:
+        url: "{{ k0s_url }}"
+        dest: /usr/local/bin/k0s
+        mode: '0755'
+        force: true
+        become: yes
+        become_method: sudo
+
+    - name: Install kubectl binary
+      ansible.builtin.get_url:
+        url: "{{ kubectl_url }}"
+        dest: /usr/local/bin/kubectl
+        mode: 0755
+        force: true
+      become: yes
+      become_method: sudo
+
+    - name: install k0s
+      ansible.builtin.shell: /usr/local/bin/k0s install controller -c /etc/k0s/k0s.yaml --single
+
+    - name: Just force systemd to reread configs
+      ansible.builtin.systemd_service:
+        daemon_reload: true
+
+    - name: start k0s
+      ansible.builtin.shell: /usr/local/bin/k0s start
+
+    - name: wait for service to start
+      ansible.builtin.wait_for:
+        host: 0.0.0.0
+        port: 6443
+        delay: 10
+
+    - name: create kubeconfig
+      ansible.builtin.shell: /usr/local/bin/k0s kubeconfig admin > /home/crobb/.kube/config
+
+    - name: update kubeconfig permissions
+      ansible.builtin.file:
+        path: /home/crobb/.kube/config
+        mode: '0600'
+        owner: crobb
+        group: crobb
+      

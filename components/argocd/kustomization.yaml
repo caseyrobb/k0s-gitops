@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- argocd-repos-application.yaml
+- elastic-operator-application.yaml
+- gitea-application.yaml
+- gotify-application.yaml
+- jellyfin-application.yaml
+- minio-operator-application.yaml
+- sealed-secrets-application.yaml
+- bookstack-application.yaml
+- paperless-ngx-application.yaml
+- uptime-kuma-application.yaml
+- komga-application.yaml
+- memos-application.yaml
+- prometheus-application.yaml
+- it-tools-application.yaml
+- tekton-operator-application.yaml
+- mafl-application.yaml
+- homeassistant-application.yaml
+- firewall-application.yaml

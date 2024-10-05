@@ -1,0 +1,118 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: komga
+    app.kubernetes.io/instance: komga
+    app.kubernetes.io/name: komga
+  name: komga
+  namespace: komga
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: komga
+      app.kubernetes.io/instance: komga
+      app.kubernetes.io/name: komga
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: komga
+        app.kubernetes.io/instance: komga
+        app.kubernetes.io/name: komga
+    spec:
+      containers:
+      - env:
+        - name: TZ
+          value: America/Edmonton
+        - name: SERVER_PORT
+          value: "10085"
+        image:  ghcr.io/gotson/komga:1.14.0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 5
+          httpGet:
+            path: /actuator/health
+            port: 10085
+            scheme: HTTP
+          initialDelaySeconds: 12
+          periodSeconds: 15
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: komga
+        ports:
+        - containerPort: 10085
+          name: main
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 4
+          httpGet:
+            path: /actuator/health
+            port: 10085
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 12
+          successThreshold: 2
+          timeoutSeconds: 5
+        resources:
+          limits:
+            cpu: "1"
+            memory: 2Gi
+          requests:
+            cpu: 10m
+            memory: 50Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          readOnlyRootFilesystem: true
+          runAsGroup: 568
+          runAsNonRoot: true
+          runAsUser: 568
+          seccompProfile:
+            type: RuntimeDefault
+        startupProbe:
+          failureThreshold: 60
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          successThreshold: 1
+          tcpSocket:
+            port: 10085
+          timeoutSeconds: 3
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /config
+          name: config
+        - mountPath: /data
+          name: data
+        - mountPath: /ebooks
+          name: ebooks
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      nodeSelector:
+        kubernetes.io/arch: amd64
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        fsGroup: 568
+        fsGroupChangePolicy: OnRootMismatch
+        supplementalGroups:
+        - 568
+      serviceAccount: komga
+      serviceAccountName: komga
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: komga-config
+      - name: data
+        persistentVolumeClaim:
+          claimName: komga-data
+      - name: ebooks
+        nfs:
+          path: /mnt/rust/ebooks
+          server: 172.16.0.55

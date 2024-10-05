@@ -1,0 +1,59 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: paperless-ngx
+  namespace: argocd
+spec:
+  destination:
+    namespace: paperless-ngx
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+  - chart: paperless-ngx
+    helm:
+      parameters:
+      - name: env.TZ
+        value: America/Edmonton
+      - name: env.PAPERLESS_URL
+        value: https://paperless.redcomet.ca
+      - name: mariadb.enabled
+        value: "true"
+      - name: mariadb.primary.persistence.enabled
+        value: "true"
+      - name: mariadb.auth.password
+        value: paperless
+      - name: mariadb.auth.rootPassword
+        value: paperless
+      - name: persistence.data.enabled
+        value: "true"
+      - name: persistence.media.enabled
+        value: "true"
+      - name: redis.replica.replicaCount
+        value: "1"
+      values: |-
+        persistence:
+          consume:
+            accessMode: ReadWriteOnce
+            size: 1Gi
+          data:
+            accessMode: ReadWriteOnce
+            size: 10Gi
+          media:
+            accessMode: ReadWriteOnce
+            size: 10Gi
+          export:
+            accessMode: ReadWriteOnce
+            size: 2Gi
+    repoURL: https://charts.gabe565.com
+    targetRevision: 0.19.1
+  - kustomize:
+      namespace: paperless-ngx
+    path: components/apps/paperless-ngx
+    repoURL: https://github.com/caseyrobb/k0s-gitops
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
