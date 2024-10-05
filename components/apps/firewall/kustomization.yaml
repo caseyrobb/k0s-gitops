@@ -9,3 +9,4 @@ resources:
 - ingressroute.yaml
 - beats-tcp.yaml
 - syslog-tcp.yaml
+- kibana-objects-cm.yaml
