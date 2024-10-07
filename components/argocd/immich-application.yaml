@@ -25,11 +25,6 @@ spec:
             enabled: true
             type: hostPath
             hostPath: /dev/dma_heap
-          library:
-            enabled: true
-            type: pvc
-            existingClaim: immich-library
-            mountPath: /data/library
         postgresql:
           enabled: true
           primary:
@@ -47,7 +42,7 @@ spec:
               existingClaim: immich-library
               enabled: true
               globalMounts:
-                - path: /data/library
+                - path: /usr/src/app/upload
     repoURL: https://immich-app.github.io/immich-charts
     targetRevision: 0.8.1
   - kustomize:
