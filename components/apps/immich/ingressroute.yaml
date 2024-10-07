@@ -8,7 +8,7 @@ spec:
   - websecure
   routes:
   - kind: Rule
-    match: Host(`immich.redcomet.ca`) && PathPrefix(`/`)
+    match: Host(`immich.redcomet.ca`) && (PathPrefix(`/`) || PathPrefix(`/_app`))
     services:
     - kind: Service
       name: immich-server
