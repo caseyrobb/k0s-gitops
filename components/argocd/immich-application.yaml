@@ -25,6 +25,8 @@ spec:
             enabled: true
             type: hostPath
             hostPath: /dev/dma_heap
+        postgresql:
+          enabled: false
         immich:
           persistence:
             library:
