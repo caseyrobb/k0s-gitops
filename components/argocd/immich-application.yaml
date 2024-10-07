@@ -12,8 +12,6 @@ spec:
   - chart: immich
     helm:
       values: |
-        env:
-          TZ: America/Edmonton
         redis:
           enabled: true
         persistence:
