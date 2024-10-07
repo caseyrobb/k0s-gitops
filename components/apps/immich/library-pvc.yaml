@@ -17,6 +17,7 @@ spec:
   csi:
     driver: nfs.csi.k8s.io
     readOnly: false
+    volumeHandle: 172.16.0.55/mnt/rust/images/immich#immich#
     volumeAttributes:
       server: "172.16.0.55"
       share: "/mnt/rust/images/immich"
