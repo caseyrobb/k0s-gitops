@@ -25,6 +25,11 @@ spec:
             enabled: true
             type: hostPath
             hostPath: /dev/dma_heap
+          library:
+            enabled: true
+            type: pvc
+            existingClaim: immich-library
+            mountPath: /data/library
         postgresql:
           enabled: true
           primary:
