@@ -41,6 +41,8 @@ spec:
             library:
               existingClaim: immich-library
               enabled: true
+              globalMounts:
+                - path: /usr/src/app/upload
     repoURL: https://immich-app.github.io/immich-charts
     targetRevision: 0.8.1
   - kustomize:
