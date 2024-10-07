@@ -19,3 +19,4 @@ resources:
 - mafl-application.yaml
 - homeassistant-application.yaml
 - firewall-application.yaml
+- immich-application.yaml
