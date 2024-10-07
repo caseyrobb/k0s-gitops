@@ -12,6 +12,8 @@ spec:
   - chart: immich
     helm:
       values: |
+        env:
+          TZ: America/Edmonton
         redis:
           enabled: true
         persistence:
@@ -24,10 +26,10 @@ spec:
             type: hostPath
             hostPath: /dev/dma_heap
           library:
+            existingClaim: immich-library
             enabled: true
-            type: nfs
-              server: 172.16.0.55
-              path: /mnt/rust/images/immich
+            globalMounts:
+              - path: /usr/src/app/upload
     repoURL: https://immich-app.github.io/immich-charts
     targetRevision: 0.8.1
   - kustomize:

@@ -1,0 +1,15 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: immich
+  namespace: immich
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`immich.redcomet.ca`) && PathPrefix(`/`)
+    services:
+    - kind: Service
+      name: immich-server
+      port: 3001
