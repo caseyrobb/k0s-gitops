@@ -11,3 +11,4 @@ resources:
 - uptime-kuma-repo.yaml
 - prometheus-helm-repo.yaml
 - grafana-helm-repo.yaml
+- immich-helm-repo.yaml
