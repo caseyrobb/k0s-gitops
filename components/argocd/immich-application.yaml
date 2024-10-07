@@ -49,5 +49,8 @@ spec:
     repoURL: https://github.com/caseyrobb/k0s-gitops
     targetRevision: HEAD
   syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
     syncOptions:
     - CreateNamespace=true
