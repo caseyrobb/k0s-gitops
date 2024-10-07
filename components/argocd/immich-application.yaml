@@ -26,7 +26,16 @@ spec:
             type: hostPath
             hostPath: /dev/dma_heap
         postgresql:
-          enabled: false
+          enabled: true
+          primary:
+            containerSecurityContext:
+              readOnlyRootFilesystem: false
+            initdb:
+              scripts:
+                create-extensions.sql: |
+                  CREATE EXTENSION cube;
+                  CREATE EXTENSION earthdistance;
+                  CREATE EXTENSION vectors; 
         immich:
           persistence:
             library:
