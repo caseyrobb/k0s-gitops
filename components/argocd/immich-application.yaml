@@ -16,10 +16,6 @@ spec:
           TZ: America/Edmonton
         redis:
           enabled: true
-        immich:
-          persistence:
-            library:
-              existingClaim: immich-library
         persistence:
           dri:
             enabled: true
@@ -29,7 +25,7 @@ spec:
             enabled: true
             type: hostPath
             hostPath: /dev/dma_heap
-          photos:
+          library:
             enabled: true
             type: nfs
               server: 172.16.0.55
