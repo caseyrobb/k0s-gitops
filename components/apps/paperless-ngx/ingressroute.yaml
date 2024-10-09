@@ -8,7 +8,7 @@ spec:
   - websecure
   routes:
   - kind: Rule
-    match: Host(`paperless.redcomet.ca`) && PathPrefix(`/`)
+    match: Host(`paperless.redcomet.ca`) && (PathPrefix(`/`) || PathPrefix(`/accounts`))
     services:
     - kind: Service
       name: paperless-ngx
