@@ -109,6 +109,14 @@ spec:
                   cacert => "${ECK_ES_SSL_CERTIFICATE_AUTHORITY}"
                   index => "telegraf-%{+YYYY.MM.dd}"
               }
+          } else if "packetbeat" in [tags] {
+              elasticsearch {
+                  hosts => [ "${ECK_ES_HOSTS}" ]
+                  user => "${ECK_ES_USER}"
+                  password => "${ECK_ES_PASSWORD}"
+                  cacert => "${ECK_ES_SSL_CERTIFICATE_AUTHORITY}"
+                  index => "packetbeat-%{+YYYY.MM.dd}"
+              }
           }
           stdout { codec => rubydebug }
       }
