@@ -32,7 +32,7 @@ spec:
       
       filter {
           if ([type] == "beats") {
-              if ([beat] == "packetbeat") {
+              if ([agent.type] == "packetbeat") {
                   mutate {
                       add_tag => ["packetbeat"]
                   }
@@ -109,7 +109,7 @@ spec:
                   cacert => "${ECK_ES_SSL_CERTIFICATE_AUTHORITY}"
                   index => "telegraf-%{+YYYY.MM.dd}"
               }
-          } else if "packetbeat" in [tags] {
+          } else if "beats_input_raw_event" in [tags] {
               elasticsearch {
                   hosts => [ "${ECK_ES_HOSTS}" ]
                   user => "${ECK_ES_USER}"
