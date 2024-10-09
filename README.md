@@ -1,6 +1,6 @@
 # k0s-config
 
-My k0s homelab config.
+My k0s homelab config hosted on a Minisforum NAB9.  
 
 1. Install CentOS Stream 9 w/ansible
 2. Run `node-setup.sh`
