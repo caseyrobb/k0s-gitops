@@ -16,6 +16,7 @@ resources:
 - prometheus-application.yaml
 - it-tools-application.yaml
 - tekton-operator-application.yaml
+- tekton-dashboard-application.yaml
 - mafl-application.yaml
 - homeassistant-application.yaml
 - firewall-application.yaml
