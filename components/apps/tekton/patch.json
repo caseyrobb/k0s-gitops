@@ -3,9 +3,5 @@
     "op": "replace",
     "path": "/metadata/labels/app.kubernetes.io~1instance",
 	  "value": "tekton"
-  },
-  {
-    "op": "replace",
-    "path": "/metadata/labels/app.kubernetes.io~1part-of"
   }
 ]

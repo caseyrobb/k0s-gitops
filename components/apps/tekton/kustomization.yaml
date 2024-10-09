@@ -7,5 +7,8 @@ resources:
   - https://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml
   - ingressroute.yaml
 
-commonAnnotations:
-  argocd.argoproj.io/compare-options: IgnoreExtraneous
+patches:
+  - path: patch.json
+    target:
+      kind: Deployment
+      namespace: tekton-pipelines
