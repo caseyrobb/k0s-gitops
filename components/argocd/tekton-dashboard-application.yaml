@@ -15,7 +15,3 @@ spec:
     path: components/apps/tekton-dashboard
     repoURL: https://github.com/caseyrobb/k0s-gitops
     targetRevision: HEAD
-  syncPolicy:
-    automated:
-      selfHeal: true
-      prune: true
