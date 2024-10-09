@@ -6,3 +6,10 @@ resources:
   - https://storage.googleapis.com/tekton-releases/triggers/latest/release.yaml
   - https://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml
   - ingressroute.yaml
+
+patches:
+  - path: patch.json
+    target:
+      kind: Role
+      name: tekton-dashboard-info
+      namespace: tekton-pipelines

@@ -1,0 +1,10 @@
+[
+  {
+    "op": "remove",
+    "path": "/metadata/labels/app.kubernetes.io~1instance"
+  },
+  {
+    "op": "remove",
+    "path": "/metadata/labels/app.kubernetes.io~1part-of"
+  }
+]
