@@ -9,7 +9,7 @@ data:
           description: Home automation system
           link: '#'
           icon:
-            name: simple-icons:homeassistant
+            name: vscode-icons:file-type-homeassistant
             wrap: true
         - title: Traefik
           description: Cloud edge router
@@ -33,7 +33,7 @@ data:
           description: Server monitoring dashboards
           link: 'https://grafana.redcomet.ca'
           icon:
-            name: simple-icons:grafana
+            name: devicon:grafana
             wrap: true
         - title: Uptime Kuma
           description: A fancy self-hosted monitoring tool
@@ -75,7 +75,7 @@ data:
           description: Free and open source comics server
           link: 'https://komga.redcomet.ca/dashboard'
           icon:
-            name: simple-icons:comic-bubble
+            name: material-symbols:comic-bubble
             wrap: true
         - title: immich
           description: High performance self-hosted photo and video
