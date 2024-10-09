@@ -17,11 +17,89 @@ data:
           icon:
             name: devicon:traefikproxy
             wrap: true
+        - title: ArgoCD
+          description: Declarative GitOps for Kubernetes
+          link: 'https://argocd.redcomet.ca/'
+          icon:
+            name: devicon:argocd
+            wrap: true
+        - title: Longhorn
+          description: Cloud native distributed block storage for Kubernetes
+          link: 'https://longhorn.redcomet.ca/#/dashboard'
+          icon:
+            name: devicon:rancher
+            wrap: true
         - title: Grafana
           description: Server monitoring dashboards
           link: 'https://grafana.redcomet.ca'
           icon:
             name: simple-icons:grafana
+            wrap: true
+        - title: Uptime Kuma
+          description: A fancy self-hosted monitoring tool
+          link: 'https://kuma.redcomet.ca/dashboard'
+          icon:
+            name: cbi:kuma
+            wrap: true
+        - title: Kibana
+          description: Firewall Dashboard
+          link: 'https://kibana.redcomet.ca/'
+          icon:
+            name: vscode-icons:file-type-elastic
+            wrap: true
+        - title: Tekton
+          description: A cloud-native Pipeline resource
+          link: 'https://tekton.redcomet.ca/'
+          icon:
+            name: simple-icons:tekton
+            wrap: true
+        - title: OpenShift - valhalla
+          description: SNO - ACM
+          link: 'https://console-openshift-console.apps.valhalla.redcomet.ca/dashboard'
+          icon:
+            name: skill-icons:openshift
+            wrap: true
+        - title: OpenShift - andromeda
+          description: SNO - OCP Virt
+          link: 'https://console-openshift-console.apps.andromeda.redcomet.ca/dashboard'
+          icon:
+            name: skill-icons:openshift
+            wrap: true
+        - title: Jellyfin
+          description: The Free Software Media System
+          link: 'https://jellyfin.redcomet.ca/web/index.html#!/home.html'
+          icon:
+            name: simple-icons:jellyfin
+            wrap: true
+        - title: komga
+          description: Free and open source comics server
+          link: 'https://komga.redcomet.ca/dashboard'
+          icon:
+            name: simple-icons:comic-bubble
+            wrap: true
+        - title: immich
+          description: High performance self-hosted photo and video
+          link: 'https://immich.redcomet.ca/photos'
+          icon:
+            name: simple-icons:immich
+            wrap: true
+        - title: paperless-ngx
+          description: Open-source document management
+          link: 'https://paperless.redcomet.ca/dashboard'
+          icon:
+            name: simple-icons:paperlessngx
+            wrap: true
+        - title: memos
+          description: An open-source, lightweight note-taking solution
+          link: 'https://memos.redcomet.ca/'
+          icon:
+            name: twemoji:memo
+            wrap: true
+        - title: Bookstack
+          description: A platform to create documentation/wiki content
+          link: 'https://bookstack.redcomet.ca/'
+          icon:
+            name: simple-icons:bookstack
             wrap: true
         - title: GitHub
           description: Let's build from here
