@@ -7,8 +7,8 @@ resources:
   - https://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml
   - ingressroute.yaml
 
-patches:
-  - path: patch.json
-    target:
-      kind: Deployment
-      namespace: tekton-pipelines
+#patches:
+#  - path: patch.json
+#    target:
+#      kind: Deployment
+#      namespace: tekton-pipelines
