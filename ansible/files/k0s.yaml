@@ -63,6 +63,11 @@ spec:
                 - name: api@internal
                   kind: TraefikService
               entryPoints: ["websecure"]
+              tls:
+                secretName: wildcard-tls
+                domains:
+                  - sans:
+                      - '*.redcomet.ca'
           providers:
             kubernetesGateway:
               enabled: true
