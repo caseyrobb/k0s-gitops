@@ -1,0 +1,15 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: prometheus
+  namespace: monitoring
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`prometheus.redcomet.ca`) && PathPrefix(`/`)
+    services:
+    - kind: Service
+      name: kube-prometheus-stack-prometheus
+      port: 9090
