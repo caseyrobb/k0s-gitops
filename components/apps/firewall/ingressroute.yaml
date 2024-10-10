@@ -8,7 +8,7 @@ spec:
   - websecure
   routes:
   - kind: Rule
-    match: Host(`kibana.redcomet.ca`) && (PathPrefix(`/`) || PathPrefix(`/login`))
+    match: Host(`kibana.redcomet.ca`) && (PathPrefix(`/`) || PathPrefix(`/login`) || PathPrefix(`/app`))
     services:
     - kind: Service
       name: kibana-kb-http
