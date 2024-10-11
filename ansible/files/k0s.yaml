@@ -73,6 +73,9 @@ spec:
               enabled: true
           metrics:
             prometheus:
+              additionalLabels:
+                - name: release
+                  value: kube-prometheus-stack
               service:
                 enabled: true
               disableAPICheck: false
