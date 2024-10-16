@@ -44,7 +44,7 @@ spec:
               globalMounts:
                 - path: /usr/src/app/upload
     repoURL: https://immich-app.github.io/immich-charts
-    targetRevision: 0.8.1
+    targetRevision: 0.8.2
   - kustomize:
       namespace: immich
     path: components/apps/immich

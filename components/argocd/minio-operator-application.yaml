@@ -15,7 +15,7 @@ spec:
       - name: operator.replicaCount
         value: "1"
     repoURL: https://operator.min.io
-    targetRevision: 6.0.3
+    targetRevision: 6.0.4
   syncPolicy:
     automated:
       prune: true
