@@ -8,8 +8,8 @@ spec:
   - websecure
   routes:
   - kind: Rule
-    match: Host(`immich.redcomet.ca`) && (PathPrefix(`/`) || PathPrefix(`/_app`))
+    match: Host(`immich.redcomet.ca`) && (PathPrefix(`/`) || PathPrefix(`/_app`) || PathPrefix(`/photos`))
     services:
     - kind: Service
       name: immich-server
-      port: 3001
+      port: 2283
