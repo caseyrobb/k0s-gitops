@@ -9,7 +9,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`longhorn.k8s.redcomet.ca`) && PathPrefix(`/`)
+      match: Host(`longhorn.redcomet.ca`) && PathPrefix(`/`)
       services:
         - kind: Service
           name: longhorn-frontend
