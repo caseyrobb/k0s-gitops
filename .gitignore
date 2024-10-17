@@ -2,3 +2,5 @@ kubeconfig
 wildcard-tls.yaml
 config.yml
 export.ndjson
+snmp-exporter-configmap.yaml
+prometheus.yml
