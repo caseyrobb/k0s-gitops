@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  unbound.yaml: LSBqb2JfbmFtZTogInVuYm91bmQiCiAgc3RhdGljX2NvbmZpZ3M6CiAgLSB0YXJnZXRzOiBbIjE3Mi4xNi4wLjE6OTE2NyJdCg==
+kind: Secret
+metadata:
+  name: additional-scrape-configs
+  namespace: monitoring

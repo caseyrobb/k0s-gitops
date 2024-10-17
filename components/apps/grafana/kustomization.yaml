@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
 - ingressroute.yaml
 - prom-ingressroute.yaml
+- additional-scrape-configs.yaml
