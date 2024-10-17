@@ -4,3 +4,5 @@ resources:
 - ingressroute.yaml
 - prom-ingressroute.yaml
 - additional-scrape-configs.yaml
+- mktxp-credentials-secret.yaml
+- mktxp-deployment.yaml
