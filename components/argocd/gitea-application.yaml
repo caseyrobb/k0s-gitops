@@ -8,14 +8,6 @@ spec:
     namespace: gitea
     server: https://kubernetes.default.svc
   project: default
-  source:
-    chart: gitea
-    helm:
-      parameters:
-      - name: persistence.storageClass
-        value: longhorn
-    repoURL: https://dl.gitea.com/charts/
-    targetRevision: 10.4.1
   sources:
   - chart: gitea
     helm:
@@ -31,7 +23,7 @@ spec:
       - name: redis.enabled
         value: "true"
     repoURL: https://dl.gitea.com/charts/
-    targetRevision: 10.4.1
+    targetRevision: 10.5.0
   - kustomize:
       namespace: gitea
     path: components/apps/gitea
