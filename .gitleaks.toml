@@ -3,6 +3,8 @@
 
   # Ignore SealedSecrets
   paths = [
-    '''*sealedsecret\.yaml$''',
+    '''.*sealedsecret\.yaml$''',
     '''sealedsecret''',
+    '''components\/apps\/argocd-repos\/gitea-repo\.yaml$''',
+    '''components\/apps\/firewall\/kibana-es-credentials\.yaml$''',
   ]
