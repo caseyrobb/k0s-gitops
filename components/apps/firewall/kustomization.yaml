@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
 - elasticsearch.yaml
 - kibana.yaml
-- kibana-es-credentials.yaml
+- kibana-es-sealedsecret.yaml
 - logstash.yaml
 - logstash-roles.yaml
 - ingressroute.yaml

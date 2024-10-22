@@ -1,0 +1,10 @@
+[allowList]
+  description = "Global AllowList"
+
+  # Ignore SealedSecrets
+  paths = [
+    '''*sealedsecret\.yaml$''',
+    '''sealedsecret''',
+  ]
+
+]
