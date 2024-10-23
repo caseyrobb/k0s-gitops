@@ -24,9 +24,6 @@ jobs:
           output-file: ../results/kube-linter.sarif
         continue-on-error: true
 
-      - name: Upload SARIF report files to GitHub
-        uses: github/codeql-action/upload-sarif@v3
-
       - name: Verify kube-linter-action succeeded
         shell: bash
         run: |
