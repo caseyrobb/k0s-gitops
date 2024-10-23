@@ -4,6 +4,12 @@ on:
     branches: [ master ]
   pull_request:
 
+checks:
+  doNotAutoAddDefaults: true
+  include:
+    - "privileged-container"
+    - "use-namespace"
+
 jobs:
   scan:
     runs-on: ubuntu-latest

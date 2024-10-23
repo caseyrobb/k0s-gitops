@@ -5,6 +5,8 @@ metadata:
     app: jellyfin
   name: jellyfin
   namespace: jellyfin
+  annotations:
+    ignore-check.kube-linter.io/privileged-container: "This deployment needs to run as privileged because it needs HW access for transcoding."
 spec:
   replicas: 1
   selector:
