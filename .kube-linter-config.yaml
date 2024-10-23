@@ -1,0 +1,5 @@
+checks:
+  doNotAutoAddDefaults: true
+  include:
+    - "privileged-container"
+    - "use-namespace"

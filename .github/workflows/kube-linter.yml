@@ -4,12 +4,6 @@ on:
     branches: [ master ]
   pull_request:
 
-checks:
-  doNotAutoAddDefaults: true
-  include:
-    - "privileged-container"
-    - "use-namespace"
-
 jobs:
   scan:
     runs-on: ubuntu-latest
@@ -25,6 +19,7 @@ jobs:
         id: kube-linter-action-scan
         with:
           directory: components/
+          config: .kube-linter-config.yaml
           format: sarif
           output-file: ../results/kube-linter.sarif
         continue-on-error: true
