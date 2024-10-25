@@ -20,6 +20,30 @@ spec:
         value: yubico
       - name: yubico.secretKey.existingSecretKey
         value: YUBICO_SECRET_KEY
+      - name: data.name
+        value: vaultwarden-data
+      - name: data.size
+        value: 5Gi
+      - name: data.class
+        value: longhorn
+      - name: data.path
+        value: /data
+      - name: data.keepPvc
+        value: "true"
+      - name: data.accessMode
+        value: ReadWriteOnce
+      - name: attachments.name
+        value: vaultwarden-files
+      - name: attachments.size
+        value: 10Gi
+      - name: attachments.class
+        value: longhorn
+      - name: attachments.path
+        value: /files
+      - name: attachments.keepPvc
+        value: "true"
+      - name: attachments.accessMode
+        value: ReadWriteOnce
     repoURL: https://guerzon.github.io/vaultwarden
     targetRevision: 0.29.2
   - kustomize:
