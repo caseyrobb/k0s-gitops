@@ -7,10 +7,10 @@ resources:
 - eck-helm-repo.yaml
 - gabe565-helm-repo.yaml
 - gitea-helm-repo.yaml
-- gitea-repo-sealedsecret.yaml
 - minio-helm-repo.yaml
 - bitnami-helm-repo.yaml
 - uptime-kuma-repo.yaml
 - prometheus-helm-repo.yaml
 - grafana-helm-repo.yaml
 - immich-helm-repo.yaml
+- vaultwarden-helm-repo.yaml
