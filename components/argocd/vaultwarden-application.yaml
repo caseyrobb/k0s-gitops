@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vaultwarden
+  namespace: argocd
+spec:
+  destination:
+    namespace: vaultwarden
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+  - chart: vaultwarden
+    helm:
+      parameters:
+      - name: domain
+        value: vaultwarden.redcomet.ca
+      - name: yubico.clientId
+        value: "82707"
+      - name: yubico.existingSecret
+        value: yubico
+    repoURL: https://guerzon.github.io/vaultwarden
+    targetRevision: 0.29.2
+  - kustomize:
+      namespace: vaultwarden
+    path: components/apps/vaultwarden
+    repoURL: https://github.com/caseyrobb/k0s-gitops
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
