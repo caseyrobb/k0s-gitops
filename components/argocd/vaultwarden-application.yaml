@@ -15,9 +15,11 @@ spec:
       - name: domain
         value: https://vaultwarden.redcomet.ca
       - name: yubico.clientId
-        value: "82707"
+        value: 82707
       - name: yubico.existingSecret
         value: yubico
+      - name: yubico.secretKey.existingSecretKey
+        value: YUBICO_SECRET_KEY
     repoURL: https://guerzon.github.io/vaultwarden
     targetRevision: 0.29.2
   - kustomize:
