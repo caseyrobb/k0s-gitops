@@ -15,7 +15,7 @@ spec:
       - name: domain
         value: https://vaultwarden.redcomet.ca
       - name: yubico.clientId
-        value: 82707
+        value: "82707"
       - name: yubico.existingSecret
         value: yubico
       - name: yubico.secretKey.existingSecretKey
