@@ -13,7 +13,7 @@ spec:
     helm:
       parameters:
       - name: domain
-        value: vaultwarden.redcomet.ca
+        value: https://vaultwarden.redcomet.ca
       - name: yubico.clientId
         value: "82707"
       - name: yubico.existingSecret
