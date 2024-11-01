@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  annotations:
+    managed-by: argocd.argoproj.io
+  labels:
+    argocd.argoproj.io/secret-type: repository
+  name: repo-k8up-helm
+  namespace: argocd
+stringData:
+  name: k8up-io
+  project: default
+  type: helm
+  url: https://k8up-io.github.io/k8up
