@@ -7,6 +7,9 @@ spec:
   failedJobsHistoryLimit: 2
   successfulJobsHistoryLimit: 2
   backend:
+    repoPasswordSecretRef:
+      name: backup-repo
+      key: password
     s3:
       endpoint: https://minio.redcomet.ca:9000
       bucket: k0s-backup
