@@ -28,6 +28,9 @@ spec:
     targetRevision: HEAD
   project: default
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
