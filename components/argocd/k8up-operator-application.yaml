@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: k8up-operator
+  namespace: argocd
+spec:
+  destination:
+    namespace: k8up
+    server: https://kubernetes.default.svc
+  sources:
+  - chart: k8up
+    repoURL: https://k8up-io.github.io/k8up
+    targetRevision: 4.8.1
+    helm:
+      parameters:
+        - name: k8up.timezone
+          value: America/Edmonton
+        - name: k8up.operatorNamespace
+          value: k8up
+        - name: metrics.prometheusRule.enabled
+          value: 'true'
+        - name: metrics.serviceMonitor.enabled
+          value: 'true'
+        - name: serviceAccount.name
+          value: k8up
+  - path: components/apps/k8up-operator
+    repoURL: https://github.com/caseyrobb/k0s-gitops
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
