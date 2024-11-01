@@ -18,7 +18,7 @@ spec:
         name: minio-credentials
         key: secretKey
   backup:
-    schedule: '* * * * *'
+    schedule: '@daily'
     failedJobsHistoryLimit: 2
     successfulJobsHistoryLimit: 2
   check:
