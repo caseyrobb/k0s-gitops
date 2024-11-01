@@ -5,6 +5,8 @@ metadata:
   namespace: jellyfin
   labels:
     app: jellyfin
+  annotations:
+    k8up.io/backup: "true"
 spec:
   accessModes:
   - ReadWriteOnce
