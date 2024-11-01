@@ -8,4 +8,5 @@
     '''components\/apps\/argocd-repos\/gitea-repo\.yaml$''',
     '''components\/apps\/firewall\/kibana-es-credentials\.yaml$''',
     '''components\/apps\/vaultwarden\/yubico-sealedsecret\.yaml$''',
+    '''components\/apps\/k8up-operator\/minio-sealedsecret\.yaml$''',
   ]
