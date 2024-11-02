@@ -11,4 +11,6 @@
     '''components\/apps\/vaultwarden\/yubico-sealedsecret\.yaml$''',
     '''components\/apps\/k8up-operator\/minio-sealedsecret\.yaml$''',
     '''components\/apps\/velero\/minio-sealedsecret\.yaml$''',
+    '''components\/apps\/longhorn\/minio-sealedsecret\.yaml$''',
+    '''components/apps/longhorn/minio-sealedsecret.yaml''',
   ]
