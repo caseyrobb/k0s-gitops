@@ -10,4 +10,5 @@
     '''components\/apps\/firewall\/kibana-es-credentials\.yaml$''',
     '''components\/apps\/vaultwarden\/yubico-sealedsecret\.yaml$''',
     '''components\/apps\/k8up-operator\/minio-sealedsecret\.yaml$''',
+    '''components\/apps\/velero\/minio-sealedsecret\.yaml$''',
   ]

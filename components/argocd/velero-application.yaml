@@ -34,6 +34,7 @@ spec:
           backupStorageLocation:
           - name: minio
             provider: aws
+            default: true
             bucket: k0s-backup
             accessMode: ReadWrite
             credential:
