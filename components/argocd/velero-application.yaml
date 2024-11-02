@@ -33,7 +33,6 @@ spec:
                 name: plugins
         backupsEnabled: true
         snapshotsEnabled: true
-        logLevel: debug
         deployNodeAgent: true
         features: EnableCSI
         nodeAgent:
@@ -42,6 +41,7 @@ spec:
           useSecret: true
           existingSecret: minio-credentials
         configuration:
+          logLevel: debug
           volumeSnapshotLocation:
           - provider: aws
             config:
