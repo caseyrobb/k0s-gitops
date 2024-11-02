@@ -21,4 +21,5 @@ resources:
 - firewall-application.yaml
 - immich-application.yaml
 - vaultwarden-application.yaml
-- velero-application.yaml
+#- velero-application.yaml
+- storage-config-application.yaml
