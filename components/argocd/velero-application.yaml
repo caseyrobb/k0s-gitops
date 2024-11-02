@@ -33,6 +33,7 @@ spec:
                 name: plugins
         backupsEnabled: true
         snapshotsEnabled: true
+        logLevel: debug
         deployNodeAgent: true
         features: EnableCSI
         nodeAgent:
