@@ -26,7 +26,7 @@ spec:
               - mountPath: /target
                 name: plugins
         backupsEnabled: true
-        snapshotsEnabled: true
+        snapshotsEnabled: false
         credentials:
           useSecret: true
           existingSecret: minio-credentials
