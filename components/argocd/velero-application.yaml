@@ -35,6 +35,8 @@ spec:
         snapshotsEnabled: true
         deployNodeAgent: true
         features: EnableCSI
+        nodeAgent:
+          podVolumePath: /var/lib/k0s/kubelet/pods
         credentials:
           useSecret: true
           existingSecret: minio-credentials
