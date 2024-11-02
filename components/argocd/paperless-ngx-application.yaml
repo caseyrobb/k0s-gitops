@@ -31,6 +31,8 @@ spec:
       - name: redis.replica.replicaCount
         value: "1"
       values: |-
+        image:
+          tag: 2.13.2
         persistence:
           consume:
             accessMode: ReadWriteOnce
