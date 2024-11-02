@@ -46,7 +46,7 @@ spec:
 
   - kustomize:
       namespace: velero
-    path: /components/apps/velero
+    path: components/apps/velero
     repoURL: https://github.com/caseyrobb/k0s-gitops
     targetRevision: HEAD
   project: default
