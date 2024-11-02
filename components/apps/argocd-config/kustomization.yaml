@@ -15,3 +15,4 @@ resources:
 - immich-helm-repo.yaml
 - vaultwarden-helm-repo.yaml
 - k8up-helm-repo.yaml
+- velero-helm-repo.yaml

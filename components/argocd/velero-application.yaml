@@ -1,0 +1,59 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: velero
+spec:
+  destination:
+    name: ''
+    namespace: velero
+    server: https://kubernetes.default.svc
+  sources:
+  - chart: velero
+    repoURL: https://vmware-tanzu.github.io/helm-charts
+    targetRevision: 7.2.2
+    helm:
+      values: |
+        metrics:
+          serviceMonitor:
+            enabled: true
+            additionalLabels:
+              release: kube-prometheus-stack
+        initContainers:
+          - name: velero-plugin-for-aws
+            image: velero/velero-plugin-for-aws:v1.10.0
+            imagePullPolicy: IfNotPresent
+            volumeMounts:
+              - mountPath: /target
+                name: plugins
+        backupsEnabled: true
+        snapshotsEnabled: true
+        credentials:
+          useSecret: true
+          existingSecret: minio-credentials
+        configuration:
+          backupStorageLocation:
+          - name: minio
+            provider: aws
+            bucket: k0s-backup
+            accessMode: ReadWrite
+            credential:
+              name: minio-credentials
+              key: credentials
+            config:
+              region: minio
+              s3Url: https://minio.redcomet.ca:9000
+              s3ForcePathStyle: true
+
+  - kustomize:
+      namespace: velero
+    path: /components/apps/velero
+    repoURL: https://github.com/caseyrobb/k0s-gitops
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

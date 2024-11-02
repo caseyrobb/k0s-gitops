@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  annotations:
+    managed-by: argocd.argoproj.io
+  labels:
+    argocd.argoproj.io/secret-type: repository
+  name: repo-velero-helm
+  namespace: argocd
+stringData:
+  name: vmware-tanzu
+  project: default
+  type: helm
+  url: https://vmware-tanzu.github.io/helm-charts
