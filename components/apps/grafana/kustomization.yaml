@@ -6,3 +6,4 @@ resources:
 - additional-scrape-configs.yaml
 - mktxp-credentials-sealedsecret.yaml
 - mktxp-deployment.yaml
+- longhorn-alerting-rules.yaml
