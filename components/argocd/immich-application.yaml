@@ -37,6 +37,8 @@ spec:
                   CREATE EXTENSION earthdistance;
                   CREATE EXTENSION vectors; 
         immich:
+          metrics:
+            enabled: true
           persistence:
             library:
               existingClaim: immich-library
