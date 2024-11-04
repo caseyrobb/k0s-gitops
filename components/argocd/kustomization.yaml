@@ -19,7 +19,7 @@ resources:
 - tekton-application.yaml
 - mafl-application.yaml
 - firewall-application.yaml
-- immich-application.yaml
+#- immich-application.yaml
 - vaultwarden-application.yaml
 #- velero-application.yaml
 - storage-config-application.yaml
