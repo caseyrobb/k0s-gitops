@@ -112,6 +112,18 @@ spec:
         chartname: metallb/metallb
         namespace: "metallb-system"
         version: "0.14.8"
+        values: |-
+          prometheus:
+            namespace: monitoring
+            serviceAccount: kube-prometheus-stack-prometheus
+            serviceMonitor:
+              enabled: true
+              controller:
+                additionalLabels:
+                  release: kube-prometheus-stack
+              speaker:
+                additionalLabels:
+                  release: kube-prometheus-stack
       - name: longhorn
         chartname: longhorn/longhorn
         namespace: longhorn-system
