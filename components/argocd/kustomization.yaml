@@ -23,3 +23,4 @@ resources:
 - vaultwarden-application.yaml
 #- velero-application.yaml
 - storage-config-application.yaml
+- version-checker-application.yaml

@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: version-checker
+  namespace: argocd
+spec:
+  destination:
+    namespace: version-checker
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: version-checker
+    repoURL: https://charts.jetstack.io
+    targetRevision: v0.8.3
+    values: |
+      serviceMonitor:
+        enabled: true
+        additionalLabels:
+          release: kube-prometheus-stack
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - ServerSideApply=true
+    - CreateNamespace=true
