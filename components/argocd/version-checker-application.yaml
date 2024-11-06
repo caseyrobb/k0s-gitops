@@ -12,11 +12,12 @@ spec:
     chart: version-checker
     repoURL: https://charts.jetstack.io
     targetRevision: v0.8.3
-    values: |
-      serviceMonitor:
-        enabled: true
-        additionalLabels:
-          release: kube-prometheus-stack
+    helm:
+      values: |
+        serviceMonitor:
+          enabled: true
+          additionalLabels:
+            release: kube-prometheus-stack
   syncPolicy:
     automated:
       prune: true
