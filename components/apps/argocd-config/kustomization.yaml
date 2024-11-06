@@ -16,3 +16,4 @@ resources:
 - vaultwarden-helm-repo.yaml
 - k8up-helm-repo.yaml
 - velero-helm-repo.yaml
+- jetstack-helm-repo.yaml
