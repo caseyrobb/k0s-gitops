@@ -12,6 +12,8 @@ spec:
   - chart: bookstack
     helm:
       parameters:
+      - name: image.tag
+        value: 24.10.20241104
       - name: env.APP_URL
         value: https://bookstack.redcomet.ca
       - name: env.APP_TIMEZONE
