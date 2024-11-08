@@ -11,22 +11,22 @@ spec:
   sources:
   - chart: memos
     helm:
-      parameters:
-      - name: mariadb.enabled
-        value: "true"
-      - name: mariadb.primary.persistence.enabled
-        value: "true"
-      - name: persistence.data.enabled
-        value: "true"
-      - name: mariadb.auth.password
-        value: memos
-      - name: mariadb.auth.rootPassword
-        value: memos
       values: |-
         env:
           TZ: America/Edmonton
+        image:
+          tag: 0.22.5
+        mariadb:
+          enabled: true
+          primary:
+            persistence:
+              enabled: true
+          auth:
+            password: memos
+            rootPassword: memos
         persistence:
           data:
+            enabled: true
             accessMode: ReadWriteOnce
             size: 8Gi
             storageClass: longhorn
