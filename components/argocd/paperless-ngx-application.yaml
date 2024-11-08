@@ -12,35 +12,33 @@ spec:
   - chart: paperless-ngx
     helm:
       parameters:
-      - name: env.TZ
-        value: America/Edmonton
-      - name: env.PAPERLESS_URL
-        value: https://paperless.redcomet.ca
-      - name: mariadb.enabled
-        value: "true"
-      - name: mariadb.primary.persistence.enabled
-        value: "true"
-      - name: mariadb.auth.password
-        value: paperless
-      - name: mariadb.auth.rootPassword
-        value: paperless
-      - name: persistence.data.enabled
-        value: "true"
-      - name: persistence.media.enabled
-        value: "true"
-      - name: redis.replica.replicaCount
-        value: "1"
       values: |-
         image:
-          tag: 2.13.2
+          tag: 2.13.4
+        env:
+          TZ: America/Edmonton
+          PAPERLESS_URL: https://paperless.redcomet.ca
+        mariadb:
+          enabled: true
+          primary:
+            persistence:
+              enabled: true
+          auth:
+            password: paperless
+            rootPassword: paperless
+        redis:
+          replica:
+            replicaCount: 1
         persistence:
           consume:
             accessMode: ReadWriteOnce
             size: 1Gi
           data:
+            enabled: true
             accessMode: ReadWriteOnce
             size: 10Gi
           media:
+            enabled: true
             accessMode: ReadWriteOnce
             size: 10Gi
           export:
