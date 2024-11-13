@@ -14,7 +14,7 @@ spec:
       parameters:
       values: |-
         image:
-          tag: 2.13.4
+          tag: 2.13.5
         env:
           TZ: America/Edmonton
           PAPERLESS_URL: https://paperless.redcomet.ca
