@@ -45,7 +45,7 @@ spec:
       - name: attachments.accessMode
         value: ReadWriteOnce
     repoURL: https://guerzon.github.io/vaultwarden
-    targetRevision: 0.29.3
+    targetRevision: 0.30.1
   - kustomize:
       namespace: vaultwarden
     path: components/apps/vaultwarden
