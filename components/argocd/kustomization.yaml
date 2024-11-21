@@ -6,8 +6,6 @@ resources:
 - gitea-application.yaml
 - gotify-application.yaml
 - jellyfin-application.yaml
-#- minio-operator-application.yaml
-#- k8up-operator-application.yaml
 - sealed-secrets-application.yaml
 - bookstack-application.yaml
 - paperless-ngx-application.yaml
@@ -19,8 +17,7 @@ resources:
 - tekton-application.yaml
 - mafl-application.yaml
 - firewall-application.yaml
-#- immich-application.yaml
 - vaultwarden-application.yaml
-#- velero-application.yaml
+- velero-application.yaml
 - storage-config-application.yaml
 - version-checker-application.yaml

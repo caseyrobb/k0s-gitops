@@ -10,7 +10,7 @@ spec:
   sources:
   - chart: velero
     repoURL: https://vmware-tanzu.github.io/helm-charts
-    targetRevision: 7.2.2
+    targetRevision: 8.0.0
     helm:
       values: |
         metrics:
@@ -26,7 +26,7 @@ spec:
               - mountPath: /target
                 name: plugins
           - name: velero-plugin-for-aws
-            image: velero/velero-plugin-for-aws:v1.10.0
+            image: velero/velero-plugin-for-aws:v1.11.0
             imagePullPolicy: IfNotPresent
             volumeMounts:
               - mountPath: /target
