@@ -1,0 +1,71 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: build and push hugo site
+spec:
+  pipelineSpec:
+    workspaces:
+      - name: workspace
+      - name: ssh-creds
+    tasks:
+      - name: git-clone
+        taskRef: 
+          name: git-clone
+        params:
+          - name: url
+            value: "https://gitea.redcomet.ca/crobb/blog.neozeon.io.git"
+          - name: revision
+            value: "main"
+          - name: revision
+            value: "main"
+      - name: build-project
+        runAfter:
+          - git-clone
+        taskRef: 
+          name: hugo
+        workspaces:
+          - name: work-dir
+            source: workspace
+      - name: rsync-files
+        runAfter:
+          - build-project
+        taskRef:
+          name: rsync
+        params:
+          - name: direction
+            value: "local-to-remote"
+          - name: local-path
+            value: "."
+          - name: remote-ip
+            value: "neozeon.io"
+          - name: remote-username
+            value: "www"
+          - name: remote-path
+            value: "/var/www/htdocs/neozeon.io/"
+        workspaces:
+          - name: source
+            workspace: workspace
+          - name: ssh-directory
+            workspace: ssh-creds
+      - name: verify
+        runAfter:
+          - rsync-files
+        taskSpec:
+          steps:
+            - name: shell
+              image: alpine
+              script: |
+                #!/bin/sh
+								curl https://blog.neozeon.io
+  workspaces:
+    - name: workspace
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 100M
+    - name: ssh-creds
+      secret:
+        secretName: ssh-credentials
