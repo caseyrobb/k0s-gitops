@@ -45,7 +45,7 @@ spec:
               protocol: TCP
               expose:
                 default: true
-            ssh:
+            gitssh:
               port: 2222
               protocol: TCP
               expose:

@@ -5,9 +5,11 @@ metadata:
   namespace: gitea
 spec:
   entryPoints:
-    - ssh
+    - gitssh
   routes:
   - match: HostSNI(`*`)
     services:
     - name: ssh
       port: 2222
+  tls:
+    passthrough: true
