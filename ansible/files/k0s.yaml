@@ -45,6 +45,11 @@ spec:
               protocol: TCP
               expose:
                 default: true
+            ssh:
+              port: 2222
+              protocol: TCP
+              expose:
+                default: true
             dlna:
               port: 1900
               protocol: UDP
