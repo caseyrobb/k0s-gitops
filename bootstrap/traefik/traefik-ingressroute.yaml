@@ -8,7 +8,7 @@ spec:
   - websecure
   routes:
   - kind: Rule
-    match: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
+    match: Host(`traefik.redcomet.ca`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
     services:
     - kind: TraefikService
       name: api@internal
