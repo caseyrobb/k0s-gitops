@@ -15,13 +15,13 @@ spec:
         persistence:
           storageClass: longhorn
         postgresql-ha:
-          enabled: "false"
+          enabled: false
         postgresql:
-          enabled: "true"
+          enabled: true
         redis-cluster:
-          enabled: "false"
+          enabled: false
         redis:
-          enabled: "true"
+          enabled: true
         config:
           server:
           - name: ROOT_URL
