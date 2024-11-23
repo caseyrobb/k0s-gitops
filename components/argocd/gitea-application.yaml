@@ -22,15 +22,14 @@ spec:
           enabled: "false"
         redis:
           enabled: "true"
-        gitea:
-          config:
-            server:
-            - name: ROOT_URL
-              value: https://gitea.redcomet.ca
-            - name: DOMAIN
-              value: gitea.redcomet.ca
-            - name: SSH_DOMAIN
-              value: gitea.redcomet.ca
+        config:
+          server:
+          - name: ROOT_URL
+            value: https://gitea.redcomet.ca
+          - name: DOMAIN
+            value: gitea.redcomet.ca
+          - name: SSH_DOMAIN
+            value: gitea.redcomet.ca
     repoURL: https://dl.gitea.com/charts/
     targetRevision: 10.6.0
   - kustomize:
