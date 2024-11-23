@@ -11,17 +11,26 @@ spec:
   sources:
   - chart: gitea
     helm:
-      parameters:
-      - name: persistence.storageClass
-        value: longhorn
-      - name: postgresql-ha.enabled
-        value: "false"
-      - name: postgresql.enabled
-        value: "true"
-      - name: redis-cluster.enabled
-        value: "false"
-      - name: redis.enabled
-        value: "true"
+      values: |
+        persistence:
+          storageClass: longhorn
+        postgresql-ha:
+          enabled: "false"
+        postgresql:
+          enabled: "true"
+        redis-cluster:
+          enabled: "false"
+        redis:
+          enabled: "true"
+        gitea:
+          config:
+            server:
+            - name: ROOT_URL
+              value: https://gitea.redcomet.ca
+            - name: DOMAIN
+              value: gitea.redcomet.ca
+            - name: SSH_DOMAIN
+              value: gitea.redcomet.ca
     repoURL: https://dl.gitea.com/charts/
     targetRevision: 10.6.0
   - kustomize:
