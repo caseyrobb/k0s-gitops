@@ -4,3 +4,4 @@ resources:
 - ingressroute.yaml
 - ssh-service.yaml
 - ssh-tcp.yaml
+- gitea-inline-config-sealedsecret.yaml
