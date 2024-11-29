@@ -1,0 +1,77 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: build-hugo-
+  labels:
+    name: hugo-pipeline
+spec:
+  pipelineSpec:
+    workspaces:
+      - name: workspace
+      - name: ssh-directory
+    tasks:
+      - name: git-clone
+        taskRef: 
+          name: git-clone
+        params:
+          - name: url
+            value: "https://gitea.redcomet.ca/crobb/blog.neozeon.io.git"
+        workspaces:
+          - name: output
+            workspace: workspace
+          - name: ssh-directory
+            workspace: ssh-directory
+      - name: build-project
+        runAfter:
+          - git-clone
+        taskRef: 
+          name: hugo
+        workspaces:
+          - name: output
+            workspace: workspace
+      - name: rsync-files
+        runAfter:
+          - build-project
+        taskRef:
+          name: rsync
+        params:
+          - name: direction
+            value: "local-to-remote"
+          - name: local-path
+            value: "public/"
+          - name: remote-ip
+            value: "neozeon.io"
+          - name: remote-username
+            value: "crobb"
+          - name: remote-path
+            value: "/home/crobb/public/"
+        workspaces:
+          - name: output
+            workspace: workspace
+          - name: ssh-directory
+            workspace: ssh-directory
+      - name: verify
+        runAfter:
+          - rsync-files
+        taskSpec:
+          steps:
+            - name: shell
+              image: alpine/curl
+              script: |
+                #!/bin/sh
+                curl https://blog.neozeon.io
+  podTemplate:
+    securityContext:
+      fsGroup: 65532 
+  workspaces:
+    - name: workspace
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 200M
+    - name: ssh-directory
+      secret:
+        secretName: ssh-credentials
