@@ -15,7 +15,7 @@ spec:
   description: >-
         This task can be used to synchronize local and remote files.
   workspaces:
-    - name: source
+    - name: output
       description: The directory you want to sync.
     - name: ssh-directory
       optional: true
@@ -38,11 +38,11 @@ spec:
       default: "root"
   steps:
     - name: rsync
-      image: docker.io/shaowenchen/rsync-sshpass:v1@sha256:934985f9a955f416c7378e22d847ac1320fcae1495ee70ad53c9f9fc08b99323
+      image: quay.io/carobb/rsync:latest
       env:
       - name: SSH_DIRECTORY_PATH
         value: $(workspaces.ssh-directory.path)
-      workingDir: $(workspaces.source.path)
+      workingDir: $(workspaces.output.path)
       script: |
           cp -R "${SSH_DIRECTORY_PATH}" "$HOME"/.ssh
           chmod 700 "$HOME"/.ssh

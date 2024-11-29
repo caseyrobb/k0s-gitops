@@ -5,5 +5,4 @@ resources:
 - hugo-task.yaml
 - rsync-task.yaml
 - git-clone-task.yaml
-- serviceaccount.yaml
 - ssh-key-sealedsecret.yaml

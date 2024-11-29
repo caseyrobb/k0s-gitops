@@ -20,13 +20,18 @@ spec:
     content in the specified directory.
 
   workspaces:
-    - name: work-dir
+    - name: output
 
   params:
     - name: content-dir
       type: string
       description: The directory where the content is located
       default: ""
+
+    - name: sub-dir
+      type: string
+      description: The subdirectory where the content is located
+      default: "blog.neozeon.io"
 
     - name: minify
       type: string
@@ -59,10 +64,9 @@ spec:
         - name: HUGO_CONTENT_DIR
           value: $(params.content-dir)
 
-      image: docker.io/hugomods/hugo:0.122.0@sha256:e90f2e6786969463f3475c7d5e7f031cb5dbf75a8394687d52f99d6c9d0eda0d
+      image: docker.io/hugomods/hugo:ci
       script: |
         export HUGOCMD="hugo"
-
 
         if [ "$HUGO_MINIFY" = 'true' ]; then
           export HUGOCMD="${HUGOCMD} --minify"
@@ -80,7 +84,7 @@ spec:
           export HUGOCMD="${HUGOCMD} --contentDir ${HUGO_CONTENT_DIR}"
         fi
 
-        cd "$(workspaces.work-dir.path)" || exit
+        cd "$(workspaces.output.path)"
         $HUGOCMD
 
-        printf "%s/public" "$(workspaces.work-dir.path)" | tee /tekton/results/output
+        printf "%s/public" "$(workspaces.output.path)" | tee /tekton/results/output
