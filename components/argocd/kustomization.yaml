@@ -21,3 +21,4 @@ resources:
 - velero-application.yaml
 - storage-config-application.yaml
 - version-checker-application.yaml
+- hugo-application.yaml
