@@ -5,4 +5,5 @@ resources:
 - hugo-task.yaml
 - rsync-task.yaml
 - git-clone-task.yaml
+- pipeline.yaml
 - ssh-key-sealedsecret.yaml

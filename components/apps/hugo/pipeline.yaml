@@ -1,0 +1,74 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: build-hugo
+  labels:
+    name: hugo-pipeline
+spec:
+  displayName: Build and push hugo
+  description: Clone hugo git repo then build and rsync to remote host
+  params:
+    - name: url
+      type: string
+    - name: direction
+      type: string
+    - name: local-path
+      type: string
+    - name: remote-ip
+      type: string
+    - name: remote-username
+      type: string
+    - name: remote-path
+      type: string
+  tasks:
+    - name: git-clone
+      taskRef:
+        name: git-clone
+      params:
+        - name: url
+          value: "$(params.url)"
+      workspaces:
+        - name: output
+          workspace: workspace
+    - name: build-project
+      runAfter:
+        - git-clone
+      taskRef: 
+        name: hugo
+      workspaces:
+        - name: output
+          workspace: workspace
+    - name: rsync-files
+      runAfter:
+        - build-project
+      taskRef:
+        name: rsync
+      params:
+        - name: direction
+          value: "$(params.direction)"
+        - name: local-path
+          value: "$(params.local-path)"
+        - name: remote-ip
+          value: "$(params.remote-ip)"
+        - name: remote-username
+          value: "$(params.remote-username)"
+        - name: remote-path
+          value: "$(params.remote-path)"
+      workspaces:
+        - name: output
+          workspace: workspace
+        - name: ssh-directory
+          workspace: ssh-directory
+    - name: verify
+      runAfter:
+        - rsync-files
+      taskSpec:
+        steps:
+          - name: shell
+            image: alpine/curl
+            script: |
+              #!/bin/sh
+              curl https://blog.neozeon.io
+  workspaces:
+    - name: workspace
+    - name: ssh-directory
