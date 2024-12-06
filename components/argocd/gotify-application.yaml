@@ -15,8 +15,6 @@ spec:
         env:
           TZ: America/Edmonton
           GOTIFY_REGISTRATION: 'false'
-        image:
-          tag: 2.6.1
         service:
           main:
             ports:
@@ -31,7 +29,7 @@ spec:
             accessMode: ReadWriteOnce
             size: 1Gi
     repoURL: https://charts.gabe565.com
-    targetRevision: 0.3.0
+    targetRevision: 0.4.0
   - kustomize:
       namespace: gotify
     path: components/apps/gotify
