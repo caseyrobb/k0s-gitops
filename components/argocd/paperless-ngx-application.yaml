@@ -13,8 +13,6 @@ spec:
     helm:
       parameters:
       values: |-
-        image:
-          tag: 2.13.5
         env:
           TZ: America/Edmonton
           PAPERLESS_URL: https://paperless.redcomet.ca
@@ -45,7 +43,7 @@ spec:
             accessMode: ReadWriteOnce
             size: 2Gi
     repoURL: https://charts.gabe565.com
-    targetRevision: 0.19.1
+    targetRevision: 0.22.0
   - kustomize:
       namespace: paperless-ngx
     path: components/apps/paperless-ngx
