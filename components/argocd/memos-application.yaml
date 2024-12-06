@@ -14,8 +14,6 @@ spec:
       values: |-
         env:
           TZ: America/Edmonton
-        image:
-          tag: 0.22.5
         mariadb:
           enabled: true
           primary:
@@ -31,7 +29,7 @@ spec:
             size: 8Gi
             storageClass: longhorn
     repoURL: https://charts.gabe565.com
-    targetRevision: 0.15.1
+    targetRevision: 0.16.0
   - kustomize:
       namespace: memos
     path: components/apps/memos
