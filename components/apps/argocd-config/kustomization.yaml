@@ -8,7 +8,7 @@ resources:
 - gabe565-helm-repo.yaml
 - gitea-helm-repo.yaml
 - minio-helm-repo.yaml
-- bitnami-helm-repo.yaml
+- sealedsecrets-helm-repo.yaml
 - uptime-kuma-repo.yaml
 - prometheus-helm-repo.yaml
 - grafana-helm-repo.yaml
