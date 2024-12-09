@@ -9,13 +9,20 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: jupyterhub
+  - chart: jupyterhub
     helm:
       parameters:
       - name: nameOverride
         value: controller
+      - name: proxy.service.type
+        value: ClusterIP
     repoURL: https://hub.jupyter.org/helm-chart/
     targetRevision: 4.0.0
+  - kustomize:
+      namespace: jupyter
+    path: components/apps/jupyter
+    repoURL: https://github.com/caseyrobb/k0s-gitops
+    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
