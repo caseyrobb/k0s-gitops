@@ -8,7 +8,7 @@ spec:
     namespace: jupyter
     server: https://kubernetes.default.svc
   project: default
-  source:
+  sources:
   - chart: jupyterhub
     helm:
       parameters:
