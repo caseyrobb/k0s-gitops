@@ -1,0 +1,50 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  name: trigger-template-build-hugo
+spec:
+  params:
+  - name: url
+  - name: direction
+  - name: local-path
+  - name: remote-ip
+  - name: remote-username
+  - name: remote-path
+  resourcetemplates:
+  - apiVersion: tekton.dev/v1beta1
+    kind: PipelineRun
+    metadata:
+      generateName: build-hugo-
+      labels:
+        name: hugo-pipeline
+    spec:
+      pipelineRef:
+        name: build-hugo
+      params:
+        - name: url
+          value: "https://gitea.redcomet.ca/crobb/blog.neozeon.io.git"
+        - name: direction
+          value: "local-to-remote"
+        - name: local-path
+          value: "public/"
+        - name: remote-ip
+          value: "neozeon.io"
+        - name: remote-username
+          value: "crobb"
+        - name: remote-path
+          value: "/home/crobb/public/"
+      podTemplate:
+        securityContext:
+          fsGroup: 65532 
+      workspaces:
+        - name: workspace
+          volumeClaimTemplate:
+            spec:
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 200M
+        - name: ssh-directory
+          secret:
+            secretName: ssh-credentials

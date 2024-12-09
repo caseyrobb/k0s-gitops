@@ -17,3 +17,4 @@ resources:
 - k8up-helm-repo.yaml
 - velero-helm-repo.yaml
 - jetstack-helm-repo.yaml
+- jupyter-helm-repo.yaml

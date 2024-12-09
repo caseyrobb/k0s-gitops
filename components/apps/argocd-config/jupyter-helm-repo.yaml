@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  annotations:
+    managed-by: argocd.argoproj.io
+  labels:
+    argocd.argoproj.io/secret-type: repository
+  name: repo-jupyter-helm
+  namespace: argocd
+stringData:
+  name: jupyter
+  project: default
+  type: helm
+  url: https://hub.jupyter.org/helm-chart/
