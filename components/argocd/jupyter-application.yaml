@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: jupyter
+    chart: jupyterhub
     helm:
       parameters:
       - name: nameOverride
