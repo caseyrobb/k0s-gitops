@@ -20,6 +20,8 @@ spec:
         value: jupyter
       - name: hub.config.Authenticator.admin_users
         value: crobb
+      - name: scheduling.userScheduler.replicas
+        value: 1
     repoURL: https://hub.jupyter.org/helm-chart/
     targetRevision: 4.0.0
   - kustomize:
