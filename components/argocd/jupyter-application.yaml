@@ -16,6 +16,10 @@ spec:
         value: controller
       - name: proxy.service.type
         value: ClusterIP
+      - name: hub.config.DummyAuthenticator.password
+        value: jupyter
+      - name: hub.config.Authenticator.admin_users
+        value: ["crobb"]
     repoURL: https://hub.jupyter.org/helm-chart/
     targetRevision: 4.0.0
   - kustomize:
