@@ -22,4 +22,4 @@ resources:
 - storage-config-application.yaml
 - version-checker-application.yaml
 - hugo-application.yaml
-- jupyter-application.yaml
+#- jupyter-application.yaml
