@@ -19,8 +19,7 @@ spec:
       - name: hub.config.DummyAuthenticator.password
         value: jupyter
       - name: hub.config.Authenticator.admin_users
-        value: 
-          - crobb
+        value: crobb
     repoURL: https://hub.jupyter.org/helm-chart/
     targetRevision: 4.0.0
   - kustomize:
