@@ -12,6 +12,9 @@ spec:
   - chart: kube-prometheus-stack
     helm:
       values: |
+        alertmanager:
+          alertmanagerSpec:
+            useExistingSecret: true
         grafana:
           persistence:
             enabled: true
