@@ -34,6 +34,10 @@ spec:
   - chart: alertmanager
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 1.13.1
+    helm:
+      values: |
+        serviceAccount:
+          create: false
   - kustomize:
       namespace: monitoring
     path: components/apps/grafana
