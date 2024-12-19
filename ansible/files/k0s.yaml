@@ -116,7 +116,7 @@ spec:
       - name: metallb
         chartname: metallb/metallb
         namespace: "metallb-system"
-        version: "0.14.8"
+        version: "0.14.9"
         values: |-
           prometheus:
             namespace: monitoring
