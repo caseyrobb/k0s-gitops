@@ -12,6 +12,8 @@ spec:
   - chart: memos
     helm:
       values: |-
+        image:
+          tag: 0.23.0
         env:
           TZ: America/Edmonton
         mariadb:
