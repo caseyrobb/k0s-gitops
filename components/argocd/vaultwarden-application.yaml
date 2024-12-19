@@ -12,6 +12,8 @@ spec:
   - chart: vaultwarden
     helm:
       parameters:
+      - name: image.tag
+        value: 1.32.6
       - name: domain
         value: https://vaultwarden.redcomet.ca
       - name: yubico.clientId
