@@ -15,7 +15,7 @@ spec:
     helm:
       values: |
         image:
-          tag: 1.23.15
+          tag: 1.23.16
   - kustomize:
       namespace: uptime-kuma
     path: components/apps/uptime-kuma
