@@ -29,6 +29,9 @@ spec:
             sizeCeleryBeat: 1Gi
           nginx:
             enabled: false
+          environment:
+            - name: CSRF_TRUSTED_ORIGINS
+              value: "https://wger.redcomet.ca,https://172.16.0.102:443"
         postgres:
           enabled: true
           storage:
