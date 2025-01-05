@@ -32,6 +32,8 @@ spec:
           environment:
             - name: CSRF_TRUSTED_ORIGINS
               value: "https://wger.redcomet.ca"
+            - name: SITE_URL
+              value: "https://wger.redcomet.ca"
         postgres:
           enabled: true
           storage:
