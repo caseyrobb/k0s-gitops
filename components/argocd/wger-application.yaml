@@ -1,0 +1,50 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: wger
+  namespace: argocd
+spec:
+  destination:
+    namespace: wger
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+  - kustomize:
+      namespace: wger
+    path: components/apps/wger
+    repoURL: https://github.com/caseyrobb/k0s-gitops
+    targetRevision: HEAD
+  - chart: wger
+    helm:
+      values: |-
+        app:
+          timezone: "America/Edmonton"
+          persistence:
+            enabled: true
+            storageClass: longhorn-rwx
+            accessModes:
+              - ReadWriteMany
+            sizeMedia: 8Gi
+            sizeStatic: 4Gi
+            sizeCeleryBeat: 1Gi
+          nginx:
+            enabled: false
+        postgres:
+          enabled: true
+          storage:
+            className: longhorn
+            requestedSize: 8Gi
+    repoURL: https://wger-project.github.io/helm-charts
+    targetRevision: 0.2.1
+  ignoreDifferences:
+    - kind: StatefulSet
+      name: wger-postgres
+      jsonPointers:
+        - /spec/volumeClaimTemplates
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
