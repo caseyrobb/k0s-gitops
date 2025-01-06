@@ -28,7 +28,7 @@ spec:
             sizeStatic: 4Gi
             sizeCeleryBeat: 1Gi
           nginx:
-            enabled: false
+            enabled: true
           environment:
             - name: CSRF_TRUSTED_ORIGINS
               value: "https://wger.redcomet.ca"
