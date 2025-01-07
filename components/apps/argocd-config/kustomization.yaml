@@ -19,3 +19,4 @@ resources:
 - jetstack-helm-repo.yaml
 - jupyter-helm-repo.yaml
 - wger-helm-repo.yaml
+- headlamp-helm-repo.yaml
