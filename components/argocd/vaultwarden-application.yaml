@@ -11,41 +11,31 @@ spec:
   sources:
   - chart: vaultwarden
     helm:
-      parameters:
-      - name: image.tag
-        value: 1.32.7
-      - name: domain
-        value: https://vaultwarden.redcomet.ca
-      - name: yubico.clientId
-        value: "82707"
-      - name: yubico.existingSecret
-        value: yubico
-      - name: yubico.secretKey.existingSecretKey
-        value: YUBICO_SECRET_KEY
-      - name: data.name
-        value: vaultwarden-data
-      - name: data.size
-        value: 5Gi
-      - name: data.class
-        value: longhorn
-      - name: data.path
-        value: /data
-      - name: data.keepPvc
-        value: "true"
-      - name: data.accessMode
-        value: ReadWriteOnce
-      - name: attachments.name
-        value: vaultwarden-files
-      - name: attachments.size
-        value: 10Gi
-      - name: attachments.class
-        value: longhorn
-      - name: attachments.path
-        value: /files
-      - name: attachments.keepPvc
-        value: "true"
-      - name: attachments.accessMode
-        value: ReadWriteOnce
+      values: |
+        image:
+          tag: 1.32.7
+        domain: https://vaultwarden.redcomet.ca
+        yubico:
+          clientId: "82707"
+          existingSecret: yubico
+          secretKey:
+            existingSecretKey: YUBICO_SECRET_KEY
+        timeZone: "America/Edmonton"
+        storage:
+          data:
+            name: vaultwarden-data
+            size: 5Gi
+            class: longhorn
+            path: /data
+            keepPvc: true
+            accessMode: ReadWriteOnce
+          attachments:
+            name: vaultwarden-files
+            size: 10Gi
+            class: longhorn
+            path: /files
+            keepPvc: true
+            accessMode: ReadWriteOnce
     repoURL: https://guerzon.github.io/vaultwarden
     targetRevision: 0.31.1
   - kustomize:
