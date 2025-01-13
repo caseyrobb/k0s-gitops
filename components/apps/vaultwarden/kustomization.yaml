@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
 - ingressroute.yaml
 - yubico-sealedsecret.yaml
+- credentials-sealedsecret.yaml
