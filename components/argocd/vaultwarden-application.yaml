@@ -21,6 +21,15 @@ spec:
           secretKey:
             existingSecretKey: YUBICO_SECRET_KEY
         timeZone: "America/Edmonton"
+        pushNotifications:
+          enabled: true
+          existingSecret: "credentials"
+          installationId:
+            existingSecretKey: "INSTALLATION_ID"
+          installationKey:
+            existingSecretKey: "INSTALLATION_KEY"
+          relayUri: "https://push.bitwarden.com"
+          identityUri: "https://identity.bitwarden.com"
         storage:
           data:
             name: vaultwarden-data
