@@ -16,6 +16,8 @@ spec:
         env:
           TZ: America/Edmonton
           PAPERLESS_URL: https://paperless.redcomet.ca
+        image:
+          tag: 2.14.4
         mariadb:
           enabled: true
           primary:
