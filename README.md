@@ -6,6 +6,25 @@ My k0s homelab config hosted on a Minisforum NAB9.
 2. Run `node-setup.sh`
 3. Run `bootstrap-k0s.sh`
 
+## Applications
+
+- ECK Operator
+- pf Firewall/Gateway Dashboard (ELK stack)
+- Gitea
+- Headlamp
+- IT-tools
+- Jellyfin
+- Komga
+- Prometheus operator w/Grafana
+- Mafl
+- Memos
+- Paperless-ngx
+- Tekton operator
+- Uptime Kuma
+- Vaultwarden
+- Velero
+- jetstack/version-checker
+
 ## GitOps Directory Structure
 
 ```
