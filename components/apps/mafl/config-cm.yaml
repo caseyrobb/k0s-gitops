@@ -5,12 +5,6 @@ data:
     theme: system
     services:
       Home:
-        - title: Home Assistant
-          description: Home automation system
-          link: '#'
-          icon:
-            name: vscode-icons:file-type-homeassistant
-            wrap: true
         - title: Traefik
           description: Cloud edge router
           link: 'https://traefik.redcomet.ca/dashboard/#'
@@ -77,12 +71,6 @@ data:
           icon:
             name: material-symbols:comic-bubble
             wrap: true
-        - title: immich
-          description: High performance self-hosted photo and video
-          link: 'https://immich.redcomet.ca/photos'
-          icon:
-            name: simple-icons:immich
-            wrap: true
         - title: paperless-ngx
           description: Open-source document management
           link: 'https://paperless.redcomet.ca/dashboard'
@@ -94,12 +82,6 @@ data:
           link: 'https://memos.redcomet.ca/'
           icon:
             name: twemoji:memo
-            wrap: true
-        - title: Bookstack
-          description: A platform to create documentation/wiki content
-          link: 'https://bookstack.redcomet.ca/'
-          icon:
-            name: simple-icons:bookstack
             wrap: true
         - title: GitHub
           description: Let's build from here
