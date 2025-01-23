@@ -3,6 +3,8 @@ kind: Kustomization
 resources:
 - service-monitor.yaml
 - argocd-cmd-params-cm.yaml
+- argocd-rbac-cm.yaml
+- argocd-cm.yaml
 - democratic-csi-helm-repo.yaml
 - eck-helm-repo.yaml
 - gabe565-helm-repo.yaml
