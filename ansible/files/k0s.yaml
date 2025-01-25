@@ -27,6 +27,9 @@ spec:
         namespace: "traefik"
         version: "34.1.0"
         values: |-
+          service:
+            annotations:
+              metallb.io/ip-allocated-from-pool: traefik
           ports:
             traefik:
               expose:
