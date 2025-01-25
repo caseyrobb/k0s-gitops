@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - ingressroute.yaml
 - prom-ingressroute.yaml
+- alertmanager-ingressroute.yaml
 - additional-scrape-configs.yaml
 - mktxp-credentials-sealedsecret.yaml
 - mktxp-deployment.yaml
