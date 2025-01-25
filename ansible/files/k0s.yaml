@@ -27,10 +27,6 @@ spec:
         namespace: "traefik"
         version: "34.1.0"
         values: |-
-          service:
-            annotations:
-              metallb.universe.tf/loadBalancerIPs: 172.16.0.102
-              metallb.universe.tf/ip-allocated-from-pool: traefik
           ports:
             traefik:
               expose:
