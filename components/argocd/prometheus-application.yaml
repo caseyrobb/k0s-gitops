@@ -13,6 +13,7 @@ spec:
     helm:
       values: |
         alertmanager:
+          enabled: false
           alertmanagerSpec:
             useExistingSecret: true
         grafana:
