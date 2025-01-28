@@ -17,7 +17,7 @@ spec:
           TZ: America/Edmonton
           PAPERLESS_URL: https://paperless.redcomet.ca
         image:
-          tag: 2.14.4
+          tag: 2.14.6
         mariadb:
           enabled: true
           primary:
