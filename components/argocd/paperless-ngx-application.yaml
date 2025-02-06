@@ -45,7 +45,7 @@ spec:
             accessMode: ReadWriteOnce
             size: 2Gi
     repoURL: https://charts.gabe565.com
-    targetRevision: 0.22.0
+    targetRevision: 0.23.0
   - kustomize:
       namespace: paperless-ngx
     path: components/apps/paperless-ngx
