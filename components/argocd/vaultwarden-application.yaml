@@ -13,7 +13,7 @@ spec:
     helm:
       values: |
         image:
-          tag: 1.32.7
+          tag: 1.33.1
         domain: https://vaultwarden.redcomet.ca
         yubico:
           clientId: "82707"
