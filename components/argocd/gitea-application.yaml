@@ -12,6 +12,9 @@ spec:
   - chart: gitea
     helm:
       values: |
+        image:
+          tag: 1.23.3-rootless
+          rootless: true
         persistence:
           storageClass: longhorn
         postgresql-ha:
