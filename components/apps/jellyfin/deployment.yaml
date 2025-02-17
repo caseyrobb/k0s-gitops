@@ -25,7 +25,7 @@ spec:
           value: America/Edmonton
         - name: JELLYFIN_PublishedServerUrl
           value: https://jellyfin.redcomet.ca
-        image: docker.io/jellyfin/jellyfin:10.10.5
+        image: docker.io/jellyfin/jellyfin:10.10.6
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 5
