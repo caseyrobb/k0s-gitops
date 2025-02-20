@@ -31,7 +31,7 @@ spec:
             size: 8Gi
             storageClass: longhorn
     repoURL: https://charts.gabe565.com
-    targetRevision: 0.16.0
+    targetRevision: 0.17.0
   - kustomize:
       namespace: memos
     path: components/apps/memos
