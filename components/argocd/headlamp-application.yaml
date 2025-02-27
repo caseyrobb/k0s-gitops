@@ -11,7 +11,7 @@ spec:
   sources:
   - chart: headlamp
     repoURL: https://headlamp-k8s.github.io/headlamp/
-    targetRevision: 0.28.1
+    targetRevision: 0.29.1
   - kustomize:
       namespace: kube-system
     path: components/apps/headlamp
