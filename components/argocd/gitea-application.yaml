@@ -32,7 +32,7 @@ spec:
       - name: gitea.config.server.SSH_DOMAIN
         value: gitea.redcomet.ca
     repoURL: https://dl.gitea.com/charts/
-    targetRevision: 11.0.0
+    targetRevision: 10.6.0
   - kustomize:
       namespace: gitea
     path: components/apps/gitea
