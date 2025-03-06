@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
 - argocd-config-application.yaml
 - elastic-operator-application.yaml
-- gitea-application.yaml
+#- gitea-application.yaml
 - gotify-application.yaml
 - jellyfin-application.yaml
 - sealed-secrets-application.yaml
