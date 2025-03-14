@@ -21,7 +21,7 @@ resources:
 - velero-application.yaml
 - storage-config-application.yaml
 - version-checker-application.yaml
-- hugo-application.yaml
+#- hugo-application.yaml
 - headlamp-application.yaml
 #- wger-application.yaml
 #- jupyter-application.yaml
