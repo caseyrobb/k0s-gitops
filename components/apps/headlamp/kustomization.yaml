@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 - ingressroute.yaml
 - serviceaccount.yaml
-- clusterrolebinding.yaml
+#- clusterrolebinding.yaml
