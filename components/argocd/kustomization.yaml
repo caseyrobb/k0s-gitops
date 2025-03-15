@@ -4,7 +4,7 @@ resources:
 - argocd-config-application.yaml
 - elastic-operator-application.yaml
 #- gitea-application.yaml
-- gotify-application.yaml
+#- gotify-application.yaml
 - jellyfin-application.yaml
 - sealed-secrets-application.yaml
 #- bookstack-application.yaml
@@ -13,12 +13,12 @@ resources:
 - komga-application.yaml
 - memos-application.yaml
 - prometheus-application.yaml
-- it-tools-application.yaml
-- tekton-application.yaml
-- mafl-application.yaml
+#- it-tools-application.yaml
+#- tekton-application.yaml
+#- mafl-application.yaml
 - firewall-application.yaml
 - vaultwarden-application.yaml
-- velero-application.yaml
+#- velero-application.yaml
 - storage-config-application.yaml
 - version-checker-application.yaml
 #- hugo-application.yaml
