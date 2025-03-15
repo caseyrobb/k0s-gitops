@@ -127,10 +127,10 @@ spec:
         resources:
           limits:
             cpu: 2
-            memory: 4Gi
+            memory: 3Gi
           requests:
             cpu: 1
-            memory: 2Gi
+            memory: 1Gi
   services:
   - name: beats
     service:
