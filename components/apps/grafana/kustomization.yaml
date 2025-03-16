@@ -9,4 +9,3 @@ resources:
 - mktxp-credentials-sealedsecret.yaml
 - mktxp-deployment.yaml
 - longhorn-alerting-rules.yaml
-- k0s-servicemonitor.yaml
