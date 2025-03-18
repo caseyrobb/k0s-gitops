@@ -47,7 +47,7 @@ spec:
             keepPvc: true
             accessMode: ReadWriteOnce
     repoURL: https://guerzon.github.io/vaultwarden
-    targetRevision: 0.31.6
+    targetRevision: 0.31.8
   - kustomize:
       namespace: vaultwarden
     path: components/apps/vaultwarden
