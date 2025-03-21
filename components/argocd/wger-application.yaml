@@ -38,12 +38,13 @@ spec:
             className: longhorn
             requestedSize: 8Gi
     repoURL: https://wger-project.github.io/helm-charts
-    targetRevision: 0.2.1
+    targetRevision: 0.2.4
   ignoreDifferences:
-    - kind: StatefulSet
-      name: wger-postgres
-      jsonPointers:
-        - /spec/volumeClaimTemplates
+  - group: "apps"
+    kind: "StatefulSet"
+    name: "wger-postgres"
+    jsonPointers:
+      - /spec/volumeClaimTemplates
   syncPolicy:
     automated:
       prune: true
