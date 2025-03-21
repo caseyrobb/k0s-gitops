@@ -25,7 +25,7 @@ spec:
             accessModes:
               - ReadWriteOnce
             sizeMedia: 8Gi
-            sizeStatic: 4Gi
+            sizeStatic: 8Gi
             sizeCeleryBeat: 1Gi
           nginx:
             enabled: false
@@ -37,6 +37,13 @@ spec:
           storage:
             className: longhorn
             requestedSize: 8Gi
+        redis:
+          enabled: true
+          auth:
+            enable: false
+          storage:
+            className: longhorn
+            requestedSize: 4Gi
     repoURL: https://wger-project.github.io/helm-charts
     targetRevision: 0.2.4
   ignoreDifferences:
