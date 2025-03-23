@@ -26,6 +26,7 @@ spec:
             size: 5Gi
         prometheus:
           prometheusSpec:
+            retention: 48h
             additionalScrapeConfigsSecret:
               name: additional-scrape-configs
               key: additional-scrape-configs.yaml
@@ -35,13 +36,6 @@ spec:
   - chart: prometheus-snmp-exporter
     repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 9.1.0
-  #- chart: alertmanager
-  #  repoURL: https://prometheus-community.github.io/helm-charts
-  #  targetRevision: 1.13.1
-  #  helm:
-  #    values: |
-  #      serviceAccount:
-  #        create: false
   - kustomize:
       namespace: monitoring
     path: components/apps/grafana
