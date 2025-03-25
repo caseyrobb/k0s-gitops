@@ -30,14 +30,14 @@ spec:
               - name: storage.tsdb.retention.time
                 value: 48h
             retention: 48h
-            storageSpec:
-              volumeClaimTemplate:
-                spec:
-                  storageClassName: longhorn
-                  accessModes: ["ReadWriteOnce"]
-                  resources:
-                    requests:
-                      storage: 10Gi
+            #storageSpec:
+            #  volumeClaimTemplate:
+            #    spec:
+            #      storageClassName: longhorn
+            #      accessModes: ["ReadWriteOnce"]
+            #      resources:
+            #        requests:
+            #          storage: 10Gi
             additionalScrapeConfigsSecret:
               name: additional-scrape-configs
               key: additional-scrape-configs.yaml
