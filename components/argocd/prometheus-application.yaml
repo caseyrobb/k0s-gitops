@@ -36,6 +36,9 @@ spec:
               metallb:
                 gnetId: 20162
                 revision: 6
+                datasource:
+                - name: DS_PROMETHEUS
+                  value: Prometheus
               traefik:
                 gnetId: 17347
                 revision: 9
@@ -46,17 +49,20 @@ spec:
                 gnetId: 16888
                 revision: 9
               unbound:
-                gnetId: 21006
-                revision: 2
-              unbound2:
                 gnetId: 11705
                 revision: 1
               k8s:
                 gnetId: 15661
                 revision: 2
+                datasource:
+                - name: DS_PROMETHEUS
+                  value: Prometheus
               mikrotik:
                 gnetId: 13679
                 revision: 22
+                datasource:
+                - name: DS_PROMETHEUS
+                  value: Prometheus
           persistence:
             enabled: true
             type: sts
