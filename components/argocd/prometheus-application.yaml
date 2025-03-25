@@ -26,6 +26,8 @@ spec:
             size: 5Gi
         prometheus:
           prometheusSpec:
+            additionalArgs:
+              - "--storage.tsdb.retention.time=48"
             retention: 48h
             additionalScrapeConfigsSecret:
               name: additional-scrape-configs
