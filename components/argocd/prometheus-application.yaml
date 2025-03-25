@@ -57,9 +57,12 @@ spec:
                 datasource:
                 - name: DS_PROMETHEUS
                   value: Prometheus
-              #k8s:
-              #  gnetId: 15661
-              #  revision: 2
+              k8s:
+                gnetId: 15661
+                revision: 2
+                datasource:
+                - name: DS__VICTORIAMETRICS-PROD-ALL
+                  value: Prometheus
               mikrotik:
                 gnetId: 13679
                 revision: 22
