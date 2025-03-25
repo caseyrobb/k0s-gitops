@@ -32,11 +32,12 @@ spec:
             retention: 48h
             storageSpec:
               volumeClaimTemplate:
-                storageClassName: longhorn
-                accessModes: ["ReadWriteOnce"]
-                resources:
-                  requests:
-                    storage: 10Gi
+                spec:
+                  storageClassName: longhorn
+                  accessModes: ["ReadWriteOnce"]
+                  resources:
+                    requests:
+                      storage: 10Gi
             additionalScrapeConfigsSecret:
               name: additional-scrape-configs
               key: additional-scrape-configs.yaml
