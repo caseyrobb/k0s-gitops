@@ -17,6 +17,40 @@ spec:
           alertmanagerSpec:
             useExistingSecret: true
         grafana:
+          dashboards:
+            default:
+              argocd:
+                url: https://raw.githubusercontent.com/argoproj/argo-cd/refs/heads/master/examples/dashboard.json
+              metallb:
+                url: https://raw.githubusercontent.com/M0NsTeRRR/grafana-dashboards/refs/heads/main/dashboards/metallb.json
+              traefik:
+                gnetId: 17347
+                revision: 9
+                datasource: Prometheus
+              version-check:
+                gnetId: 12833
+                revision: 1
+                datasource: Prometheus
+              longhorn:
+                gnetId: 16888
+                revision: 9
+                datasource: Prometheus
+              unbound:
+                gnetId: 21006
+                revision: 2
+                datasource: Prometheus
+              unbound2:
+                gnetId: 11705
+                revision: 1
+                datasource: Prometheus
+              k8s:
+                gnetId: 15661
+                revision: 2
+                datasource: Prometheus
+              mikrotik:
+                gnetId: 13679
+                revision: 22
+                datasource: Prometheus
           persistence:
             enabled: true
             type: sts
@@ -30,14 +64,6 @@ spec:
               - name: storage.tsdb.retention.time
                 value: 48h
             retention: 48h
-            #storageSpec:
-            #  volumeClaimTemplate:
-            #    spec:
-            #      storageClassName: longhorn
-            #      accessModes: ["ReadWriteOnce"]
-            #      resources:
-            #        requests:
-            #          storage: 10Gi
             additionalScrapeConfigsSecret:
               name: additional-scrape-configs
               key: additional-scrape-configs.yaml
