@@ -35,6 +35,9 @@ spec:
                 url: https://raw.githubusercontent.com/argoproj/argo-cd/refs/heads/master/examples/dashboard.json
               helm-version-check:
                 url: https://raw.githubusercontent.com/caseyrobb/helm-version-check/refs/heads/master/k8s/dashboard.json
+                datasource:
+                - name: DS_PROMETHEUS
+                  value: Prometheus
               metallb:
                 gnetId: 20162
                 revision: 6
