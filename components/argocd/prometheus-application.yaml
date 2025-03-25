@@ -46,7 +46,7 @@ spec:
                 gnetId: 12833
                 revision: 1
                 datasource:
-                - name: DS_PROMETHEUS
+                - name: DS_VERSION-CHECKER
                   value: Prometheus
               longhorn:
                 gnetId: 16888
