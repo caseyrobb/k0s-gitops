@@ -27,7 +27,7 @@ spec:
         prometheus:
           prometheusSpec:
             additionalArgs:
-              - "--storage.tsdb.retention.time=48"
+              - --storage.tsdb.retention.time=48h
             retention: 48h
             additionalScrapeConfigsSecret:
               name: additional-scrape-configs
