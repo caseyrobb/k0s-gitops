@@ -51,12 +51,12 @@ spec:
               unbound:
                 gnetId: 11705
                 revision: 1
-              k8s:
-                gnetId: 15661
-                revision: 2
                 datasource:
                 - name: DS_PROMETHEUS
                   value: Prometheus
+              #k8s:
+              #  gnetId: 15661
+              #  revision: 2
               mikrotik:
                 gnetId: 13679
                 revision: 22
