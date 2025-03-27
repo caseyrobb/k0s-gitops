@@ -101,3 +101,11 @@
         owner: crobb
         group: crobb
       
+    - name: Load modules
+      community.general.modprobe:
+        name: "{{ item }}"
+        state: present
+        persistent: present
+      loop:
+        - iptable_nat
+        - br_netfilter
