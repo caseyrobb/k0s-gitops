@@ -104,6 +104,10 @@ spec:
           name: varlogs
         - mountPath: /var/run
           name: varrun
+        - mountPath: /var/cache
+          name: varcache
+        - mountPath: /usr/share/nginx/html
+          name: nginx
       dnsPolicy: ClusterFirst
       nodeSelector:
         kubernetes.io/arch: amd64
@@ -137,6 +141,10 @@ spec:
           server: 172.16.0.55
       - emptyDir: {}
         name: shared
+      - emptyDir: {}
+        name: nginx
+      - emptyDir: {}
+        name: varcache
       - emptyDir:
           medium: Memory
           sizeLimit: 4Gi
