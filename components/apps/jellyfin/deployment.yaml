@@ -25,7 +25,7 @@ spec:
           value: America/Edmonton
         - name: JELLYFIN_PublishedServerUrl
           value: https://jellyfin.redcomet.ca
-        image: docker.io/jellyfin/jellyfin:10.10.6
+        image: ghcr.io/jellyfin/jellyfin-vue:unstable
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 5
@@ -45,14 +45,14 @@ spec:
         - containerPort: 1900
           name: jellyfin-dlna
           protocol: UDP
-        - containerPort: 8096
+        - containerPort: 8080
           name: main
           protocol: TCP
         readinessProbe:
           failureThreshold: 4
           httpGet:
             path: /
-            port: 8096
+            port: 8080
             scheme: HTTP
           initialDelaySeconds: 10
           periodSeconds: 12
@@ -62,7 +62,7 @@ spec:
           failureThreshold: 60
           httpGet:
             path: /
-            port: 8096
+            port: 8080
             scheme: HTTP
           initialDelaySeconds: 10
           periodSeconds: 5
