@@ -104,7 +104,7 @@ spec:
           name: varlogs
         - mountPath: /var/run
           name: varrun
-        - mountPath: /var/cache
+        - mountPath: /var/cache/nginx
           name: varcache
         - mountPath: /usr/share/nginx/html
           name: nginx
