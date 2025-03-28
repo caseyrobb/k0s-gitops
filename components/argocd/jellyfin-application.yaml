@@ -16,7 +16,7 @@ spec:
       namespace: jellyfin
     path: components/apps/jellyfin
     repoURL: https://github.com/caseyrobb/k0s-gitops
-    targetRevision: HEAD
+    targetRevision: jellyfin-vue
   syncPolicy:
     automated:
       prune: true
