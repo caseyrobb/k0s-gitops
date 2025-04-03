@@ -77,12 +77,12 @@ spec:
               enabled: true
           metrics:
             prometheus:
-              additionalLabels:
-                release: kube-prometheus-stack
               service:
                 enabled: true
               disableAPICheck: false
               serviceMonitor:
+                additionalLabels:
+                  release: kube-prometheus-stack
                 enabled: true
                 metricRelabelings:
                   - sourceLabels: [__name__]
