@@ -16,6 +16,7 @@
 
   tasks:
     - name: Uninstall k0s
+      tags: ["reset"]
       block:
         - name: Stop k0s
           ansible.builtin.shell: /usr/local/bin/k0s stop
@@ -26,7 +27,6 @@
         - name: Just force systemd to reread configs
           ansible.builtin.systemd_service:
             daemon_reload: true
-      tags: ["reset"]
 
     - name: Install iscsi-initiator-utils
       ansible.builtin.dnf:
