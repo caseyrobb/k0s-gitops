@@ -1,5 +1,5 @@
 ---
-- name: bootstrap k0s homelab
+- name: Bootstrap k0s homelab
   hosts: k0s
   remote_user: crobb
   become: yes
@@ -17,10 +17,10 @@
   tasks:
     - name: Uninstall k0s
       block:
-        - name: stop k0s
+        - name: Stop k0s
           ansible.builtin.shell: /usr/local/bin/k0s stop
 
-        - name: reset k0s
+        - name: Reset k0s
           ansible.builtin.shell: /usr/local/bin/k0s reset
 
         - name: Just force systemd to reread configs
@@ -75,26 +75,26 @@
       become: yes
       become_method: sudo
 
-    - name: install k0s
+    - name: Install k0s
       ansible.builtin.shell: /usr/local/bin/k0s install controller -c /etc/k0s/k0s.yaml --single
 
     - name: Just force systemd to reread configs
       ansible.builtin.systemd_service:
         daemon_reload: true
 
-    - name: start k0s
+    - name: Start k0s
       ansible.builtin.shell: /usr/local/bin/k0s start
 
-    - name: wait for service to start
+    - name: Wait for service to start
       ansible.builtin.wait_for:
         host: 0.0.0.0
         port: 6443
         delay: 10
 
-    - name: create kubeconfig
+    - name: Create kubeconfig
       ansible.builtin.shell: /usr/local/bin/k0s kubeconfig admin > /home/crobb/.kube/config
 
-    - name: update kubeconfig permissions
+    - name: Update kubeconfig permissions
       ansible.builtin.file:
         path: /home/crobb/.kube/config
         mode: '0600'
