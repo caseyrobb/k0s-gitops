@@ -24,4 +24,5 @@ resources:
 #- hugo-application.yaml
 #- headlamp-application.yaml
 - wger-application.yaml
+- helm-version-check-application.yaml
 #- jupyter-application.yaml

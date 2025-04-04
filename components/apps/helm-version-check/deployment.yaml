@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helm-version-check
+  namespace: helm-version-check
+  labels:
+    app: helm-version-check
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helm-version-check
+  template:
+    metadata:
+      labels:
+        app: helm-version-check
+    spec:
+      serviceAccountName: helm-version-check
+      containers:
+      - name: helm-version-check
+        image: quay.io/carobb/helm-version-check:latest
+        ports:
+        - containerPort: 9080
+        env:
+        - name: NAMESPACE
+          value: argocd
+        - name: LOGLEVEL
+          value: info
