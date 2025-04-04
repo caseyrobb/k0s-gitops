@@ -63,8 +63,8 @@
         dest: /usr/local/bin/k0s
         mode: '0755'
         force: true
-        become: yes
-        become_method: sudo
+      become: yes
+      become_method: sudo
 
     - name: Install kubectl binary
       ansible.builtin.get_url:
