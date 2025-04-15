@@ -36,4 +36,4 @@ spec:
           requests:
             storage: 20Gi
         storageClassName: longhorn
-  version: 8.17.4
+  version: 9.0.0
