@@ -90,7 +90,7 @@ spec:
                   hosts => [ "${ECK_ES_HOSTS}" ]
                   user => "${ECK_ES_USER}"
                   password => "${ECK_ES_PASSWORD}"
-                  cacert => "${ECK_ES_SSL_CERTIFICATE_AUTHORITY}"
+                  ssl_certificate_authorities => "${ECK_ES_SSL_CERTIFICATE_AUTHORITY}"
                   index => "pf-%{+YYYY.MM.dd}"
               }
           } else if "unbound" in [tags] {
@@ -98,7 +98,7 @@ spec:
                   hosts => [ "${ECK_ES_HOSTS}" ]
                   user => "${ECK_ES_USER}"
                   password => "${ECK_ES_PASSWORD}"
-                  cacert => "${ECK_ES_SSL_CERTIFICATE_AUTHORITY}"
+                  ssl_certificate_authorities => "${ECK_ES_SSL_CERTIFICATE_AUTHORITY}"
                   index => "unbound-%{+YYYY.MM.dd}"
               }
           } else if "telegraf" in [tags] {
@@ -106,7 +106,7 @@ spec:
                   hosts => [ "${ECK_ES_HOSTS}" ]
                   user => "${ECK_ES_USER}"
                   password => "${ECK_ES_PASSWORD}"
-                  cacert => "${ECK_ES_SSL_CERTIFICATE_AUTHORITY}"
+                  ssl_certificate_authorities => "${ECK_ES_SSL_CERTIFICATE_AUTHORITY}"
                   index => "telegraf-%{+YYYY.MM.dd}"
               }
           } else if "beats_input_raw_event" in [tags] {
@@ -114,7 +114,7 @@ spec:
                   hosts => [ "${ECK_ES_HOSTS}" ]
                   user => "${ECK_ES_USER}"
                   password => "${ECK_ES_PASSWORD}"
-                  cacert => "${ECK_ES_SSL_CERTIFICATE_AUTHORITY}"
+                  ssl_certificate_authorities => "${ECK_ES_SSL_CERTIFICATE_AUTHORITY}"
                   index => "packetbeat-%{+YYYY.MM.dd}"
               }
           }
