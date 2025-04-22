@@ -25,7 +25,7 @@ spec:
       - name: traefik
         chartname: traefik/traefik
         namespace: "traefik"
-        version: "35.0.0"
+        version: "35.0.1"
         values: |-
           service:
             annotations:
