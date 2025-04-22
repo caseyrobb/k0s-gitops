@@ -57,8 +57,8 @@ spec:
                 gnetId: 16888
                 revision: 9
               unbound:
-                gnetId: 11705
-                revision: 1
+                gnetId: 21006
+                revision: 2
                 datasource:
                 - name: DS_PROMETHEUS
                   value: Prometheus
