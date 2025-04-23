@@ -1,18 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: ServerSideApply=true
-  name: storage-config
+  name: argocd-config
   namespace: argocd
 spec:
   destination:
-    namespace: longhorn-system
+    namespace: argocd
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: components/apps/longhorn
+    path: components/apps/argocd
     repoURL: https://github.com/caseyrobb/k0s-gitops
     targetRevision: HEAD
   syncPolicy:
@@ -20,4 +17,4 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-    - ServerSideApply=true
+    - CreateNamespace=true

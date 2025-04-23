@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- argocd-config-application.yaml
+- argocd-application.yaml
 - elastic-operator-application.yaml
 #- gitea-application.yaml
 #- gotify-application.yaml
@@ -19,10 +19,12 @@ resources:
 - firewall-application.yaml
 - vaultwarden-application.yaml
 #- velero-application.yaml
-- storage-config-application.yaml
+- longhorn-application.yaml
 - version-checker-application.yaml
 #- hugo-application.yaml
 #- headlamp-application.yaml
 - wger-application.yaml
 - helm-version-check-application.yaml
 #- jupyter-application.yaml
+- metallb-application.yaml
+- traefik-application.yaml

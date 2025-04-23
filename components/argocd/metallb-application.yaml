@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: metallb
+  namespace: argocd
+spec:
+  destination:
+    namespace: metallb-system
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+  - chart: metallb
+    repoURL: https://metallb.github.io/metallb
+    targetRevision: 0.14.9
+    helm:
+      values: |
+        prometheus:
+          namespace: monitoring
+          serviceAccount: kube-prometheus-stack-prometheus
+          serviceMonitor:
+            enabled: true
+            speaker:
+              additionalLabels:
+                release: kube-prometheus-stack
+            controller:
+              additionalLabels:
+                release: kube-prometheus-stack
+  - kustomize:
+      namespace: metallb-system
+    path: components/apps/metallb
+    repoURL: https://github.com/caseyrobb/k0s-gitops
+    targetRevision: HEAD
+  syncPolicy:
+    #automated:
+    #  prune: true
+    #  selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
