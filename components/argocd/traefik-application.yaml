@@ -66,11 +66,6 @@ spec:
           prometheus:
             service:
               enabled: true
-              addServicesLabels:
-                app: traefik
-                app.kubernetes.io/component: metrics
-                app.kubernetes.io/instance: traefik-traefik
-                app.kubernetes.io/name: traefik
               labels:
                 release: kube-prometheus-stack
             disableAPICheck: false
@@ -92,6 +87,11 @@ spec:
               jobLabel: traefik
               interval: 30s
               honorLabels: true
+              additionalLabels:
+                app: traefik
+                app.kubernetes.io/component: metrics
+                app.kubernetes.io/instance: traefik
+                app.kubernetes.io/name: traefik
             headerLabels:
               user_id: X-User-Id
               tenant: X-Tenant
