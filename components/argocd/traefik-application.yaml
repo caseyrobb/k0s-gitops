@@ -87,11 +87,6 @@ spec:
               jobLabel: traefik
               interval: 30s
               honorLabels: true
-              additionalLabels:
-                app: traefik
-                app.kubernetes.io/component: metrics
-                app.kubernetes.io/instance: traefik
-                app.kubernetes.io/name: traefik
             headerLabels:
               user_id: X-User-Id
               tenant: X-Tenant
@@ -113,8 +108,8 @@ spec:
     repoURL: https://github.com/caseyrobb/k0s-gitops
     targetRevision: HEAD
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+    #automated:
+    #  prune: true
+    #  selfHeal: true
     syncOptions:
     - CreateNamespace=true
