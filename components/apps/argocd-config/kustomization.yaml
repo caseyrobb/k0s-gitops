@@ -6,6 +6,9 @@ resources:
 #- argocd-rbac-cm.yaml
 #- argocd-cm.yaml
 - argo-helm-repo.yaml
+- traefik-helm-repo.yaml
+- longhorn-helm-repo.yaml
+- metallb-helm-repo.yaml
 - democratic-csi-helm-repo.yaml
 - eck-helm-repo.yaml
 - gabe565-helm-repo.yaml
