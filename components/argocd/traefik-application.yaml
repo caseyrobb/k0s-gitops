@@ -1,0 +1,112 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: traefik
+  namespace: argocd
+spec:
+  destination:
+    namespace: traefik
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+  - chart: traefik
+    repoURL: https://traefik.github.io/charts
+    targetRevision: 35.0.1
+    helm:
+      values: |
+        service:
+          annotations:
+            metallb.io/ip-allocated-from-pool: traefik
+        ports:
+          traefik:
+            expose:
+              default: true
+          beats:
+            port: 5044
+            protocol: TCP
+            expose:
+              default: true
+          syslog:
+            port: 5959
+            protocol: TCP
+            expose:
+              default: true
+          gitssh:
+            port: 2222
+            protocol: TCP
+            expose:
+              default: true
+          dlna:
+            port: 1900
+            protocol: UDP
+            expose:
+              default: true
+          autodiscover:
+            port: 7359
+            protocol: UDP
+            expose:
+              default: true
+        ingressRoute:
+          dashboard:
+            enabled: true
+            matchRule: Host(`traefik.redcomet.ca`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+            services:
+              - name: api@internal
+                kind: TraefikService
+            entryPoints: ["websecure"]
+            tls:
+              secretName: wildcard-tls
+              domains:
+                - sans:
+                    - '*.redcomet.ca'
+        providers:
+          kubernetesGateway:
+            enabled: true
+        metrics:
+          prometheus:
+            service:
+              enabled: true
+            disableAPICheck: false
+            serviceMonitor:
+              additionalLabels:
+                release: kube-prometheus-stack
+              enabled: true
+              metricRelabelings:
+                - sourceLabels: [__name__]
+                  separator: ;
+                  regex: ^fluentd_output_status_buffer_(oldest|newest)_.+
+                  replacement: $1
+                  action: drop
+              relabelings:
+                - sourceLabels: [__meta_kubernetes_pod_node_name]
+                  separator: ;
+                  regex: ^(.*)$
+                  targetLabel: nodename
+                  replacement: $1
+                  action: replace
+              jobLabel: traefik
+              interval: 30s
+              honorLabels: true
+            prometheusRule:
+              enabled: true
+              rules:
+                - alert: TraefikDown
+                  expr: up{job="traefik"} == 0
+                  for: 5m
+                  labels:
+                    context: traefik
+                    severity: warning
+                  annotations:
+                    summary: "Traefik Down"
+                    description: "{{ $labels.pod }} on {{ $labels.nodename }} is down"
+  - kustomize:
+      namespace: traefik
+    path: components/apps/traefik
+    repoURL: https://github.com/caseyrobb/k0s-gitops
+    targetRevision: HEAD
+  syncPolicy:
+    #automated:
+    #  prune: true
+    #  selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
