@@ -83,6 +83,15 @@ spec:
             size: 5Gi
         prometheus:
           prometheusSpec:
+            storageSpec:
+              volumeClaimTemplate:
+                spec:
+                  storageClassName: longhorn
+                  accessModes: 
+                    - ReadWriteOnce
+                  resources:
+                    requests:
+                      storage: 10Gi
             retention: 48h
             additionalScrapeConfigsSecret:
               name: additional-scrape-configs
