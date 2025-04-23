@@ -24,3 +24,4 @@ metadata:
 spec:
   ipAddressPools:
   - traefik
+  - k0s-apps
