@@ -66,6 +66,11 @@ spec:
           prometheus:
             service:
               enabled: true
+              addServicesLabels:
+                app: traefik
+                app.kubernetes.io/component: metrics
+                app.kubernetes.io/instance: traefik-traefik
+                app.kubernetes.io/name: traefik
               labels:
                 release: kube-prometheus-stack
             disableAPICheck: false
