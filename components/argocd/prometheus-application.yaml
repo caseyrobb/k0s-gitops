@@ -45,7 +45,7 @@ spec:
                 - name: DS_PROMETHEUS
                   value: Prometheus
               traefik:
-                gnetId: 17346
+                gnetId: 17347
                 revision: 9
               version-check:
                 gnetId: 12833
