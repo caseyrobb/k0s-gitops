@@ -10,3 +10,4 @@ resources:
 - volumesnapshotclass.yaml
 - minio-sealedsecret.yaml
 - servicemonitor.yaml
+- longhorn-ingressroute.yaml 

@@ -1,0 +1,19 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-dashboard
+  namespace: traefik
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`traefik.redcomet.ca`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+    services:
+    - kind: TraefikService
+      name: api@internal
+  tls:
+    domains:
+    - sans:
+      - '*.redcomet.ca'
+    secretName: wildcard-tls
