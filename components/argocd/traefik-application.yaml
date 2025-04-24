@@ -14,6 +14,8 @@ spec:
     targetRevision: 35.0.1
     helm:
       values: |
+        globalArguments:
+          - "--global.sendanonymoususage=false"
         service:
           annotations:
             metallb.io/ip-allocated-from-pool: traefik
