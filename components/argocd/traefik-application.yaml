@@ -17,11 +17,6 @@ spec:
         service:
           annotations:
             metallb.io/ip-allocated-from-pool: traefik
-        logs:
-          general:
-            level: "DEBUG"
-          access:
-            enabled: true
         ports:
           traefik:
             expose:
@@ -76,10 +71,6 @@ spec:
                 release: kube-prometheus-stack
             disableAPICheck: false
             serviceMonitor:
-              namespace: traefik
-              namespaceSelector:
-                matchLabels:
-                  kubernetes.io/metadata.name: traefik
               additionalLabels:
                 app: traefik
                 release: kube-prometheus-stack
