@@ -16,6 +16,7 @@ spec:
       values: |
         globalArguments:
           - "--global.sendanonymoususage=false"
+        instanceLabelOverride: traefik
         service:
           annotations:
             metallb.io/ip-allocated-from-pool: traefik
