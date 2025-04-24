@@ -27,3 +27,5 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: "master"
           GITHUB_TOKEN: ${{ secrets.LINTER_TOKEN }}
+          KUBERNETES_KUBECONFORM_OPTIONS: --ignore-missing-schemas
+          KUBERNETES_KUBEVAL_OPTIONS: --ignore-missing-schemas --schema-location https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/
