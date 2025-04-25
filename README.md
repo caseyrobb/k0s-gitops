@@ -1,6 +1,6 @@
-[![Super-Linter](https://github.com/caseyrobb/k0s-gitops/actions/workflows/super-linter.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
-
 # k0s-config
+
+[![Super-Linter](https://github.com/caseyrobb/k0s-gitops/actions/workflows/super-linter.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
 My k0s homelab config hosted on a Minisforum NAB9.  
 
@@ -29,7 +29,7 @@ My k0s homelab config hosted on a Minisforum NAB9.
 
 ## GitOps Directory Structure
 
-```
+```shell
 components/argocd - ArgoCD Application manifests
 components/apps - App/Services manifests
 
