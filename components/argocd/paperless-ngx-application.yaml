@@ -17,7 +17,7 @@ spec:
           TZ: America/Edmonton
           PAPERLESS_URL: https://paperless.redcomet.ca
         image:
-          tag: 2.14.7
+          tag: 2.15.3
         mariadb:
           enabled: true
           primary:
@@ -27,8 +27,12 @@ spec:
             password: paperless
             rootPassword: paperless
         redis:
+          enabled: true
+          master:
+            persistence:
+              enabled: false
           replica:
-            replicaCount: 1
+            replicaCount: 0
         persistence:
           consume:
             accessMode: ReadWriteOnce
