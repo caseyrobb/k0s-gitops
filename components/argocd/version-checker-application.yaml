@@ -19,7 +19,7 @@ spec:
           additionalLabels:
             release: kube-prometheus-stack
         versionChecker:
-          logLevel: debug
+          logLevel: info
           testAllContainers: true
   syncPolicy:
     automated:
