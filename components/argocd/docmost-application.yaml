@@ -10,7 +10,7 @@ spec:
   project: default
   sources:
   - chart: docmost
-    repoURL: https://helm.irsigler.cloud
+    repoURL: https://th-charts.github.io/charts/
     targetRevision: 0.3.0
     helm:
       values: |
