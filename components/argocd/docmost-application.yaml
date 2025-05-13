@@ -16,7 +16,7 @@ spec:
       values: |
         docmost:
           appUrl: https://docmost.redcomet.ca
-        persistance:
+        persistence:
           accessModes: 
             - ReadWriteOnce
           enabled: true
