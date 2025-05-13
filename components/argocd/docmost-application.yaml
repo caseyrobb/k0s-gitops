@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: docmost
+  namespace: argocd
+spec:
+  destination:
+    namespace: docmost
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+  - chart: docmost
+    repoURL: https://helm.irsigler.cloud
+    targetRevision: 0.3.0
+    helm:
+      values: |
+        docmost:
+          appUrl: https://docmost.redcomet.ca
+        persistance:
+          accessModes: 
+            - ReadWriteOnce
+          enabled: true
+          requests:
+            storage: 5Gi
+          storageClassName: longhorn
+  - kustomize:
+      namespace: docmost
+    path: components/apps/docmost
+    repoURL: https://github.com/caseyrobb/k0s-gitops
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
