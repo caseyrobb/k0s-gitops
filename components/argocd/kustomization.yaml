@@ -28,4 +28,4 @@ resources:
 #- jupyter-application.yaml
 - metallb-application.yaml
 - traefik-application.yaml
-- docmost-application.yaml
+#- docmost-application.yaml
