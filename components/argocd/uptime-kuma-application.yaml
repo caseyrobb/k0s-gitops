@@ -13,7 +13,7 @@ spec:
       repoURL: https://helm.irsigler.cloud
       targetRevision: 2.21.3
       helm:
-        values:
+        values: |
           image:
             tag: 1.23.16
     - kustomize:
