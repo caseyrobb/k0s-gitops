@@ -9,21 +9,17 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-  - chart: uptime-kuma
-    repoURL: https://helm.irsigler.cloud
-    targetRevision: 2.21.2
-    helm:
-      values: |
-        image:
-          tag: 1.23.16
-  - kustomize:
-      namespace: uptime-kuma
-    path: components/apps/uptime-kuma
-    repoURL: https://github.com/caseyrobb/k0s-gitops
-    targetRevision: HEAD
+    - chart: uptime-kuma
+      repoURL: https://helm.irsigler.cloud
+      targetRevision: 2.21.3
+    - kustomize:
+        namespace: uptime-kuma
+      path: components/apps/uptime-kuma
+      repoURL: https://github.com/caseyrobb/k0s-gitops
+      targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
