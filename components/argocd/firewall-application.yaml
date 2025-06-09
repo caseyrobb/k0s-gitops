@@ -22,7 +22,7 @@ spec:
       kind: "Elasticsearch"
       name: "elasticsearch"
       jsonPointers:
-        - /metadata/annotations/eck.k8s.elastic.co~orchestration-hints
+        - /metadata/annotations/eck.k8s.elastic.co~1orchestration-hints
   syncPolicy:
     automated:
       prune: true
