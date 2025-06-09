@@ -17,9 +17,15 @@ spec:
     path: components/apps/firewall
     repoURL: https://github.com/caseyrobb/k0s-gitops
     targetRevision: HEAD
+  ignoreDifferences:
+    - group: "elasticsearch.k8s.elastic.co"
+      kind: "Elasticsearch"
+      name: "elasticsearch"
+      jsonPointers:
+        - /metadata/annotations/eck.k8s.elastic.co~orchestration-hints
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
