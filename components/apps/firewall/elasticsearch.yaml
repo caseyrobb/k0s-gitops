@@ -11,29 +11,29 @@ spec:
     roles:
       - secretName: logstash-roles-secret
   nodeSets:
-  - config:
-      node.store.allow_mmap: false
-    count: 1
-    name: default
-    podTemplate:
-      spec:
-        containers:
-        - name: elasticsearch
-          resources:
-            limits:
-              cpu: 4
-              memory: 6Gi
-            requests:
-              cpu: 1
-              memory: 2Gi
-    volumeClaimTemplates:
-    - metadata:
-        name: elasticsearch-data
-      spec:
-        accessModes:
-        - ReadWriteOnce
-        resources:
-          requests:
-            storage: 20Gi
-        storageClassName: longhorn
+    - config:
+        node.store.allow_mmap: false
+      count: 1
+      name: default
+      podTemplate:
+        spec:
+          containers:
+            - name: elasticsearch
+              resources:
+                limits:
+                  cpu: 4
+                  memory: 6Gi
+                requests:
+                  cpu: 4
+                  memory: 6Gi
+      volumeClaimTemplates:
+        - metadata:
+            name: elasticsearch-data
+          spec:
+            accessModes:
+              - ReadWriteOnce
+            resources:
+              requests:
+                storage: 20Gi
+            storageClassName: longhorn
   version: 9.0.1
