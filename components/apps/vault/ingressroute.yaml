@@ -1,0 +1,15 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: vault
+  namespace: vault
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`vault.redcomet.ca`) && PathPrefix(`/`)
+      services:
+        - kind: Service
+          name: vault-server
+          port: 8200

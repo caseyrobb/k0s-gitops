@@ -18,6 +18,7 @@ resources:
 #- mafl-application.yaml
 - firewall-application.yaml
 - vaultwarden-application.yaml
+- vault-application.yaml
 #- velero-application.yaml
 - longhorn-application.yaml
 - version-checker-application.yaml

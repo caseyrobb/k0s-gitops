@@ -1,0 +1,55 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vault
+  namespace: argocd
+spec:
+  destination:
+    namespace: vault
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+    - kustomize:
+        namespace: vault
+      path: components/apps/vault
+      repoURL: https://github.com/caseyrobb/k0s-gitops
+      targetRevision: HEAD
+    - chart: vault
+      helm:
+        values: |-
+          server:
+            standalone:
+              enabled: true
+              config: |
+                ui = true
+
+                listener "tcp" {
+                  tls_disable = 1
+                  address = "[::]:8200"
+                  cluster_address = "[::]:8201"
+                }
+                storage "file" {
+                  path = "/vault/data"
+                }
+
+            service:
+              enabled: true
+
+            dataStorage:
+              enabled: true
+              size: 10Gi
+              storageClass: longhorn
+              accessMode: ReadWriteOnce
+
+          ui:
+            enabled: true
+            serviceType: LoadBalancer
+      repoURL: https://helm.releases.hashicorp.com
+      targetRevision: 0.30.0
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
