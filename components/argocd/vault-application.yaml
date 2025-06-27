@@ -43,7 +43,7 @@ spec:
 
           ui:
             enabled: true
-            serviceType: LoadBalancer
+            serviceType: ClusterIP
       repoURL: https://helm.releases.hashicorp.com
       targetRevision: 0.30.0
   syncPolicy:

@@ -11,5 +11,5 @@ spec:
       match: Host(`vault.redcomet.ca`) && PathPrefix(`/`)
       services:
         - kind: Service
-          name: vault-server
+          name: vault-ui
           port: 8200
