@@ -11,7 +11,7 @@ resources:
 - paperless-ngx-application.yaml
 - uptime-kuma-application.yaml
 - komga-application.yaml
-- memos-application.yaml
+#- memos-application.yaml
 - prometheus-application.yaml
 #- it-tools-application.yaml
 #- tekton-application.yaml
@@ -24,7 +24,7 @@ resources:
 - version-checker-application.yaml
 #- hugo-application.yaml
 #- headlamp-application.yaml
-- wger-application.yaml
+#- wger-application.yaml
 - helm-version-check-application.yaml
 #- jupyter-application.yaml
 - metallb-application.yaml
