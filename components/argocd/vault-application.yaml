@@ -46,6 +46,12 @@ spec:
             serviceType: ClusterIP
       repoURL: https://helm.releases.hashicorp.com
       targetRevision: 0.30.0
+  ignoreDifferences:
+    - group: "apps"
+      kind: "StatefulSet"
+      name: "vault"
+      jsonPointers:
+        - /spec/volumeClaimTemplates
   syncPolicy:
     automated:
       prune: true
