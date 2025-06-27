@@ -22,6 +22,7 @@ resources:
 - grafana-helm-repo.yaml
 - immich-helm-repo.yaml
 - vaultwarden-helm-repo.yaml
+- vault-helm-repo.yaml
 - k8up-helm-repo.yaml
 - velero-helm-repo.yaml
 - jetstack-helm-repo.yaml
