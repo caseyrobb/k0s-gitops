@@ -11,5 +11,4 @@ stringData:
   name: traefik
   project: default
   type: helm
-  url: ghcr.io/traefik/helm/traefik
-  enableOCI: true
+  url: https://traefik.github.io/charts
