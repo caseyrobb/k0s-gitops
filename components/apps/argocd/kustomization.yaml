@@ -1,32 +1,31 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- service-monitor.yaml
-- argocd-cmd-params-cm.yaml
-- argocd-rbac-cm.yaml
-- argocd-rbac-crb.yaml
-- argocd-cm.yaml
-- argocd-ingressroute.yaml
-- argo-helm-repo.yaml
-- traefik-helm-repo.yaml
-- longhorn-helm-repo.yaml
-- metallb-helm-repo.yaml
-- democratic-csi-helm-repo.yaml
-- eck-helm-repo.yaml
-- gabe565-helm-repo.yaml
-- gitea-helm-repo.yaml
-- minio-helm-repo.yaml
-- sealedsecrets-helm-repo.yaml
-- uptime-kuma-repo.yaml
-- prometheus-helm-repo.yaml
-- grafana-helm-repo.yaml
-- immich-helm-repo.yaml
-- vaultwarden-helm-repo.yaml
-- vault-helm-repo.yaml
-- k8up-helm-repo.yaml
-- velero-helm-repo.yaml
-- jetstack-helm-repo.yaml
-- jupyter-helm-repo.yaml
-- wger-helm-repo.yaml
-- headlamp-helm-repo.yaml
-- th-charts-repo.yaml
+  - service-monitor.yaml
+  - argocd-cmd-params-cm.yaml
+  - argocd-rbac-cm.yaml
+  - argocd-rbac-crb.yaml
+  - argocd-cm.yaml
+  - argocd-ingressroute.yaml
+  - argo-helm-repo.yaml
+  - traefik-helm-repo.yaml
+  - longhorn-helm-repo.yaml
+  - metallb-helm-repo.yaml
+  - democratic-csi-helm-repo.yaml
+  - eck-helm-repo.yaml
+  - gabe565-helm-repo.yaml
+  - gitea-helm-repo.yaml
+  - minio-helm-repo.yaml
+  - sealedsecrets-helm-repo.yaml
+  - uptime-kuma-repo.yaml
+  - prometheus-helm-repo.yaml
+  - grafana-helm-repo.yaml
+  - immich-helm-repo.yaml
+  - vaultwarden-helm-repo.yaml
+  - vault-helm-repo.yaml
+  - k8up-helm-repo.yaml
+  - velero-helm-repo.yaml
+  - jetstack-helm-repo.yaml
+  - jupyter-helm-repo.yaml
+  - wger-helm-repo.yaml
+  - th-charts-repo.yaml
