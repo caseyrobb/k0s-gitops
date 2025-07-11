@@ -29,6 +29,8 @@ spec:
               enabled: true
             serviceMonitor:
               enabled: true
+              labels:
+                release: kube-prometheus-stack
           extraEnvVars:
             - name: KC_HOSTNAME
               value: keycloak.redcomet.ca
