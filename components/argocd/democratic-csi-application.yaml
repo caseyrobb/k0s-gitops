@@ -18,6 +18,7 @@ spec:
           name: "org.democratic-csi.iscsi"
         node:
           kubeletHostPath: /var/lib/k0s/kubelet
+        existingConfigSecret: democratic-csi-driver-config
         driver:
           config:
             driver: freenas-iscsi
