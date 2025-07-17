@@ -30,3 +30,4 @@ resources:
 - metallb-application.yaml
 - traefik-application.yaml
 - keycloak-application.yaml
+- democratic-csi-application.yaml
