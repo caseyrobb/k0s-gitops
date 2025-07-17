@@ -16,6 +16,12 @@ spec:
       values: |
         csiDriver:
           name: "org.democratic-csi.iscsi"
+        node:
+          kubeletHostPath: /var/lib/k0s/kubelet
+        driver:
+          config:
+            driver: freenas-iscsi
+            instance_id:
         storageClasses:
         - name: truenas-iscsi
           defaultClass: false
