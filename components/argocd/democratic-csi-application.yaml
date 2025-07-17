@@ -12,6 +12,25 @@ spec:
   - chart: democratic-csi
     repoURL: https://democratic-csi.github.io/charts/
     targetRevision: 0.15.0
+    helm:
+      values: |
+        csiDriver:
+          name: "org.democratic-csi.iscsi"
+        storageClasses:
+        - name: truenas-iscsi
+          defaultClass: false
+          reclaimPolicy: Delete
+          volumeBindingMode: Immediate
+          allowVolumeExpansion: true
+          parameters:
+            fsType: ext4
+          mountOptions: []
+          secrets:
+            provisioner-secret:
+            controller-publish-secret:
+            node-stage-secret:
+            node-publish-secret:
+            controller-expand-secret:
   - kustomize:
       namespace: democratic-csi
     path: components/apps/democratic-csi
