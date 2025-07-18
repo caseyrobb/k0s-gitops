@@ -20,6 +20,7 @@ spec:
           service:
             annotations:
               metallb.io/ip-allocated-from-pool: traefik
+              metallb.io/loadBalancerIPs: 172.16.0.102
           ports:
             traefik:
               expose:
