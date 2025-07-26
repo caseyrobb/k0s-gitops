@@ -11,11 +11,11 @@ spec:
   source:
     chart: eck-operator
     repoURL: https://helm.elastic.co
-    targetRevision: 3.0.0
+    targetRevision: 3.0.2
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-    - ServerSideApply=true
-    - CreateNamespace=true
+      - ServerSideApply=true
+      - CreateNamespace=true
