@@ -9,9 +9,9 @@ metadata:
     k8up.io/backup: "true"
 spec:
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
-      storage: 4Gi
+      storage: 8Gi
   storageClassName: longhorn
   volumeMode: Filesystem
