@@ -56,6 +56,12 @@ spec:
                 longhorn:
                   gnetId: 16888
                   revision: 9
+                keycloak:
+                  gnetId: 14390
+                  revision: 7
+                  datasource:
+                  - name: PROMETHEUS_DS
+                    value: Prometheus
                 unbound:
                   gnetId: 21006
                   revision: 2
