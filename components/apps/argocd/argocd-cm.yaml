@@ -1,6 +1,13 @@
 apiVersion: v1
 data:
   accounts.helm-version-checker: apiKey, login
+  oidc.config: |
+    name: Keycloak
+    issuer: https://keycloak.redcomet.ca/realms/master
+    clientID: argocd
+    clientSecret: $oidc.keycloak.clientSecret
+    requestedScopes: ["openid", "profile", "email", "groups"]
+  url: https://argocd.redcomet.ca
 kind: ConfigMap
 metadata:
   annotations:
