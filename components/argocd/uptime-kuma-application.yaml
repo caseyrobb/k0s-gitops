@@ -12,6 +12,10 @@ spec:
     - chart: uptime-kuma
       repoURL: https://helm.irsigler.cloud
       targetRevision: 2.22.0
+      helm:
+        values: |
+          image:
+            tag: beta
     - kustomize:
         namespace: uptime-kuma
       path: components/apps/uptime-kuma
