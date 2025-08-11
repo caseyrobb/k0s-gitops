@@ -11,6 +11,7 @@ spec:
   sources:
     - chart: kube-prometheus-stack
       helm:
+        skipCrds: true
         values: |
           alertmanager:
             enabled: false
