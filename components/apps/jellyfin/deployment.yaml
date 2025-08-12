@@ -20,7 +20,35 @@ spec:
         app: jellyfin
     spec:
       containers:
-        - env:
+        - name: jellyfin_exporter
+          command:
+            - /bin/sh
+            - -c
+            - |
+              jellyfin_exporter \
+                --jellyfin.address=http://jellyfin:8096 \
+                --jellyfin.token="$JELLYFIN_TOKEN"
+          env:
+            - name: JELLYFIN_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: jellyfin-token
+                  key: token
+          image: rebelcore/jellyfin-exporter:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9564
+              name: metrics
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 1
+              memory: 1Gi
+            requests:
+              cpu: 200m
+              memory: 128Mi
+        - name: jellyfin
+          env:
             - name: TZ
               value: America/Edmonton
             - name: JELLYFIN_PublishedServerUrl
@@ -37,7 +65,6 @@ spec:
             periodSeconds: 15
             successThreshold: 1
             timeoutSeconds: 5
-          name: jellyfin
           ports:
             - containerPort: 7359
               name: jellyfin-auto
