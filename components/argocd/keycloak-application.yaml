@@ -51,7 +51,7 @@ spec:
               password: keycloak
               database: bitnami_keycloak
       repoURL: https://charts.bitnami.com/bitnami
-      targetRevision: 25.0.1
+      targetRevision: 25.0.2
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
