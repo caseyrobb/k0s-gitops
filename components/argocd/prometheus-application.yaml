@@ -103,9 +103,10 @@ spec:
                       - ReadWriteOnce
                     resources:
                       requests:
-                        storage: 20Gi
+                        storage: 30Gi
               retention: 10d
-              retentionSize: 30GiB
+              retentionSize: 25GiB
+              walCompression: true
               additionalScrapeConfigsSecret:
                 name: additional-scrape-configs
                 key: additional-scrape-configs.yaml
