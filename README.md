@@ -12,16 +12,18 @@ My k0s homelab config hosted on a Minisforum NAB9.
 
 - ECK Operator
 - pf Firewall/Gateway Dashboard (ELK stack)
-- Gitea
-- Headlamp
-- IT-tools
+- democratic-csi
 - Jellyfin
 - Komga
-- Prometheus operator w/Grafana
-- Mafl
-- Memos
+- Vault
+- Keycloak
+- Longhorn
+- Metallb
 - Paperless-ngx
+- Prometheus operator w/Grafana
+- sealed-secrets
 - Tekton operator
+- Traefik
 - Uptime Kuma
 - Vaultwarden
 - Velero
