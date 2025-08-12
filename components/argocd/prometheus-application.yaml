@@ -39,6 +39,11 @@ spec:
                   datasource:
                   - name: DS_PROMETHEUS
                     value: Prometheus
+                jellyfin:
+                  url: https://raw.githubusercontent.com/rebelcore/jellyfin_grafana/refs/heads/master/dashboards/jellyfin.json
+                  datasource:
+                  - name: DS_PROMETHEUS
+                    value: Prometheus
                 metallb:
                   gnetId: 20162
                   revision: 6
