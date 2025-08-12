@@ -10,4 +10,5 @@ spec:
     matchLabels:
       app.kubernetes.io/name: jellyfin
   endpoints:
-    - port: metrics
+    - targetPort: 9594
+      path: /metrics
