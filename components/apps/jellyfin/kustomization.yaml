@@ -11,3 +11,5 @@ resources:
 - deployment.yaml
 - dlna-udp.yaml
 - autodiscover-udp.yaml
+- token-sealedsecret.yaml
+- service-monitor.yaml
