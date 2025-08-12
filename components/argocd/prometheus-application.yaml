@@ -99,7 +99,8 @@ spec:
                     resources:
                       requests:
                         storage: 20Gi
-              retention: 48h
+              retention: 10d
+              retentionSize: 20GiB
               additionalScrapeConfigsSecret:
                 name: additional-scrape-configs
                 key: additional-scrape-configs.yaml
