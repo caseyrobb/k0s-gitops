@@ -18,6 +18,8 @@ kind: Service
 metadata:
   name: jellyfin-metrics
   namespace: jellyfin
+  labels:
+    app: jellyfin
 spec:
   ports:
     - name: metrics

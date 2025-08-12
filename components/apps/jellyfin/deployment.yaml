@@ -27,7 +27,8 @@ spec:
             - |
               jellyfin_exporter \
                 --jellyfin.address=http://jellyfin:8096 \
-                --jellyfin.token="$JELLYFIN_TOKEN"
+                --jellyfin.token="$JELLYFIN_TOKEN" \
+                --collector.activity
           env:
             - name: JELLYFIN_TOKEN
               valueFrom:
