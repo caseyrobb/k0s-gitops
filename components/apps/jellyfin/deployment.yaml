@@ -22,7 +22,7 @@ spec:
         app.kubernetes.io/name: jellyfin
     spec:
       containers:
-        - name: jellyfin_exporter
+        - name: jellyfin-exporter
           command:
             - /bin/sh
             - -c
