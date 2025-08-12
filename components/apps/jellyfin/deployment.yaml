@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: jellyfin
+    app.kubernetes.io/name: jellyfin
   name: jellyfin
   namespace: jellyfin
   annotations:
@@ -18,6 +19,7 @@ spec:
     metadata:
       labels:
         app: jellyfin
+        app.kubernetes.io/name: jellyfin
     spec:
       containers:
         - name: jellyfin_exporter
@@ -37,7 +39,7 @@ spec:
           image: rebelcore/jellyfin-exporter:latest
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 9564
+            - containerPort: 9594
               name: metrics
               protocol: TCP
           resources:

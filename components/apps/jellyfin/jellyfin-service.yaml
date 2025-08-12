@@ -5,10 +5,25 @@ metadata:
   namespace: jellyfin
 spec:
   ports:
-  - name: main
-    port: 8096
-    protocol: TCP
-    targetPort: 8096
+    - name: main
+      port: 8096
+      protocol: TCP
+      targetPort: 8096
+  selector:
+    app: jellyfin
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyfin-metrics
+  namespace: jellyfin
+spec:
+  ports:
+    - name: metrics
+      port: 9594
+      protocol: TCP
+      targetPort: 9594
   selector:
     app: jellyfin
   type: ClusterIP
