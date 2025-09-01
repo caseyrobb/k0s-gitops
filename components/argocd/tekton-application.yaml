@@ -17,6 +17,7 @@ spec:
     targetRevision: HEAD
   ignoreDifferences:
     - group: "apiextentions.k8s.io"
+      name: "manualapprovalgates.operator.tekton.dev"
       kind: "CustomResourceDefinition"
       jsonPointers:
         - /spec/preserveUnknownFields
