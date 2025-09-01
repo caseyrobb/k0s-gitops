@@ -15,6 +15,11 @@ spec:
     path: components/apps/tekton
     repoURL: https://github.com/caseyrobb/k0s-gitops
     targetRevision: HEAD
+  ignoreDifferences:
+    - group: "apiextentions.k8s.io"
+      kind: "CustomResourceDefinition"
+      jsonPointers:
+        - /spec/preserveUnknownFields
   syncPolicy:
     automated:
       selfHeal: true
