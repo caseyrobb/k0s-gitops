@@ -1,33 +1,33 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- argocd-application.yaml
-- elastic-operator-application.yaml
-#- gitea-application.yaml
-#- gotify-application.yaml
-- jellyfin-application.yaml
-- sealed-secrets-application.yaml
-#- bookstack-application.yaml
-- paperless-ngx-application.yaml
-- uptime-kuma-application.yaml
-- komga-application.yaml
-#- memos-application.yaml
-- prometheus-application.yaml
-#- it-tools-application.yaml
-#- tekton-application.yaml
-#- mafl-application.yaml
-- firewall-application.yaml
-- vaultwarden-application.yaml
-- vault-application.yaml
-#- velero-application.yaml
-- longhorn-application.yaml
-- version-checker-application.yaml
-#- hugo-application.yaml
-#- headlamp-application.yaml
-#- wger-application.yaml
-- helm-version-check-application.yaml
-#- jupyter-application.yaml
-- metallb-application.yaml
-- traefik-application.yaml
-- keycloak-application.yaml
-- democratic-csi-application.yaml
+  - argocd-application.yaml
+  - elastic-operator-application.yaml
+  #- gitea-application.yaml
+  #- gotify-application.yaml
+  - jellyfin-application.yaml
+  - sealed-secrets-application.yaml
+  #- bookstack-application.yaml
+  - paperless-ngx-application.yaml
+  - uptime-kuma-application.yaml
+  - komga-application.yaml
+  #- memos-application.yaml
+  - prometheus-application.yaml
+  #- it-tools-application.yaml
+  - tekton-application.yaml
+  #- mafl-application.yaml
+  - firewall-application.yaml
+  - vaultwarden-application.yaml
+  - vault-application.yaml
+  #- velero-application.yaml
+  - longhorn-application.yaml
+  - version-checker-application.yaml
+  #- hugo-application.yaml
+  #- headlamp-application.yaml
+  #- wger-application.yaml
+  - helm-version-check-application.yaml
+  #- jupyter-application.yaml
+  - metallb-application.yaml
+  - traefik-application.yaml
+  - keycloak-application.yaml
+  - democratic-csi-application.yaml
