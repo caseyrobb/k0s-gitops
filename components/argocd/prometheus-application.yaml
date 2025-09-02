@@ -18,6 +18,31 @@ spec:
             alertmanagerSpec:
               useExistingSecret: true
           grafana:
+            grafana.ini:
+              auth.generic_oauth:
+                enabled: true
+                name: "Keycloak SSO"
+                allow_sign_up: true
+                issuer: "https://keycloak.redcomet.ca/realms/master"
+                client_id: "grafana"
+                client_secret: "$__file{/etc/secrets/grafana_keycloak_secret/client_secret}"
+                scopes: "openid profile email"
+                auth_url: "https://keycloak.redcomet.ca/realms/master/protocol/openid-connect/auth"
+                token_url: "https://keycloak.redcomet.ca/realms/master/protocol/openid-connect/token"
+                api_url: "https://keycloak.redcomet.ca/realms/master/protocol/openid-connect/userinfo"
+                sign_out_redirect_url: "https://grafana.redcomet.ca/"
+                email_attribute_path: "email"
+                login_attribute_path: "username"
+                name_attribute_path: "full_name"
+                role_attribute_path: "contains(resource_access.grafana.roles[*], 'grafana-admin') && 'GrafanaAdmin' || contains(resource_access.grafana.roles[*], 'admin') && 'Admin' || contains(resource_access.grafana.roles[*], 'grafana-editor') && 'Editor' || contains(resource_access.grafana.roles[*], 'viewer') && 'Viewer'"
+                role_attribute_strict_mode: true
+                allow_assign_grafana_admin: true 
+            extraSecretMounts:
+              - name: auth-generic-oauth-secret-mount
+                secretName: grafana-keycloak-secret
+                defaultMode: 0440
+                mountPath: /etc/secrets/grafana_keycloak_secret
+                readOnly: true
             dashboardProviders:
               dashboardproviders.yaml:
                 apiVersion: 1
