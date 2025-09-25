@@ -22,7 +22,7 @@ spec:
             defaultClassReplicaCount: 1
           defaultSettings:
             defaultDataPath: "/var/lib/longhorn"
-            defaultReplicaCount: 1
+            defaultReplicaCount: "1"
             backupTargetCredentialSecret: minio-secret
             backupTarget: s3://k0s-backup@minio/longhorn
           csi:
