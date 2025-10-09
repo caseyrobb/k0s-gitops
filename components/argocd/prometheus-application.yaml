@@ -17,7 +17,8 @@ spec:
             alertmanagerSpec:
               useExistingSecret: true
           crds:
-            upgradeJob: enabled
+            upgradeJob:
+              enabled: true
           grafana:
             dashboardProviders:
               dashboardproviders.yaml:
