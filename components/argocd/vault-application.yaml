@@ -45,7 +45,7 @@ spec:
             enabled: true
             serviceType: ClusterIP
       repoURL: https://helm.releases.hashicorp.com
-      targetRevision: 0.30.0
+      targetRevision: 0.31.0
   ignoreDifferences:
     - group: "apps"
       kind: "StatefulSet"
