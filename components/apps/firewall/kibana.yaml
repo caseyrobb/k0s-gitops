@@ -9,6 +9,7 @@ spec:
   config:
     server.publicBaseUrl: "https://kibana.redcomet.ca"
     csp.strict: false
+    telemetry.optIn: false
   count: 1
   elasticsearchRef:
     name: elasticsearch
