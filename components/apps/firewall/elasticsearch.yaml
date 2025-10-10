@@ -12,7 +12,6 @@ spec:
       - secretName: logstash-roles-secret
   nodeSets:
     - config:
-        xpack.security.enabled: true
         node.store.allow_mmap: false
         discovery.seed_hosts: []
       count: 1
