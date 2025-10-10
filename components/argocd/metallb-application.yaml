@@ -14,6 +14,11 @@ spec:
       targetRevision: 0.15.2
       helm:
         values: |
+          speaker:
+            frr:
+              image:
+                tag: 10.4.1
+                repository: quay.io/frrouting/frr
           prometheus:
             namespace: monitoring
             serviceAccount: kube-prometheus-stack-prometheus
