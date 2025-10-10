@@ -14,8 +14,6 @@ spec:
     - config:
         xpack.security.enabled: true
         node.store.allow_mmap: false
-        node.name: es-node
-        cluster.initial_master_nodes: ["es-node"]
         discovery.seed_hosts: []
       count: 1
       name: default
