@@ -10,3 +10,4 @@ resources:
 - beats-tcp.yaml
 - syslog-tcp.yaml
 - kibana-objects-cm.yaml
+- set-es-replicas-job.yaml
