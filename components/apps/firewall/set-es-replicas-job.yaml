@@ -23,8 +23,9 @@ spec:
               ES_URL="https://elasticsearch-es-http:9200"
               echo "$ES_URL"
               STATUS="red"
-              until [[ ${STATUS} -eq "green" ]]; done
+              until [[ ${STATUS} -eq "green" ]]; do
                 STATUS=$(curl -s -k -u elastic:$ES_PASSWORD $ES_URL/_cat/health?h=status)
+                echo $STATUS
                 echo "Waiting for Elasticsearch to be ready..."
                 sleep 5
               done
