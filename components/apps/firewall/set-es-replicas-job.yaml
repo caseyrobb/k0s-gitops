@@ -21,24 +21,15 @@ spec:
             - -c
             - |
               ES_URL="https://elasticsearch-es-http:9200"
-              until curl -s -k -u elastic:$ES_PASSWORD $ES_URL/_cat/health?h=status | grep -q green; do
+              echo "$ES_URL"
+              STATUS="red"
+              until [[ ${STATUS} -eq "green" ]]; done
+                STATUS=$(curl -s -k -u elastic:$ES_PASSWORD $ES_URL/_cat/health?h=status)
                 echo "Waiting for Elasticsearch to be ready..."
                 sleep 5
               done
-              echo "Setting default index template for future indices..."
-              curl -k -u elastic:$ES_PASSWORD -X PUT $ES_URL/_index_template/default_no_replicas \
-                -H "Content-Type: application/json" \
-                -d '{
-                  "index_patterns": ["*"],
-                  "priority": 0,
-                  "template": {
-                    "settings": {
-                      "number_of_replicas": 0
-                    }
-                  }
-                }'
               echo "Updating existing indices to 0 replicas..."
-              curl -k -u elastic:$ES_PASSWORD -X PUT $ES_URL/*/_settings \
+              curl -k -u elastic:$ES_PASSWORD -X PUT $ES_URL/_all/_settings \
                 -H "Content-Type: application/json" \
                 -d '{
                   "index": {
