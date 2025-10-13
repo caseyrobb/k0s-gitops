@@ -115,10 +115,10 @@ spec:
                 key: additional-scrape-configs.yaml
                 enabled: true
       repoURL: https://prometheus-community.github.io/helm-charts
-      targetRevision: 78.2.0
+      targetRevision: 78.2.1
     - chart: prometheus-snmp-exporter
       repoURL: https://prometheus-community.github.io/helm-charts
-      targetRevision: 9.6.2
+      targetRevision: 9.8.1
     - kustomize:
         namespace: monitoring
       path: components/apps/grafana
