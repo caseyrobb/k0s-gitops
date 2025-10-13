@@ -1,13 +1,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- elasticsearch.yaml
-- kibana.yaml
-- kibana-es-sealedsecret.yaml
-- logstash.yaml
-- logstash-roles.yaml
-- ingressroute.yaml
-- beats-tcp.yaml
-- syslog-tcp.yaml
-- kibana-objects-cm.yaml
-- set-es-replicas-job.yaml
+  - elasticsearch.yaml
+  - kibana.yaml
+  - kibana-es-sealedsecret.yaml
+  - logstash.yaml
+  - logstash-roles.yaml
+  - ingressroute.yaml
+  - beats-tcp.yaml
+  - syslog-tcp.yaml
+  - kibana-objects-cm.yaml
+  - set-es-replicas-cronjob.yaml
