@@ -11,5 +11,5 @@ spec:
       match: Host(`speedtest.redcomet.ca`) && PathPrefix(`/`)
       services:
         - kind: Service
-          name: speedtest-openspeedtest
+          name: openspeedtest
           port: 3000
