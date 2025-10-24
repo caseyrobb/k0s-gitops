@@ -14,5 +14,5 @@ spec:
           name: openspeedtest
           port: 3000
       middlewares:
-        - name: proxy-body-limit
+        - name: openspeedtest-proxy-body-limit
           namespace: openspeedtest

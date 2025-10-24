@@ -5,4 +5,4 @@ metadata:
   namespace: openspeedtest
 spec:
   buffering:
-    maxRequestBodyBytes: 10737418240
+    maxRequestBodyBytes: 1073741824
