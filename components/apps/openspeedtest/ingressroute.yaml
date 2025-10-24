@@ -1,0 +1,19 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: openspeedtest
+  namespace: openspeedtest
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`speedtest.redcomet.ca`) && PathPrefix(`/`)
+      services:
+        - kind: TraefikService
+          name: api@internal
+  tls:
+    domains:
+      - sans:
+          - "*.redcomet.ca"
+    secretName: wildcard-tls
