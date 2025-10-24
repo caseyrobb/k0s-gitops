@@ -13,3 +13,6 @@ spec:
         - kind: Service
           name: openspeedtest
           port: 3000
+      middlewares:
+        - name: proxy-body-limit
+          namespace: openspeedtest
