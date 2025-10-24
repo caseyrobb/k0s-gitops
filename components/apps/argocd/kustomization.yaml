@@ -29,3 +29,4 @@ resources:
   - jupyter-helm-repo.yaml
   - wger-helm-repo.yaml
   - th-charts-repo.yaml
+  - openspeedtest-helm-repo.yaml
