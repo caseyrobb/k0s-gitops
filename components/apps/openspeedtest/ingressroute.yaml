@@ -10,10 +10,6 @@ spec:
     - kind: Rule
       match: Host(`speedtest.redcomet.ca`) && PathPrefix(`/`)
       services:
-        - kind: TraefikService
-          name: api@internal
-  tls:
-    domains:
-      - sans:
-          - "*.redcomet.ca"
-    secretName: wildcard-tls
+        - kind: Service
+          name: speedtest-openspeedtest
+          port: 3000
