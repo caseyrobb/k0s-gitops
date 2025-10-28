@@ -115,7 +115,7 @@ spec:
                 key: additional-scrape-configs.yaml
                 enabled: true
       repoURL: https://prometheus-community.github.io/helm-charts
-      targetRevision: 78.5.0
+      targetRevision: 79.0.0
     - chart: prometheus-snmp-exporter
       repoURL: https://prometheus-community.github.io/helm-charts
       targetRevision: 9.8.1
