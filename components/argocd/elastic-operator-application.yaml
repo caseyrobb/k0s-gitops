@@ -11,7 +11,7 @@ spec:
   source:
     chart: eck-operator
     repoURL: https://helm.elastic.co
-    targetRevision: 3.1.0
+    targetRevision: 3.2.0
   syncPolicy:
     automated:
       prune: true
