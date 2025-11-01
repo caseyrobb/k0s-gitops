@@ -14,21 +14,24 @@ spec:
         release: kube-prometheus-stack
     spec:
       containers:
-      - name: mktxp-exporter
-        image: ghcr.io/akpw/mktxp:latest
-        args:
-          - --cfg-dir
-          - /mktxp_config
-          - export
-        resources:
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
-        volumeMounts:
-          - name: mktxp-credentials
-            mountPath: /mktxp_config
-        ports:
-        - containerPort: 49090
+        - name: mktxp-exporter
+          image: ghcr.io/akpw/mktxp:latest
+          args:
+            - --cfg-dir
+            - /mktxp_config
+            - export
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+            requests:
+              memory: "16Mi"
+              cpu: "50m"
+          volumeMounts:
+            - name: mktxp-credentials
+              mountPath: /mktxp_config
+          ports:
+            - containerPort: 49090
       volumes:
         - name: mktxp-credentials
           secret:
@@ -49,5 +52,5 @@ spec:
     app: mktxp-exporter
     release: kube-prometheus-stack
   ports:
-  - port: 49090
-    targetPort: 49090
+    - port: 49090
+      targetPort: 49090
