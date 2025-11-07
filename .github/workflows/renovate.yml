@@ -1,0 +1,22 @@
+name: Renovate
+
+on:
+  # Run on a schedule (e.g., every 6 hours)
+  schedule:
+    - cron: "0 */6 * * *"
+
+  # Allow manual triggering from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  renovate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Renovate
+        uses: renovatebot/github-action@v40.2.2
+        with:
+          # Use the PAT you stored in secrets
+          token: ${{ secrets.RENOVATE_TOKEN }}
