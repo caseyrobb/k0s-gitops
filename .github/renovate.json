@@ -1,0 +1,22 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": [
+		"config:base"
+	],
+	"argocd": {
+		"fileMatch": [
+			"components/apps/.*\\.yaml$",
+			"components/argocd/.*\\.yaml$",
+			"app-of-apps.yaml"
+		]
+	},
+	"kubernetes": {
+		"fileMatch": [
+			"components/apps/.*\\.yaml$",
+			"components/argocd/.*\\.yaml$"
+		]
+	},
+	"github-actions": {
+		"enabled": true
+	}
+}
