@@ -10,6 +10,7 @@ updates:
           - "*"
   - package-ecosystem: "docker"
     directories:
+      - "/"
       - "**"
       - "/components/apps/**"
     schedule:
@@ -19,6 +20,8 @@ updates:
         patterns:
           - "*"
   - package-ecosystem: "helm"
-    directory: "**"
+    directories:
+      - "/"
+      - "**"
     schedule:
       interval: "daily"
