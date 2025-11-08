@@ -1,0 +1,35 @@
+env:
+  TZ: America/Edmonton
+  PAPERLESS_URL: https://paperless.redcomet.ca
+image:
+  tag: 2.15.3
+mariadb:
+  enabled: true
+  primary:
+    persistence:
+      enabled: true
+  auth:
+    password: paperless
+    rootPassword: paperless
+redis:
+  enabled: true
+  master:
+    persistence:
+      enabled: false
+  replica:
+    replicaCount: 0
+persistence:
+  consume:
+    accessMode: ReadWriteOnce
+    size: 1Gi
+  data:
+    enabled: true
+    accessMode: ReadWriteOnce
+    size: 10Gi
+  media:
+    enabled: true
+    accessMode: ReadWriteOnce
+    size: 10Gi
+  export:
+    accessMode: ReadWriteOnce
+    size: 2Gi

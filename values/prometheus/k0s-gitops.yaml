@@ -1,0 +1,101 @@
+alertmanager:
+  enabled: false
+  alertmanagerSpec:
+    useExistingSecret: true
+crds:
+  upgradeJob:
+    enabled: true
+grafana:
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+        - name: "default"
+          orgId: 1
+          folder: ""
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/default
+  dashboards:
+    default:
+      argocd:
+        url: https://raw.githubusercontent.com/argoproj/argo-cd/refs/heads/master/examples/dashboard.json
+      helm-version-check:
+        url: https://raw.githubusercontent.com/caseyrobb/helm-version-check/refs/heads/master/k8s/dashboard.json
+        datasource:
+          - name: DS_PROMETHEUS
+            value: Prometheus
+      jellyfin:
+        url: https://raw.githubusercontent.com/rebelcore/jellyfin_grafana/refs/heads/master/dashboards/jellyfin.json
+        datasource:
+          - name: DS_PROMETHEUS
+            value: Prometheus
+      metallb:
+        gnetId: 20162
+        revision: 6
+        datasource:
+          - name: DS_PROMETHEUS
+            value: Prometheus
+      traefik:
+        gnetId: 17347
+        revision: 9
+      version-check:
+        gnetId: 12833
+        revision: 1
+        datasource:
+          - name: DS_VERSION-CHECKER
+            value: Prometheus
+      longhorn:
+        gnetId: 16888
+        revision: 9
+      keycloak:
+        gnetId: 14390
+        revision: 7
+        datasource:
+          - name: PROMETHEUS_DS
+            value: Prometheus
+      unbound:
+        gnetId: 21006
+        revision: 2
+        datasource:
+          - name: DS_PROMETHEUS
+            value: Prometheus
+      k8s:
+        gnetId: 15661
+        revision: 2
+        datasource:
+          - name: DS__VICTORIAMETRICS-PROD-ALL
+            value: Prometheus
+      mikrotik:
+        gnetId: 13679
+        revision: 22
+        datasource:
+          - name: DS_PROMETHEUS
+            value: Prometheus
+  persistence:
+    enabled: true
+    type: sts
+    storageClassName: "longhorn"
+    accessModes:
+      - ReadWriteOnce
+    size: 5Gi
+prometheus:
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: longhorn
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 20Gi
+    retention: 10d
+    retentionSize: 16GiB
+    walCompression: true
+    additionalScrapeConfigsSecret:
+      name: additional-scrape-configs
+      key: additional-scrape-configs.yaml
+      enabled: true

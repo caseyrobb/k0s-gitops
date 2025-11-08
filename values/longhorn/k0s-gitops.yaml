@@ -1,0 +1,13 @@
+persistence:
+  defaultClass: true
+  defaultClassReplicaCount: 1
+defaultSettings:
+  defaultDataPath: "/var/lib/longhorn"
+  defaultReplicaCount: "1"
+  backupTargetCredentialSecret: minio-secret
+  backupTarget: s3://k0s-backup@minio/longhorn
+csi:
+  attacherReplicaCount: 1
+  provisionerReplicaCount: 1
+  resizerReplicaCount: 1
+  snapshotterReplicaCount: 1

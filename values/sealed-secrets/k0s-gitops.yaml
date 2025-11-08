@@ -1,0 +1,2 @@
+fullnameOverride: controller
+namespace: kube-system
