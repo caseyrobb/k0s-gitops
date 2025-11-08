@@ -13,28 +13,14 @@ spec:
       repoURL: https://metallb.github.io/metallb
       targetRevision: 0.15.2
       helm:
-        values: |
-          speaker:
-            frr:
-              image:
-                tag: 10.4.1
-                repository: quay.io/frrouting/frr
-          prometheus:
-            namespace: monitoring
-            serviceAccount: kube-prometheus-stack-prometheus
-            serviceMonitor:
-              enabled: true
-              speaker:
-                additionalLabels:
-                  release: kube-prometheus-stack
-              controller:
-                additionalLabels:
-                  release: kube-prometheus-stack
+        valueFiles:
+          - $values/values/metallb/k0s-gitops.yaml
     - kustomize:
         namespace: metallb-system
       path: components/apps/metallb
       repoURL: https://github.com/caseyrobb/k0s-gitops
       targetRevision: HEAD
+      ref: values
   ignoreDifferences:
     - group: "apiextensions.k8s.io"
       kind: "CustomResourceDefinition"
