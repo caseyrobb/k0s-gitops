@@ -46,7 +46,7 @@ ingressRoute:
       secretName: wildcard-tls
       domains:
         - sans:
-        - "*.redcomet.ca"
+            - "*.redcomet.ca"
 providers:
   kubernetesGateway:
     enabled: true
