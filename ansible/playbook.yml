@@ -3,7 +3,7 @@
   hosts: k0s
   remote_user: crobb
   become: yes
-  become_method: sudo
+  become_method: ansible.builtin.sudo
 
   vars:
     packages:
@@ -64,7 +64,7 @@
         mode: '0755'
         force: true
       become: yes
-      become_method: sudo
+      become_method: ansible.builtin.sudo
 
     - name: Install kubectl binary
       ansible.builtin.get_url:
@@ -73,7 +73,7 @@
         mode: 0755
         force: true
       become: yes
-      become_method: sudo
+      become_method: ansible.builtin.sudo
 
     - name: Install k0s
       ansible.builtin.shell: /usr/local/bin/k0s install controller -c /etc/k0s/k0s.yaml --single
