@@ -20,7 +20,7 @@ spec:
       path: components/apps/traefik
       repoURL: https://github.com/caseyrobb/k0s-gitops
       targetRevision: HEAD
-      rev: values
+      ref: values
   syncPolicy:
     automated:
       prune: true
