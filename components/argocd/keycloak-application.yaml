@@ -14,42 +14,11 @@ spec:
       path: components/apps/keycloak
       repoURL: https://github.com/caseyrobb/k0s-gitops
       targetRevision: HEAD
+      ref: values
     - chart: keycloak
       helm:
-        values: |
-          auth:
-            adminUser: keycloak
-            adminPassword: keycloak
-          global:
-            defaultStorageClass: longhorn
-            storageClass: longhorn
-          metrics:
-            enabled: true
-            prometheusRule:
-              enabled: true
-            serviceMonitor:
-              enabled: true
-              labels:
-                release: kube-prometheus-stack
-          extraEnvVars:
-            - name: KC_HOSTNAME
-              value: keycloak.redcomet.ca
-            - name: KC_PROXY
-              value: edge
-            - name: KC_PRODUCTION
-              value: "true"
-            - name: KC_HOSTNAME_STRICT
-              value: "false"
-            - name: KC_HTTP_ENABLED
-              value: "true"
-            - name: KC_PROXY_HEADERS
-              value: xforwarded
-          postgresql:
-            enabled: true
-            auth:
-              username: bn_keycloak
-              password: keycloak
-              database: bitnami_keycloak
+        valueFiles:
+          - $values/values/keycloak/k0s-gitops.yaml
       repoURL: https://charts.bitnami.com/bitnami
       targetRevision: 25.2.0
   syncPolicy:

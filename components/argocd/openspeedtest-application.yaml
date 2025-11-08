@@ -16,12 +16,12 @@ spec:
       repoURL: https://openspeedtest.github.io/Helm-chart/
       targetRevision: 0.1.2
       helm:
-        values: |
-          service:
-            type: ClusterIP
+        valueFiles:
+          - $values/values/openspeedtest/k0s-gitops.yaml
     - path: components/apps/openspeedtest
       repoURL: https://github.com/caseyrobb/k0s-gitops
       targetRevision: HEAD
+      ref: values
   syncPolicy:
     automated:
       prune: true

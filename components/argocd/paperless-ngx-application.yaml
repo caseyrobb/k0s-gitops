@@ -9,55 +9,22 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-  - chart: paperless-ngx
-    helm:
-      parameters:
-      values: |-
-        env:
-          TZ: America/Edmonton
-          PAPERLESS_URL: https://paperless.redcomet.ca
-        image:
-          tag: 2.15.3
-        mariadb:
-          enabled: true
-          primary:
-            persistence:
-              enabled: true
-          auth:
-            password: paperless
-            rootPassword: paperless
-        redis:
-          enabled: true
-          master:
-            persistence:
-              enabled: false
-          replica:
-            replicaCount: 0
-        persistence:
-          consume:
-            accessMode: ReadWriteOnce
-            size: 1Gi
-          data:
-            enabled: true
-            accessMode: ReadWriteOnce
-            size: 10Gi
-          media:
-            enabled: true
-            accessMode: ReadWriteOnce
-            size: 10Gi
-          export:
-            accessMode: ReadWriteOnce
-            size: 2Gi
-    repoURL: https://charts.gabe565.com
-    targetRevision: 0.24.1
-  - kustomize:
-      namespace: paperless-ngx
-    path: components/apps/paperless-ngx
-    repoURL: https://github.com/caseyrobb/k0s-gitops
-    targetRevision: HEAD
+    - chart: paperless-ngx
+      helm:
+        parameters:
+        valueFiles:
+          - $values/values/paperless-ngx/k0s-gitops.yaml
+      repoURL: https://charts.gabe565.com
+      targetRevision: 0.24.1
+    - kustomize:
+        namespace: paperless-ngx
+      path: components/apps/paperless-ngx
+      repoURL: https://github.com/caseyrobb/k0s-gitops
+      targetRevision: HEAD
+      ref: values
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
