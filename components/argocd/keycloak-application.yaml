@@ -27,3 +27,8 @@ spec:
     automated:
       prune: true
       selfHeal: true
+  ignoreDifferences:
+    - kind: "Secret"
+      name: "keycloak-postgresql"
+      jsonPointers:
+        - /data/postgres-password

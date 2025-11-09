@@ -28,3 +28,16 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+  ignoreDifferences:
+    - kind: "StatefulSet"
+      name: "paperless-ngx-redis-replicas"
+      jsonPointers:
+        - /spec/template/metadata/annotations/checksum~1secret
+    - kind: "StatefulSet"
+      name: "paperless-ngx-redis-master"
+      jsonPointers:
+        - /spec/template/metadata/annotations/checksum~1secret
+    - kind: "Secret"
+      name: "paperless-ngx-redis"
+      jsonPointers:
+        - /data/redis-password

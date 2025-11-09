@@ -31,3 +31,12 @@ spec:
       prune: true
     syncOptions:
       - CreateNamespace=true
+  ignoreDifferences:
+    - kind: "StatefulSet"
+      name: "kube-prometheus-stack-grafana"
+      jsonPointers:
+        - /spec/template/metadata/annotations/checksum~1secret
+    - kind: "Secret"
+      name: "kube-prometheus-stack-grafana"
+      jsonPointers:
+        - /data/admin-password
