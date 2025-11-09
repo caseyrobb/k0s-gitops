@@ -15,7 +15,7 @@ spec:
         valueFiles:
           - $values/values/prometheus/k0s-gitops.yaml
       repoURL: https://prometheus-community.github.io/helm-charts
-      targetRevision: 79.4.0
+      targetRevision: 79.4.1
     - chart: prometheus-snmp-exporter
       repoURL: https://prometheus-community.github.io/helm-charts
       targetRevision: 9.8.2
