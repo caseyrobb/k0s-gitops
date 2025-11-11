@@ -13,7 +13,7 @@ spec:
       helm:
         parameters:
         valueFiles:
-          - $values/values/paperless-ngx/k0s-gitops.yaml
+          - $values/values/paperless-ngx/k0s-values.yaml
       repoURL: https://charts.gabe565.com
       targetRevision: 0.24.1
     - kustomize:

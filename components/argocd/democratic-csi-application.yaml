@@ -14,7 +14,7 @@ spec:
       targetRevision: 0.15.0
       helm:
         valueFiles:
-          - $values/values/democratic-csi/k0s-gitops.yaml
+          - $values/values/democratic-csi/k0s-values.yaml
     - kustomize:
         namespace: democratic-csi
       path: components/apps/democratic-csi

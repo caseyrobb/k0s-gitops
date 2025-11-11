@@ -14,7 +14,7 @@ spec:
       targetRevision: 2.22.0
       helm:
         valueFiles:
-          - $values/values/uptime-kuma/k0s-gitops.yaml
+          - $values/values/uptime-kuma/k0s-values.yaml
     - kustomize:
         namespace: uptime-kuma
       path: components/apps/uptime-kuma

@@ -18,7 +18,7 @@ spec:
     - chart: vault
       helm:
         valueFiles:
-          - $values/values/vault/k0s-gitops.yaml
+          - $values/values/vault/k0s-values.yaml
       repoURL: https://helm.releases.hashicorp.com
       targetRevision: 0.31.0
   ignoreDifferences:

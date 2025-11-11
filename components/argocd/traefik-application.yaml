@@ -14,7 +14,7 @@ spec:
       targetRevision: 37.3.0
       helm:
         valueFiles:
-          - $values/values/traefik/k0s-gitops.yaml
+          - $values/values/traefik/k0s-values.yaml
     - kustomize:
         namespace: traefik
       path: components/apps/traefik

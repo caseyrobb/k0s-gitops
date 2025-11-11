@@ -17,7 +17,7 @@ spec:
       targetRevision: 0.1.2
       helm:
         valueFiles:
-          - $values/values/openspeedtest/k0s-gitops.yaml
+          - $values/values/openspeedtest/k0s-values.yaml
     - path: components/apps/openspeedtest
       repoURL: https://github.com/caseyrobb/k0s-gitops
       targetRevision: HEAD

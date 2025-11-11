@@ -18,7 +18,7 @@ spec:
     - chart: keycloak
       helm:
         valueFiles:
-          - $values/values/keycloak/k0s-gitops.yaml
+          - $values/values/keycloak/k0s-values.yaml
       repoURL: https://charts.bitnami.com/bitnami
       targetRevision: 25.2.0
   syncPolicy:

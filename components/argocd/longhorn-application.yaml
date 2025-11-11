@@ -17,7 +17,7 @@ spec:
       targetRevision: 1.10.0
       helm:
         valueFiles:
-          - $values/values/longhorn/k0s-gitops.yaml
+          - $values/values/longhorn/k0s-values.yaml
     - path: components/apps/longhorn
       repoURL: https://github.com/caseyrobb/k0s-gitops
       targetRevision: HEAD
