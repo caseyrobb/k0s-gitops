@@ -32,7 +32,8 @@ spec:
     syncOptions:
       - CreateNamespace=true
   ignoreDifferences:
-    - kind: "StatefulSet"
+    - group: apps
+      kind: "StatefulSet"
       name: "kube-prometheus-stack-grafana"
       jsonPointers:
         - /spec/template/metadata/annotations/checksum~1secret
