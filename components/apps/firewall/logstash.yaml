@@ -150,7 +150,7 @@ spec:
               protocol: TCP
               targetPort: 5959
           type: ClusterIP
-  version: 9.2.0
+  version: 9.2.1
   volumeClaimTemplates:
     - metadata:
         name: logstash-data
