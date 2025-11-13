@@ -20,7 +20,7 @@ spec:
         valueFiles:
           - $values/values/keycloak/k0s-values.yaml
       repoURL: https://charts.bitnami.com/bitnami
-      targetRevision: 25.2.0
+      targetRevision: 25.3.0
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
