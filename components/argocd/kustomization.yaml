@@ -31,4 +31,4 @@ resources:
   - traefik-application.yaml
   - keycloak-application.yaml
   - openspeedtest-application.yaml
-  - democratic-csi-application.yaml
+  #- democratic-csi-application.yaml
