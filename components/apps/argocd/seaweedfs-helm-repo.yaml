@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  annotations:
+    managed-by: argocd.argoproj.io
+  labels:
+    argocd.argoproj.io/secret-type: repository
+  name: repo-seaweedfs-helm
+  namespace: argocd
+stringData:
+  name: seaweedfs
+  project: default
+  type: helm
+  url: https://seaweedfs.github.io/seaweedfs/helm
