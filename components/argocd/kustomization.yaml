@@ -8,7 +8,7 @@ resources:
   - jellyfin-application.yaml
   - sealed-secrets-application.yaml
   #- bookstack-application.yaml
-  - paperless-ngx-application.yaml
+  #- paperless-ngx-application.yaml
   - uptime-kuma-application.yaml
   - komga-application.yaml
   #- memos-application.yaml
@@ -30,6 +30,6 @@ resources:
   - metallb-application.yaml
   - traefik-application.yaml
   - keycloak-application.yaml
-  - openspeedtest-application.yaml
+  #- openspeedtest-application.yaml
   - seaweedfs-application.yaml
   #- democratic-csi-application.yaml
