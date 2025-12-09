@@ -8,7 +8,7 @@ spec:
     namespace: seaweedfs
     server: https://kubernetes.default.svc
   project: default
-  source:
+  sources:
     - helm:
         valueFiles:
           - $values/values/seaweedfs/k0s-values.yaml
