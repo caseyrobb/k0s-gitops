@@ -8,8 +8,25 @@ master:
   data:
     storageClass: longhorn
 
-s3:
-  domainName: "redcomet.ca"
+volume:
+  dataDirs:
+    - name: s3
+      type: "persistentVolumeClaim"
+      size: "10Gi"
+      storageClass: "longhorn"
+      maxVolumes: 1
+
+filer:
   enabled: true
-  enableAuth: true
-  existingConfigSecret: s3-creds
+  enablePVC: true
+  storage: 10Gi
+  storageClass: longhorn
+  data:
+    type: "persistentVolumeClaim"
+    size: "10Gi"
+    storageClass: "longhorn"
+  s3:
+    enabled: true
+    domainName: "redcomet.ca"
+    enableAuth: true
+    existingConfigSecret: s3-creds
