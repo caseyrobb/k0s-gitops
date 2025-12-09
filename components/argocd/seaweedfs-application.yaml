@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: seaweedfs
+  namespace: argocd
+spec:
+  destination:
+    namespace: seaweedfs
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    - helm:
+        valueFiles:
+          - $values/values/seaweedfs/k0s-values.yaml
+      chart: seaweedfs
+      repoURL: https://seaweedfs.github.io/seaweedfs/helm
+      targetRevision: 4.0.402
+    - kustomize:
+        namespace: seaweedfs
+      path: components/apps/seaweedfs
+      repoURL: https://github.com/caseyrobb/k0s-gitops
+      targetRevision: HEAD
+      ref: values
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
