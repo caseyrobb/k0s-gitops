@@ -114,5 +114,5 @@ spec:
             claimName: komga-data
         - name: ebooks
           nfs:
-            path: /mnt/rust/ebooks
+            path: /rust/ebooks
             server: 172.16.0.55

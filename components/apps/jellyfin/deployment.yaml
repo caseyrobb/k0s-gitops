@@ -160,7 +160,7 @@ spec:
           name: devshm
         - name: fenrir-video
           nfs:
-            path: /mnt/rust/video
+            path: /rust/video
             server: 172.16.0.55
         - emptyDir: {}
           name: shared
