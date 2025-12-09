@@ -22,8 +22,6 @@ grafana:
     default:
       argocd:
         url: https://raw.githubusercontent.com/argoproj/argo-cd/refs/heads/master/examples/dashboard.json
-      seaweedfs:
-        url: https://raw.githubusercontent.com/seaweedfs/seaweedfs/refs/heads/master/k8s/charts/seaweedfs/dashboards/seaweedfs-grafana-dashboard.json
       helm-version-check:
         url: https://raw.githubusercontent.com/caseyrobb/helm-version-check/refs/heads/master/k8s/dashboard.json
         datasource:
