@@ -1,0 +1,15 @@
+global:
+  monitoring:
+    enabled: true
+    additionalLabels:
+      release: kube-prometheus-stack
+
+master:
+  data:
+    storageClass: longhorn
+
+s3:
+  domainName: "redcomet.ca"
+  enabled: true
+  enableAuth: true
+  existingConfigSecret: s3-creds
