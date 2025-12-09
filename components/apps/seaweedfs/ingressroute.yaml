@@ -1,0 +1,15 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: seaweed-fs
+  namespace: seaweedfs
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`s3.redcomet.ca`) && PathPrefix(`/`)
+      services:
+        - kind: Service
+          name: swfs-s3
+          port: 8333
