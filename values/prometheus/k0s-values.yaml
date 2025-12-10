@@ -22,6 +22,8 @@ grafana:
     default:
       argocd:
         url: https://raw.githubusercontent.com/argoproj/argo-cd/refs/heads/master/examples/dashboard.json
+      fenrir:
+        url: https://raw.githubusercontent.com/rfmoz/grafana-dashboards/refs/heads/master/prometheus/node-exporter-full.json
       helm-version-check:
         url: https://raw.githubusercontent.com/caseyrobb/helm-version-check/refs/heads/master/k8s/dashboard.json
         datasource:
