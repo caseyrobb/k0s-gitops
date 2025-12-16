@@ -6,8 +6,6 @@ global:
   defaultStorageClass: longhorn
   storageClass: longhorn
 image:
-  registry: docker.io
-  repository: keycloak/keycloak
   tag: 26.4.7
 metrics:
   enabled: true
