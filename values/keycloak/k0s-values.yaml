@@ -1,9 +1,14 @@
 auth:
   adminUser: keycloak
-  adminPassword: keycloak
+  existingSecret: keycloak-admin
+  passwordSecretKey: password
 global:
   defaultStorageClass: longhorn
   storageClass: longhorn
+image:
+  registry: quay.io
+  repository: keycloak/keycloak
+  tag: 26.4.7
 metrics:
   enabled: true
   prometheusRule:
