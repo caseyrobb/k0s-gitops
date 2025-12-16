@@ -6,7 +6,7 @@ global:
   defaultStorageClass: longhorn
   storageClass: longhorn
 image:
-  registry: quay.io
+  registry: docker.io
   repository: keycloak/keycloak
   tag: 26.4.7
 metrics:
