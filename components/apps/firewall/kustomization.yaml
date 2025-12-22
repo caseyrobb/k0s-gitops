@@ -11,3 +11,4 @@ resources:
   - syslog-tcp.yaml
   - kibana-objects-cm.yaml
   - set-es-replicas-cronjob.yaml
+  - disable-telemetry-job.yaml

@@ -1,0 +1,36 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: disable-telemetry
+  namespace: firewall
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: disable-telemetry
+          image: curlimages/curl:latest
+          env:
+            - name: ES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: elasticsearch-es-elastic-user
+                  key: elastic
+          command:
+            - /bin/sh
+            - -c
+            - |
+              ES_URL="https://elasticsearch-es-http:9200"
+              until [[ "${STATUS}" == "green" ]] || [[ "${STATUS}" == "yellow" ]]; do
+                STATUS=$(curl -s -k -u elastic:$ES_PASSWORD $ES_URL/_cat/health?h=status)
+                echo $STATUS
+                echo "Waiting for Elasticsearch to be ready..."
+                sleep 5
+              done
+              echo "Disabling telemetry..."
+              curl -k -u elastic:$ES_PASSWORD -X PUT $ES_URL/internal/telemetry/optIn \
+                -H "content-type: application/json" \
+                -d '{"enabled": false}'
+      serviceAccountName: default
