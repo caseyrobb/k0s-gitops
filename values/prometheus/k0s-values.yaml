@@ -72,7 +72,7 @@ grafana:
             value: Prometheus
       mikrotik:
         gnetId: 13679
-        revision: 22
+        revision: 23
         datasource:
           - name: DS_PROMETHEUS
             value: Prometheus
