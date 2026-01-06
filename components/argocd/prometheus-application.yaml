@@ -15,10 +15,10 @@ spec:
         valueFiles:
           - $values/values/prometheus/k0s-values.yaml
       repoURL: https://prometheus-community.github.io/helm-charts
-      targetRevision: 80.11.0
+      targetRevision: 80.12.1
     - chart: prometheus-snmp-exporter
       repoURL: https://prometheus-community.github.io/helm-charts
-      targetRevision: 9.10.0
+      targetRevision: 9.10.1
     - kustomize:
         namespace: monitoring
       path: components/apps/grafana
