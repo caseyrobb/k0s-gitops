@@ -76,6 +76,12 @@ grafana:
         datasource:
           - name: DS_PROMETHEUS
             value: Prometheus
+      fenrir-smartctl:
+        gnetId: 22604
+        revision: 2
+        datasource:
+          - name: DS_PROMETHEUS
+            value: Prometheus
   persistence:
     enabled: true
     type: sts
