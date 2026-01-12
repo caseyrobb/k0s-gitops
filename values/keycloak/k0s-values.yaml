@@ -32,3 +32,7 @@ postgresql:
     username: bn_keycloak
     password: keycloak
     database: bitnami_keycloak
+image:
+  registry: docker.io
+  repository: keycloak/keycloak
+  tag: 26.5
