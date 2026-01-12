@@ -1,0 +1,15 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: rustfs
+  namespace: rustfs
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`rustfs.redcomet.ca`) && PathPrefix(`/`)
+      services:
+        - kind: Service
+          name: rustfs-svc
+          port: 9000

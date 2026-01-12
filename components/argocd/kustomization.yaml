@@ -33,3 +33,4 @@ resources:
   #- openspeedtest-application.yaml
   #- seaweedfs-application.yaml
   - democratic-csi-application.yaml
+  - rustfs-application.yaml

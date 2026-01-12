@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rustfs
+  namespace: argocd
+spec:
+  destination:
+    namespace: rustfs
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+    - chart: rustfs
+      repoURL: https://charts.rustfs.com
+      targetRevision: 0.0.79
+      helm:
+        valueFiles:
+          - $values/values/rustfs/k0s-values.yaml
+    - kustomize:
+        namespace: rustfs
+      path: components/apps/rustfs
+      repoURL: https://github.com/caseyrobb/k0s-gitops
+      targetRevision: HEAD
+      ref: values
+  source:
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

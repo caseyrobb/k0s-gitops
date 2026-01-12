@@ -1,0 +1,19 @@
+replicaCount: 1
+
+mode:
+  standalone:
+    enabled: true
+
+storageclass:
+  name: fenrir-iscsi
+  dataStorageSize: 100Gi
+  logStorageSize: 1Gi
+
+ingress:
+  enabled: false
+
+hosts:
+  - host: s3.redcomet.ca
+    paths:
+      - path: /
+        pathType: Prefix
