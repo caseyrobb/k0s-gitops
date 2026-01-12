@@ -5,6 +5,8 @@ auth:
 global:
   defaultStorageClass: longhorn
   storageClass: longhorn
+  security:
+    allowInsecureImages: true
 metrics:
   enabled: true
   prometheusRule:
