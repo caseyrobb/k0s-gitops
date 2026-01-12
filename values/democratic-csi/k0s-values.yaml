@@ -5,10 +5,10 @@ node:
 driver:
   existingConfigSecret: democratic-csi-driver-config
   config:
-    driver: freenas-iscsi
+    driver: zfs-generic-iscsi
     instance_id:
 storageClasses:
-  - name: truenas-iscsi
+  - name: fenrir-iscsi
     defaultClass: false
     reclaimPolicy: Delete
     volumeBindingMode: Immediate
