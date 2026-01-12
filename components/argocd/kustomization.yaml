@@ -32,4 +32,4 @@ resources:
   - keycloak-application.yaml
   #- openspeedtest-application.yaml
   #- seaweedfs-application.yaml
-  #- democratic-csi-application.yaml
+  - democratic-csi-application.yaml
