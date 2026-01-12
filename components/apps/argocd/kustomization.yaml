@@ -14,21 +14,21 @@ resources:
   - metallb-helm-repo.yaml
   - democratic-csi-helm-repo.yaml
   - eck-helm-repo.yaml
-  - gabe565-helm-repo.yaml
-  - gitea-helm-repo.yaml
-  - minio-helm-repo.yaml
+  #- gabe565-helm-repo.yaml
+  #- gitea-helm-repo.yaml
+  #- minio-helm-repo.yaml
   - sealedsecrets-helm-repo.yaml
   - uptime-kuma-repo.yaml
   - prometheus-helm-repo.yaml
   - grafana-helm-repo.yaml
-  - immich-helm-repo.yaml
+  #- immich-helm-repo.yaml
   - vaultwarden-helm-repo.yaml
   - vault-helm-repo.yaml
   - bitnami-helm-repo.yaml
-  - velero-helm-repo.yaml
+  #- velero-helm-repo.yaml
   - jetstack-helm-repo.yaml
-  - jupyter-helm-repo.yaml
-  - wger-helm-repo.yaml
-  - seaweedfs-helm-repo.yaml
-  - th-charts-repo.yaml
-  - openspeedtest-helm-repo.yaml
+  #- jupyter-helm-repo.yaml
+  #- wger-helm-repo.yaml
+  #- seaweedfs-helm-repo.yaml
+  #- th-charts-repo.yaml
+  #- openspeedtest-helm-repo.yaml
