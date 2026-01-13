@@ -15,11 +15,8 @@ spec:
       helm:
         valueFiles:
           - $values/values/democratic-csi/k0s-nfs.yaml
-    - kustomize:
-        namespace: democratic-csi
-      path: components/apps/democratic-csi
+    - repoURL: https://github.com/caseyrobb/k0s-gitops.git
       targetRevision: HEAD
-      repoURL: https://github.com/caseyrobb/k0s-gitops
       ref: values
   syncPolicy:
     automated:
