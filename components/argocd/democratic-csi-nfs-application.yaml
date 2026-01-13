@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: democratic-csi
+  name: democratic-csi-nfs
   namespace: argocd
 spec:
   destination:
@@ -14,7 +14,7 @@ spec:
       targetRevision: 0.15.1
       helm:
         valueFiles:
-          - $values/values/democratic-csi/k0s-values.yaml
+          - $values/values/democratic-csi/k0s-nfs.yaml
     - kustomize:
         namespace: democratic-csi
       path: components/apps/democratic-csi

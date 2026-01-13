@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: democratic-csi-iscsi
+  namespace: argocd
+spec:
+  destination:
+    namespace: democratic-csi
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+    - chart: democratic-csi
+      repoURL: https://democratic-csi.github.io/charts/
+      targetRevision: 0.15.1
+      helm:
+        valueFiles:
+          - $values/values/democratic-csi/k0s-iscsi.yaml
+    - kustomize:
+        namespace: democratic-csi
+      path: components/apps/democratic-csi
+      targetRevision: HEAD
+      repoURL: https://github.com/caseyrobb/k0s-gitops
+      ref: values
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
