@@ -9,4 +9,5 @@ resources:
   - https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/refs/heads/master/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
   - volumesnapshotclass.yaml
   - servicemonitor.yaml
+  - sealedsecret.yaml
   - longhorn-ingressroute.yaml
