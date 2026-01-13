@@ -1,8 +1,17 @@
 replicaCount: 1
 
+secret:
+  existingSecret: rustfs-secret
+
+config:
+  volumes: "/data/rustfs0"
+  region: "ca-west-1"
+
 mode:
   standalone:
     enabled: true
+  distributed:
+    enabled: false
 
 storageclass:
   name: fenrir-iscsi
