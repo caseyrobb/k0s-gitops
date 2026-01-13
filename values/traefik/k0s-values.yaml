@@ -1,6 +1,11 @@
 globalArguments:
   - "--global.sendanonymoususage=false"
 instanceLabelOverride: traefik
+deployment:
+  hostAliases:
+    - ip: "172.16.0.94"
+      hostnames:
+        - "aap.redcomet.ca"
 service:
   annotations:
     metallb.io/ip-allocated-from-pool: traefik
