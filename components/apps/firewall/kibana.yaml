@@ -22,4 +22,4 @@ spec:
         disabled: true
   secureSettings:
     - secretName: kibana-elasticsearch-credentials
-  version: 9.2.3
+  version: 9.2.4
