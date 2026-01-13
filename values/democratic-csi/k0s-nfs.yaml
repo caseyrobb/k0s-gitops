@@ -1,0 +1,26 @@
+csiDriver:
+  name: "org.democratic-csi.nfs"
+node:
+  kubeletHostPath: /var/lib/k0s/kubelet
+driver:
+  existingConfigSecret: democratic-csi-nfs
+  config:
+    driver: zfs-generic-nfs
+    instance_id:
+storageClasses:
+  - name: fenrir-nfs
+    defaultClass: false
+    reclaimPolicy: Delete
+    volumeBindingMode: Immediate
+    allowVolumeExpansion: true
+    parameters:
+      fsType: nfs
+    mountOptions:
+      - noatime
+      - nfsvers=4
+    secrets:
+      provisioner-secret:
+      controller-publish-secret:
+      node-stage-secret:
+      node-publish-secret:
+      controller-expand-secret:

@@ -3,7 +3,7 @@ csiDriver:
 node:
   kubeletHostPath: /var/lib/k0s/kubelet
 driver:
-  existingConfigSecret: democratic-csi-driver-config
+  existingConfigSecret: democratic-csi-iscsi
   config:
     driver: zfs-generic-iscsi
     instance_id:
