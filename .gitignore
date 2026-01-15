@@ -5,3 +5,4 @@ export.ndjson
 snmp-exporter-configmap.yaml
 prometheus.yml
 credentials
+test.yaml
