@@ -31,6 +31,7 @@ spec:
       prune: true
     syncOptions:
       - CreateNamespace=true
+      - ServerSideApply=true
   ignoreDifferences:
     - group: apps
       kind: "StatefulSet"
