@@ -20,7 +20,7 @@ spec:
         valueFiles:
           - $values/values/vault/k0s-values.yaml
       repoURL: https://helm.releases.hashicorp.com
-      targetRevision: 0.31.0
+      targetRevision: 0.32.0
   ignoreDifferences:
     - group: "apps"
       kind: "StatefulSet"
