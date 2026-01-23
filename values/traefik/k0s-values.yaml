@@ -1,5 +1,5 @@
-globalArguments:
-  - "--global.sendanonymoususage=false"
+global:
+  sendAnonymousUsage: false
 instanceLabelOverride: traefik
 deployment:
   hostAliases:
