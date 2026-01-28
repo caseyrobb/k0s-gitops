@@ -29,7 +29,7 @@ spec:
               value: America/Edmonton
             - name: SERVER_PORT
               value: "10085"
-          image: ghcr.io/gotson/komga:1.23.6
+          image: ghcr.io/gotson/komga:1.24.0
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 5
