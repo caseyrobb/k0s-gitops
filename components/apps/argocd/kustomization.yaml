@@ -27,6 +27,7 @@ resources:
   - bitnami-helm-repo.yaml
   #- velero-helm-repo.yaml
   - jetstack-helm-repo.yaml
+  - rustfs-helm-repo.yaml
   #- jupyter-helm-repo.yaml
   #- wger-helm-repo.yaml
   #- seaweedfs-helm-repo.yaml
