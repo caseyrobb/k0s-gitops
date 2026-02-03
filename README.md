@@ -2,7 +2,7 @@
 
 [![Super-Linter](https://github.com/caseyrobb/k0s-gitops/actions/workflows/super-linter.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
-My k0s homelab config hosted on a Minisforum NAB9.  
+My k0s homelab config hosted on a Minisforum NAB9.
 
 1. Install CentOS Stream 9 w/ansible
 2. Run `node-setup.sh`
@@ -12,6 +12,7 @@ My k0s homelab config hosted on a Minisforum NAB9.
 
 - ECK Operator
 - pf Firewall/Gateway Dashboard (ELK stack)
+- democratic-csi
 - Jellyfin
 - Komga
 - Vault
@@ -19,10 +20,11 @@ My k0s homelab config hosted on a Minisforum NAB9.
 - Longhorn
 - Metallb
 - Prometheus operator w/Grafana
+- rustfs
 - sealed-secrets
-- Tekton operator
 - Traefik
 - Uptime Kuma
+- Vault
 - Vaultwarden
 - jetstack/version-checker
 
@@ -50,6 +52,8 @@ components/apps - App/Services manifests
 ├── components
 │  ├── apps
 │  └── argocd
+├── values
+│  ├── <app>/values.yaml
 ├── bootstrap-k0s.sh
 └── node-setup.sh
 ```
