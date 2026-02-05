@@ -11,10 +11,10 @@ metadata:
   namespace: argocd
 data:
   accounts.helm-version-checker: apiKey, login
+  url: https://argocd.redcomet.ca
   oidc.config: |
     name: Keycloak
     issuer: https://sso.redcomet.ca/realms/homelab
     clientID: argocd
     clientSecret: $oidc.keycloak.clientSecret
     requestedScopes: ["openid", "profile", "email", "groups"]
-  url: https://argocd.redcomet.ca

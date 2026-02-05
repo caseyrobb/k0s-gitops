@@ -11,6 +11,5 @@ metadata:
   namespace: argocd
 data:
   policy.csv: |
-    g, ArgoCDAdmins, role:admin
     g, argocd-admins, role:admin
     g, helm-version-checker, role:admin
