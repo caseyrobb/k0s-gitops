@@ -5,30 +5,23 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: keycloak
+    namespace: sso
     server: https://kubernetes.default.svc
   project: default
   sources:
     - kustomize:
-        namespace: keycloak
+        namespace: sso
       path: components/apps/keycloak
       repoURL: https://github.com/caseyrobb/k0s-gitops
       targetRevision: HEAD
       ref: values
-    - chart: keycloak
-      helm:
-        valueFiles:
-          - $values/values/keycloak/k0s-values.yaml
-      repoURL: https://charts.bitnami.com/bitnami
-      targetRevision: 25.2.0
+    - kustomize:
+        namespace: sso
+      path: components/apps/keycloak-operator
+      repoURL: https://github.com/caseyrobb/k0s-gitops
+      targetRevision: HEAD
+      ref: values
   syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
     automated:
       prune: true
       selfHeal: true
-  ignoreDifferences:
-    - kind: "Secret"
-      name: "keycloak-postgresql"
-      jsonPointers:
-        - /data/postgres-password

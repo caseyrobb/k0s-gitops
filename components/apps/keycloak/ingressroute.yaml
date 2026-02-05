@@ -2,14 +2,14 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: keycloak
-  namespace: keycloak
+  namespace: sso
 spec:
   entryPoints:
-  - websecure
+    - websecure
   routes:
-  - kind: Rule
-    match: Host(`keycloak.redcomet.ca`)
-    services:
-    - kind: Service
-      name: keycloak-headless
-      port: 8080
+    - kind: Rule
+      match: Host(`sso.redcomet.ca`)
+      services:
+        - kind: Service
+          name: keycloak-service
+          port: 8080
