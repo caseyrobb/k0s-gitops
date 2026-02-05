@@ -14,13 +14,11 @@ spec:
       path: components/apps/keycloak
       repoURL: https://github.com/caseyrobb/k0s-gitops
       targetRevision: HEAD
-      ref: values
     - kustomize:
         namespace: sso
       path: components/apps/keycloak-operator
       repoURL: https://github.com/caseyrobb/k0s-gitops
       targetRevision: HEAD
-      ref: values
   syncPolicy:
     automated:
       prune: true
