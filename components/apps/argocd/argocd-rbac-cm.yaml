@@ -12,3 +12,4 @@ data:
   policy.csv: |
     g, helm-version-checker, role:admin
     g, ArgoCDAdmins, role:admin
+    g, argocd-admins, role:admin
