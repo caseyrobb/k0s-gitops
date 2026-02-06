@@ -6,6 +6,9 @@ crds:
   upgradeJob:
     enabled: true
 grafana:
+  grafana.ini:
+    server:
+      domain: "https://grafana.redcomet.ca"
   dashboardProviders:
     dashboardproviders.yaml:
       apiVersion: 1
