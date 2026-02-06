@@ -8,7 +8,9 @@ crds:
 grafana:
   grafana.ini:
     server:
-      domain: "https://grafana.redcomet.ca"
+      domain: grafana.redcomet.ca
+      root_url: https://grafana.redcomet.ca
+      http_port: 443
   dashboardProviders:
     dashboardproviders.yaml:
       apiVersion: 1
