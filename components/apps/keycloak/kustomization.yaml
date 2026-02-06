@@ -4,4 +4,5 @@ resources:
   - ingressroute.yaml
   - sealedsecret.yaml
   - keycloak.yaml
-  - servicemonitor.yaml
+  - keycloak-operator.yaml
+#  - servicemonitor.yaml
