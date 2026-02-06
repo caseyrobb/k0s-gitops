@@ -6,6 +6,10 @@ metadata:
 spec:
   http:
     httpEnabled: true
+    labels:
+      release: kube-prometheus-stack
+    annotations:
+      ignore-check.kube-linter.io/privileged-container: "This deployment needs to run as privileged"
   hostname:
     strict: false
     hostname: sso.redcomet.ca
