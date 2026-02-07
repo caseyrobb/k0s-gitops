@@ -35,3 +35,4 @@ resources:
   - democratic-csi-nfs-application.yaml
   - democratic-csi-iscsi-application.yaml
   - rustfs-application.yaml
+  - cnpg-operator-application.yaml
