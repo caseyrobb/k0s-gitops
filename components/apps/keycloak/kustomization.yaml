@@ -3,4 +3,7 @@ kind: Kustomization
 resources:
   - ingressroute.yaml
   - sealedsecret.yaml
+  - db-sealedsecret.yaml
   - keycloak.yaml
+  - cluster.yaml
+  - database.yaml

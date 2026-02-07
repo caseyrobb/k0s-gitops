@@ -1,0 +1,28 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: keycloak-pg
+  namespace: sso
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  instances: 1
+  imageName: ghcr.io/cloudnative-pg/postgresql:16.3
+  storage:
+    size: 10Gi
+  managed:
+    roles:
+      - name: keycloak
+        ensure: present
+        login: true
+        passwordSecret:
+          name: keycloak-db-secret
+        connectionLimit: -1
+        inherit: true
+        superuser: false
+        createdb: false
+        createrole: false
+  bootstrap:
+    initdb:
+      database: app
+      owner: app

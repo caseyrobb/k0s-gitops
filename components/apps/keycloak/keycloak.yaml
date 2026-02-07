@@ -3,11 +3,22 @@ kind: Keycloak
 metadata:
   name: keycloak
   namespace: sso
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
 spec:
   http:
     httpEnabled: true
     labels:
       release: kube-prometheus-stack
+  db:
+    vendor: postgres
+    passwordSecret:
+      name: keycloak-db-secret
+      key: password
+    usernameSecret:
+      name: keycloak-db-secret
+      key: username
+    database: keycloak-db
   hostname:
     strict: false
     hostname: sso.redcomet.ca

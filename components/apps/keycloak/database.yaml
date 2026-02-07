@@ -1,0 +1,14 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: keycloak-db
+  namespace: sso
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+spec:
+  name: keycloak
+  owner: keycloak
+  cluster:
+    name: keycloak-pg
+  ensure: present
+  databaseReclaimPolicy: retain
