@@ -15,6 +15,7 @@ resources:
   - metallb-helm-repo.yaml
   - democratic-csi-helm-repo.yaml
   - eck-helm-repo.yaml
+  - cnpg-helm-repo.yaml
   #- gabe565-helm-repo.yaml
   #- gitea-helm-repo.yaml
   #- minio-helm-repo.yaml
