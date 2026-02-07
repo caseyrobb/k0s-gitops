@@ -18,6 +18,7 @@ spec:
     usernameSecret:
       name: keycloak-db-secret
       key: username
+    url: jdbc:postgresql://keycloak-pg-rw/keycloak-db
     database: keycloak-db
   hostname:
     strict: false
