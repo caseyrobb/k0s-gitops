@@ -11,7 +11,7 @@ spec:
   sources:
     - chart: rustfs
       repoURL: https://charts.rustfs.com
-      targetRevision: 0.0.82
+      targetRevision: 0.0.83
       helm:
         valueFiles:
           - $values/values/rustfs/k0s-values.yaml
