@@ -5,6 +5,11 @@ alertmanager:
 crds:
   upgradeJob:
     enabled: true
+    image:
+      kubectl:
+        registry: docker.io
+        repository: alpine/kubectl
+        tag: 1.34.2
 grafana:
   grafana.ini:
     server:
