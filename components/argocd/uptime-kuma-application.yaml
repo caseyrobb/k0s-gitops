@@ -11,7 +11,7 @@ spec:
   sources:
     - chart: uptime-kuma
       repoURL: https://helm.irsigler.cloud
-      targetRevision: 2.24.0
+      targetRevision: 4.0.0
       helm:
         valueFiles:
           - $values/values/uptime-kuma/k0s-values.yaml
