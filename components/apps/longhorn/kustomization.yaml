@@ -11,3 +11,4 @@ resources:
   - servicemonitor.yaml
   - sealedsecret.yaml
   - longhorn-ingressroute.yaml
+  - limits.yaml

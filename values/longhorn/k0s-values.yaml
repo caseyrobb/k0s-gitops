@@ -14,7 +14,3 @@ csi:
   snapshotterReplicaCount: 1
 longhornUI:
   replicas: 1
-longhornManager:
-  resources:
-    limits:
-      memory: 4Gi
