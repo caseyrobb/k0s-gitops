@@ -17,7 +17,7 @@ spec:
       targetRevision: 82.2.0
     - chart: prometheus-snmp-exporter
       repoURL: https://prometheus-community.github.io/helm-charts
-      targetRevision: 9.12.0
+      targetRevision: 9.12.1
     - kustomize:
         namespace: monitoring
       path: components/apps/grafana
