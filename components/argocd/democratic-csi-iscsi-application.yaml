@@ -22,8 +22,5 @@ spec:
       repoURL: https://github.com/caseyrobb/k0s-gitops
       ref: values
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
     syncOptions:
       - CreateNamespace=true
