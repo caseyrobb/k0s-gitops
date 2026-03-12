@@ -1,0 +1,63 @@
+volumes: []
+# - name: foo
+#   secret:
+#     secretName: mysecret
+#     optional: false
+
+# -- Additional volume mounts for the Jellyfin container.
+volumeMounts: []
+# - name: foo
+#   mountPath: "/etc/foo"
+#   readOnly: true
+
+podPrivileges:
+  hostIPC: false
+  hostNetwork: true
+  hostPID: false
+
+securityContext:
+  privileged: true
+
+jellyfin:
+  enableDLNA: true
+  env:
+    - name: TZ
+      value: America/Edmonton
+    - name: JELLYFIN_PublishedServerUrl
+      value: https://jellyfin.redcomet.ca
+
+persistence:
+  config:
+    enabled: true
+    accessMode: ReadWriteOnce
+    size: 5Gi
+    storageClass: "iscsi-fenrir"
+  media:
+    enabled: true
+    type: pvc
+    # -- Path on the host node for media storage, only used if type is 'hostPath'.
+    hostPath: ""
+    # -- PVC specific settings, only used if type is 'pvc'.
+    accessMode: ReadWriteOnce
+    size: 25Gi
+    # -- Custom annotations to be added to the PVC
+    annotations: {}
+    # -- If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner.
+    storageClass: ""
+    ## -- Use an existing PVC for this mount
+    # existingClaim: ''
+
+# -- Configuration for metrics collection and monitoring
+# -- Enable or disable metrics collection
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    labels:
+      release: kube-prometheus-stack
+
+# -- additional init containers to run inside the pod.
+extraInitContainers: []
+
+extraContainers: []
+# -- additional sidecar containers to run inside the pod.
