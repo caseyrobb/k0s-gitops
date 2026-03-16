@@ -32,7 +32,7 @@ resources:
   #- seaweedfs-application.yaml
   - democratic-csi-nfs-application.yaml
   - democratic-csi-iscsi-application.yaml
-  - rustfs-application.yaml
+  #- rustfs-application.yaml
   - cnpg-operator-application.yaml
   #- uptime-kuma-application.yaml
   #- komga-application.yaml
