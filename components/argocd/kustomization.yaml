@@ -8,7 +8,6 @@ resources:
   - prometheus-application.yaml
   - firewall-application.yaml
   - vaultwarden-application.yaml
-  - vault-application.yaml
   - longhorn-application.yaml
   - helm-version-check-application.yaml
   - metallb-application.yaml
@@ -20,6 +19,7 @@ resources:
   - cnpg-operator-application.yaml
   - uptime-kuma-application.yaml
   - komga-application.yaml
+  #- vault-application.yaml
   #- gitea-application.yaml
   #- gotify-application.yaml
   #- version-checker-application.yaml
