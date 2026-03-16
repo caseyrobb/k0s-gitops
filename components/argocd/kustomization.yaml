@@ -2,11 +2,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - argocd-application.yaml
-  #- elastic-operator-application.yaml
+  - elastic-operator-application.yaml
   - jellyfin-application.yaml
   - sealed-secrets-application.yaml
   - prometheus-application.yaml
-  #- firewall-application.yaml
+  - firewall-application.yaml
   - vaultwarden-application.yaml
   - longhorn-application.yaml
   - helm-version-check-application.yaml
@@ -17,9 +17,9 @@ resources:
   - democratic-csi-iscsi-application.yaml
   - cnpg-operator-application.yaml
   - uptime-kuma-application.yaml
-  #- komga-application.yaml
-  #- rustfs-application.yaml
-  #- vault-application.yaml
+  - komga-application.yaml
+  - rustfs-application.yaml
+  - vault-application.yaml
   #- gitea-application.yaml
   #- gotify-application.yaml
   #- version-checker-application.yaml
