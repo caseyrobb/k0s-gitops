@@ -9,8 +9,6 @@ resources:
   - sealed-secrets-application.yaml
   #- bookstack-application.yaml
   #- paperless-ngx-application.yaml
-  - uptime-kuma-application.yaml
-  - komga-application.yaml
   #- memos-application.yaml
   - prometheus-application.yaml
   #- it-tools-application.yaml
@@ -21,7 +19,7 @@ resources:
   - vault-application.yaml
   #- velero-application.yaml
   - longhorn-application.yaml
-  - version-checker-application.yaml
+  #- version-checker-application.yaml
   #- hugo-application.yaml
   #- headlamp-application.yaml
   #- wger-application.yaml
@@ -36,3 +34,5 @@ resources:
   - democratic-csi-iscsi-application.yaml
   - rustfs-application.yaml
   - cnpg-operator-application.yaml
+  #- uptime-kuma-application.yaml
+  #- komga-application.yaml
