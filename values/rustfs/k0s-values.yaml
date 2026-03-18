@@ -1,8 +1,8 @@
 replicaCount: 1
 
-image:
-  rustfs:
-    tag: rustfs/rustfs:1.0.0-alpha.87
+#image:
+#  rustfs:
+#    tag: rustfs/rustfs:1.0.0-alpha.87
 
 secret:
   existingSecret: rustfs-secret
@@ -10,7 +10,7 @@ secret:
 config:
   volumes: "/data/rustfs0"
   region: "ca-west-1"
-  log_level: debug
+  log_level: info
 
 mode:
   standalone:
