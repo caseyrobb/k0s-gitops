@@ -19,7 +19,7 @@ mode:
     enabled: false
 
 storageclass:
-  name: fenrir-nfs
+  name: iscsi-fenrir
   dataStorageSize: 100Gi
   logStorageSize: 1Gi
 
