@@ -90,6 +90,8 @@ spec:
               name: config
             - mountPath: /data
               name: data
+            - mountPath: /tmp
+              name: tmp
             - mountPath: /ebooks
               name: ebooks
               readOnly: true
@@ -112,6 +114,9 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: komga-data
+        - name: tmp
+          emptyDir:
+            sizeLimit: 100Mi
         - name: ebooks
           nfs:
             path: /rust/ebooks
