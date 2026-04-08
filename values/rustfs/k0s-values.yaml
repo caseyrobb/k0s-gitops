@@ -1,8 +1,8 @@
 replicaCount: 1
 
-#image:
-#  rustfs:
-#    tag: rustfs/rustfs:1.0.0-alpha.87
+image:
+  rustfs:
+    tag: rustfs/rustfs:1.0.0-alpha.90
 
 secret:
   existingSecret: rustfs-secret
