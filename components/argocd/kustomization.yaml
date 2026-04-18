@@ -19,7 +19,7 @@ resources:
   - uptime-kuma-application.yaml
   - komga-application.yaml
   - rustfs-application.yaml
-  - vault-application.yaml
+  #- vault-application.yaml
   #- gitea-application.yaml
   #- gotify-application.yaml
   #- version-checker-application.yaml
