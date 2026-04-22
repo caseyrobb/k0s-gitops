@@ -14,7 +14,7 @@ spec:
         valueFiles:
           - $values/values/vaultwarden/k0s-values.yaml
       repoURL: https://guerzon.github.io/vaultwarden
-      targetRevision: 0.36.0
+      targetRevision: 0.36.1
     - kustomize:
         namespace: vaultwarden
       path: components/apps/vaultwarden
