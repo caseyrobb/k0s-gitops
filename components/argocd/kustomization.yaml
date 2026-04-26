@@ -7,17 +7,17 @@ resources:
   - sealed-secrets-application.yaml
   - prometheus-application.yaml
   - firewall-application.yaml
-  - vaultwarden-application.yaml
+  #- vaultwarden-application.yaml
   - longhorn-application.yaml
-  - helm-version-check-application.yaml
+  #- helm-version-check-application.yaml
   - metallb-application.yaml
   - traefik-application.yaml
   - keycloak-application.yaml
   - democratic-csi-nfs-application.yaml
   - democratic-csi-iscsi-application.yaml
   - cnpg-operator-application.yaml
-  - uptime-kuma-application.yaml
-  - komga-application.yaml
+  #- uptime-kuma-application.yaml
+  #- komga-application.yaml
   - rustfs-application.yaml
   #- vault-application.yaml
   #- gitea-application.yaml
