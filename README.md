@@ -1,5 +1,7 @@
 # k0s-config
 
+_2026-04-29 - Archived and moved to [https://gitlab.com/caseyrobb/iac](https://gitlab.com/caseyrobb/iac)_
+
 [![Super-Linter](https://github.com/caseyrobb/k0s-gitops/actions/workflows/super-linter.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
 My k0s homelab config hosted on a Minisforum NAB9.
